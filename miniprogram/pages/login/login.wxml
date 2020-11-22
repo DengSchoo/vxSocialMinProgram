@@ -1,0 +1,17 @@
+<!--pages/login/login.wxml-->
+
+<view  class="bg-gradual-pink padding radius text-center shadow-blur bcg">
+    <van-image round width="300px" height="100px"  src="https://i.loli.net/2020/11/22/QmS2bW9e3gZNFro.png" />
+    <van-image
+        round
+        width="200px"
+        height="200px"
+        src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1453718649,1499996929&fm=26&gp=0.jpg"
+    />
+    <view class="padding flex flex-direction btnlogin">
+        <button class="cu-btn bg-green lg button-hover "  role="button" aria-disabled="false">
+            微信用户实名登录
+        </button>
+        
+    </view>
+</view>

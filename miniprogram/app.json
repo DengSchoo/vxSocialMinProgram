@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/activities/activities",
     "pages/myactivity/myactivity",
-    "pages/setting/setting"
+    "pages/setting/setting",
+    "pages/login/login"
   
   ],
   "window": {
