@@ -1,6 +1,9 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/activities/activities",
+    "pages/myactivity/myactivity",
+    "pages/setting/setting"
   
   ],
   "window": {
@@ -11,5 +14,34 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-tabbar": "@vant/weapp/tabbar/index",
+   "van-tabbar-item": "@vant/weapp/tabbar-item/index"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#000000",
+    "selectedColor": "#000000",
+    "backgroundColor": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/index/index"
+        
+      },
+      {
+        "pagePath": "pages/activities/activities"
+        
+      },{
+      
+        "pagePath": "pages/myactivity/myactivity"
+        
+      },
+      {
+        "pagePath": "pages/setting/setting"
+        
+      }
+    ]
+  }
+  
 }
