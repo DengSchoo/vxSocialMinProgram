@@ -10,12 +10,12 @@ Component({
       {
         "url": "/pages/activities/activities",
         "icon": "apps-o",
-        "text": "活动分类"
+        "text": "活动"
       },
       {
         "url": "/pages/myactivity/myactivity",
         "icon": "like-o",
-        "text": "我的活动"
+        "text": "我的"
       },
       {
         "url": "/pages/setting/setting",

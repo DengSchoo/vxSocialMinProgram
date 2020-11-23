@@ -5,7 +5,34 @@ Page({
      * 页面的初始数据
      */
     data: {
+        Img:"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1453718649,1499996929&fm=26&gp=0.jpg",
+        btninfo:"微信用户实名登录",
+        permission:false,
+        userinfo:{}
 
+    },
+    handleUserInfo:function(e){
+        console.log(e.detail.userInfo);
+        const {userInfo} = e.detail;
+
+        wx.setStorageSync('userinfo', userInfo);
+
+        const userinfo = wx.getStorageSync("userinfo");
+        
+        this.setData({
+            userinfo
+        })
+        if(this.data.permission == true) {
+            wx.reLaunch({
+              url: '../index/index',
+            })
+        }
+        this.setData({
+            Img:userinfo.avatarUrl,
+            btninfo:userinfo.nickName + " 现在开始",
+            permission:true
+        })
+        
     },
 
     /**
@@ -26,7 +53,24 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        const userinfo = wx.getStorageSync("userinfo");
+        var arr = Object.keys(userinfo);
+        if(arr.length == 0) return;
+        this.setData({
+            userinfo
+        })
+        if(this.data.permission == true) {
+            wx.reLaunch({
+              url: '../index/index',
+            })
+        }
+        this.setData({
+            Img:userinfo.avatarUrl,
+            btninfo:userinfo.nickName + " 现在开始",
+            permission:true
+        })
+        
+        
     },
 
     /**

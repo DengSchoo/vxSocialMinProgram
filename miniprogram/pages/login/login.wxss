@@ -1,9 +1,9 @@
 /* pages/login/login.wxss */
 .bcg {
-    height: 1500rpx;
+    height: 100%;
 }
 .btnlogin {
     
-    padding-top: 100px;
+    padding-top: 90px;
     height: 300px;
 }
