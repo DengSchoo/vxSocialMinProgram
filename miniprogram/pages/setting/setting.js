@@ -5,28 +5,40 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        activeNames: ['1'],
+        userinfo:{}
     },
+    onChange(event) {
+        this.setData({
+          activeNames: event.detail,
+        });
+      },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        const userinfo=wx.getStorageSync("userinfo");
+        this.setData({userinfo});
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
+        const userinfo=wx.getStorageSync("userinfo");
+        this.setData({userinfo});
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        
+        const userinfo=wx.getStorageSync("userinfo");
+        this.setData({userinfo});
         this.getTabBar().init();
+        
     },
 
     /**

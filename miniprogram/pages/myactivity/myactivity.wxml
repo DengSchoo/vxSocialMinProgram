@@ -1,2 +1,35 @@
 <!--pages/myactivity/myactivity.wxml-->
-<text>pages/myactivity/myactivity.wxml</text>
+<van-panel title="标题" desc="描述信息" status="状态" use-footer-slot>
+  <view>内容</view>
+  <view slot="footer" flex>
+    <van-button size="small">按钮</van-button>
+    <van-button size="small" type="danger">按钮</van-button>
+  </view>
+</van-panel>
+
+<van-card
+  num="2"
+  tag="标签"
+  price="10.00"
+  desc="描述信息"
+  title="商品标题"
+  thumb="{{ imageURL }}"
+>
+  <view slot="footer">
+    <van-button size="mini">按钮</van-button>
+    <van-button size="mini">按钮</van-button>
+  </view>
+</van-card>
+<van-card
+  
+  tag="标签"
+  price="10.00"
+  desc="描述信息"
+  title="商品标题"
+  thumb="{{ imageURL }}"
+>
+  <view slot="footer">
+    <van-button size="mini">按钮</van-button>
+    <van-button size="mini">按钮</van-button>
+  </view>
+</van-card>

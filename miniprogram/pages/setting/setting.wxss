@@ -1,1 +1,4 @@
 /* pages/setting/setting.wxss */
+.userImage{
+    padding-left: 25%;
+}

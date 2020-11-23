@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-collapse": "@vant/weapp/collapse/index",
+  "van-collapse-item": "@vant/weapp/collapse-item/index",
+  "van-image": "@vant/weapp/image/index"
+  }
 }

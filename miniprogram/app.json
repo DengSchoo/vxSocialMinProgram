@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/index/index",
     "pages/activities/activities",
     "pages/myactivity/myactivity",
-    "pages/setting/setting",
-    "pages/login/login"
+    "pages/setting/setting"
   
   ],
   "window": {

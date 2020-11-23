@@ -8,11 +8,6 @@ Component({
         "text": "首页"
       },
       {
-        "url": "/pages/activities/activities",
-        "icon": "apps-o",
-        "text": "活动"
-      },
-      {
         "url": "/pages/myactivity/myactivity",
         "icon": "like-o",
         "text": "我的"

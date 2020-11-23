@@ -60,6 +60,12 @@
                 {
                     "name": "登录",
                     "pathName": "pages/login/login",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "设置",
+                    "pathName": "pages/setting/setting",
                     "scene": null
                 }
             ]
