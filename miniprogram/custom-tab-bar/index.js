@@ -1,3 +1,4 @@
+const app = getApp();
 Component({
     data: {
     active: 0,
@@ -31,6 +32,7 @@ Component({
          const page = getCurrentPages().pop();
          this.setData({
         　  active: this.data.list.findIndex(item => item.url === `/${page.route}`)
+            
          });
         }
      }

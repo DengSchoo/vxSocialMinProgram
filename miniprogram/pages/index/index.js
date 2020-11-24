@@ -37,15 +37,14 @@ Page({
       url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg'
     }],
 
-    StatusBar: app.globalData.StatusBar,
-    CustomBar: app.globalData.CustomBar,
+    
     iconList: [{
-      icon: 'cardboardfill',
+      icon: 'btn',
       color: 'red',
       badge: 120,
       name: 'VR'
     }, {
-      icon: 'recordfill',
+      icon: 'skin',
       color: 'orange',
       badge: 1,
       name: '录像'
@@ -93,7 +92,9 @@ Page({
     gridCol:3,
     skin: false,
   },
-
+  TapTest(e){
+    console.log(e);
+  },
   DotStyle(e) {
     this.setData({
       DotStyle: e.detail.value
