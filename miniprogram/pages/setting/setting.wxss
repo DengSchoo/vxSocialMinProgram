@@ -2,3 +2,9 @@
 .userImage{
     padding-left: 25%;
 }
+.van-collapse{
+    font-size: 20px;
+}
+.van-cell{
+    line-height:10px;
+}

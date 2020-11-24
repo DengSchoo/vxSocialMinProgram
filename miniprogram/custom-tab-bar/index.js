@@ -1,7 +1,7 @@
 const app = getApp();
 Component({
     data: {
-    active: 0,
+    Active: 0,
     list: [
       {
         "url": "/pages/index/index",
@@ -23,7 +23,7 @@ Component({
     methods: {
      onChange(e) {
         // console.log(e,'e')
-        this.setData({ active: e.detail });
+        this.setData({ Active: e.detail });
         wx.switchTab({
           url: this.data.list[e.detail].url
         });
@@ -31,7 +31,7 @@ Component({
      init() {
          const page = getCurrentPages().pop();
          this.setData({
-        　  active: this.data.list.findIndex(item => item.url === `/${page.route}`)
+        　  Active: this.data.list.findIndex(item => item.url === `/${page.route}`)
             
          });
         }

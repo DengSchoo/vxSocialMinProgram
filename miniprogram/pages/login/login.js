@@ -8,11 +8,28 @@ Page({
         Img:"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1453718649,1499996929&fm=26&gp=0.jpg",
         btninfo:"微信用户实名登录",
         permission:false,
-        userinfo:{}
+        userinfo:{},
+        list: [{
+          name: 'shake',
+          color: 'mauve'
+        },]
 
     },
+    toggle(e) {
+        console.log(e);
+        var anmiaton = e.currentTarget.dataset.class;
+        var that = this;
+        that.setData({
+          animation: anmiaton
+        })
+        setTimeout(function() {
+          that.setData({
+            animation: ''
+          })
+        }, 1000)
+      },
     handleUserInfo:function(e){
-        console.log(e.detail.userInfo);
+        
         const {userInfo} = e.detail;
 
         wx.setStorageSync('userinfo', userInfo);

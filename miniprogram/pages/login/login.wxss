@@ -1,6 +1,13 @@
 /* pages/login/login.wxss */
+@import "../../animation.wxss";
+
+image[class*="gif-"] {
+  border-radius: 6rpx;
+  display: block;
+}
+
 .bcg {
-    height: 100%;
+    height: 100px;
 }
 .btnlogin {
     

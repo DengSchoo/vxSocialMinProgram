@@ -7,6 +7,7 @@ Page({
   data: {
     active: 0,
     cardCur: 0,
+    userinfo:{},
     swiperList: [{
       id: 0,
       type: 'image',
@@ -39,12 +40,14 @@ Page({
 
     
     iconList: [{
+      id:0,
       icon: 'btn',
       color: 'red',
       badge: 120,
       name: 'VR'
     }, {
-      icon: 'skin',
+      id:1,
+      icon: 'btn',
       color: 'orange',
       badge: 1,
       name: '录像'
@@ -94,6 +97,11 @@ Page({
   },
   TapTest(e){
     console.log(e);
+    if( e.currentTarget.id == 1)
+      wx.redirectTo({
+        url: '../activities/activities',
+      })
+    else console.log("111");
   },
   DotStyle(e) {
     this.setData({
@@ -189,6 +197,12 @@ Page({
    */
   onShow: function () {
     this.getTabBar().init();
+    const userinfo = wx.getStorageSync("userinfo");
+        var arr = Object.keys(userinfo);
+        if(arr.length == 0) return;
+        this.setData({
+            userinfo
+        })
   },
 
   /**

@@ -1,18 +1,20 @@
 <!--pages/login/login.wxml-->
 
-<view  class="bg-gradual-pink padding radius text-center shadow-blur bcg">
-    <van-image round width="300px" height="100px"  src="https://i.loli.net/2020/11/22/QmS2bW9e3gZNFro.png" />
-    <van-image
+<view  class="bg-white padding radius text-center shadow-blur">
+    <image  mode="widthFix" src="https://i.loli.net/2020/11/24/WvET8u4ZSdXtVBA.png"></image>
+    
+    <view style="padding-top:50px">
+        <van-image
         round
-        width="200px"
-        height="200px"
+        width="150px"
+        height="150px"
         src="{{Img}}"
-        
     />
-    <view class="padding flex flex-direction btnlogin">
-        <button class="cu-btn bg-green lg button-hover" open-type="getUserInfo" bindgetuserinfo="handleUserInfo" role="button" aria-disabled="false">
+    </view>
+    
+    <view style="padding-top:50px" class="padding flex flex-direction btnlogin">
+        <button style="flex-basis:20%;font-size:13px"  class="cu-btn bg-green  button-hover animation-{{animation==item.name?item.name:''}} margin-sm basis-sm shadow" bindtap="toggle" data-class="{{item.name}}" wx:for="{{list}}" wx:key="{{index}}"  open-type="getUserInfo" bindgetuserinfo="handleUserInfo" role="button" aria-disabled="false">
             {{btninfo}}
         </button>
-        
     </view>
 </view>

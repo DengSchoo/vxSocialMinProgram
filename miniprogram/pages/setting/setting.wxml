@@ -1,14 +1,22 @@
 <!--pages/setting/setting.wxml-->
-
-<van-image
+<view class="cu-bar bg-black search">
+				<view class="cu-avatar round" style="background-image:url({{userinfo.avatarUrl}});"></view>
+				<view class="content">
+					Kindred Spirit - {{app.globalData.position}}
+				</view>
+</view>
+<view style="padding-top:5px">
+  <van-image
     round
   width="10rem"
   height="10rem"
     class="userImage"
   src="{{userinfo.avatarUrl}}"
 />
+</view>
 
-<van-collapse value="{{ activeNames }}" bind:change="onChange">
+<view>
+  <van-collapse value="{{ activeNames }}" bind:change="onChange">
   <van-collapse-item title="年级" name="1">
     提供多样店铺模板，快速搭建网上商城
   </van-collapse-item>
@@ -25,6 +33,15 @@
     线上拓客，随时预约，贴心顺手的开单收银
   </van-collapse-item>
   <van-collapse-item title="自我描述" name="6">
+    线上拓客，随时预约，贴心顺手的开单收银线上拓客，随时预约，贴心顺手的开单收银
+    线上拓客，随时预约，贴心顺手的开单收银
+    线上拓客，随时预约，贴心顺手的开单收银
+    线上拓客，随时预约，贴心顺手的开单收银
     线上拓客，随时预约，贴心顺手的开单收银
   </van-collapse-item>
+  <van-collapse-item disabled title="无" name="7">
+    
+  </van-collapse-item>
 </van-collapse>
+</view>
+
