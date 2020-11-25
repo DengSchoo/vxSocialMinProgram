@@ -1,0 +1,100 @@
+<!--pages/register/register.wxml-->
+<view class="cu-bar bg-black search">
+				<view class="cu-avatar round" style="background-image:url({{userinfo.avatarUrl}});"></view>
+				<view class="content">
+					信息完善
+				</view>
+</view>
+<van-cell-group>
+    <view style="height: 10px;"></view>
+  <van-field
+    id="xh"
+    value="{{ xh }}"
+    required
+    clearable
+    label="学号"
+    icon="question-o"
+    placeholder="请输入学号"
+    bind:click-icon="onClickIcon"
+    bind:change="onChange"
+  />
+  <view style="height: 10px;"></view>
+  <van-field
+    id="nj"
+    value="{{ nj }}"
+    required
+    clearable
+    label="年级"
+    icon="question-o"
+    placeholder="请输入年级"
+    bind:click-icon="onClickIcon"
+    bind:change="onChange"
+  />
+  <view style="height: 10px;"></view>
+  <van-field
+    id="xy"
+    value="{{ xy }}"
+    required
+    clearable
+    label="学院"
+    icon="question-o"
+    placeholder="请输入学院"
+    bind:click-icon="onClickIcon"
+    bind:change="onChange"
+  />
+  <view style="height: 10px;"></view>
+  <van-field
+    id="zy"
+    value="{{ zy }}"
+    required
+    clearable
+    label="专业"
+    icon="question-o"
+    placeholder="请输入专业"
+    bind:click-icon="onClickIcon"
+    bind:change="onChange"
+  />
+  <view style="height: 10px;"></view>
+  <van-field
+    id="nl"
+    value="{{ nl }}"
+    required
+    clearable
+    label="年龄"
+    icon="question-o"
+    placeholder="请输入年龄"
+    bind:click-icon="onClickIcon"
+    bind:change="onChange"
+  />
+  <view style="height: 10px;"></view>
+  <van-field
+    id="lxfs"
+    value="{{ lxfs }}"
+    required
+    clearable
+    label="联系方式"
+    icon="question-o"
+    placeholder="请输入手机号或者邮箱"
+    bind:click-icon="onClickIcon"
+    bind:change="onChange"
+  />
+  <view style="height: 10px;"></view>
+  <van-field
+    required
+    id="zwms"
+    value="{{ zwms }}"
+    label="自我描述"
+    type="textarea"
+    placeholder="请输入自我描述"
+    autosize
+    border="{{ false }}"
+    bind:change="onChange"
+  />
+
+</van-cell-group>
+<view style="padding-top:20px">
+    <van-button round size="large" bindtap="commitInfo"  type="primary">点击提交注册</van-button>
+</view>
+<van-toast id="van-toast" />
+
+

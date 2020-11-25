@@ -1,4 +1,6 @@
 // pages/login/login.js
+const db = wx.cloud.database();
+const app = getApp();
 Page({
 
     /**
@@ -28,27 +30,65 @@ Page({
           })
         }, 1000)
       },
+
     handleUserInfo:function(e){
-        
-        const {userInfo} = e.detail;
-
-        wx.setStorageSync('userinfo', userInfo);
-
-        const userinfo = wx.getStorageSync("userinfo");
-        
-        this.setData({
-            userinfo
-        })
-        if(this.data.permission == true) {
+      // 用户先授权登录 获得openid  再根据id去数据库查询 若查询结果不存在则转去完善用户信息 存在则继续现在开始
+      wx.cloud.callFunction({
+        name:'login',
+        data:{}
+      }).then((res)=>{
+        db.collection('users').where({
+          _openid : res.result.openid
+        }).get().then((res)=>{
+          if (res.data.length == 0) {
             wx.reLaunch({
-              url: '../index/index',
-            })
-        }
-        this.setData({
+            url: '../register/register',
+            });
+            return
+          } else 
+            {
+              if (this.data.permission == false)
+               app.userInfo = Object.assign(app.userInfo, res.result);
+              
+              if (this.data.permission == true) {
+                wx.reLaunch({
+                  url: '../index/index',
+                })
+              }
+
+            }
+            
+            const {userInfo} = e.detail;
+
+            wx.setStorageSync('userinfo', userInfo);
+    
+            const userinfo = wx.getStorageSync("userinfo");
+            app.globalData['userPhoto'] = userinfo.avatarUrl;
+            app.globalData['nickName'] = userinfo.nickName;
+
+            this.setData({
             Img:userinfo.avatarUrl,
             btninfo:userinfo.nickName + " 现在开始",
             permission:true
         })
+        })
+      })
+
+        
+
+        
+        // if(this.data.permission == true) {
+        //     wx.reLaunch({
+        //       url: '../index/index',
+        //     })
+        // }
+        // this.setData({
+        //     Img:userinfo.avatarUrl,
+        //     btninfo:userinfo.nickName + " 现在开始",
+        //     permission:true
+        // })
+        // app.userInfo['userPhoto'] = userinfo.avatarUrl;
+        // app.userInfo['nickName'] = userinfo.nickName;
         
     },
 
@@ -63,7 +103,7 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
+     
     },
 
     /**

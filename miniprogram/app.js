@@ -3,14 +3,15 @@ App({
     onLaunch: function() {
       if (wx.cloud) {
         wx.cloud.init({
-          traceUser: true
+          traceUser: true,
+          //env:'dsh1999',
         })
       }
-      
-    },
-    globalData:{
-      position:"首页",
-    },
+      this.globalData = {}
+      this.userInfo = {}
+    }
+    
+    
     
     
   })

@@ -66,6 +66,12 @@
                 {
                     "name": "设置",
                     "pathName": "pages/setting/setting",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "注册",
+                    "pathName": "pages/register/register",
                     "scene": null
                 }
             ]
