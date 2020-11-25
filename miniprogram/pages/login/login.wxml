@@ -1,9 +1,10 @@
 <!--pages/login/login.wxml-->
 
 <view  class="bg-white padding radius text-center shadow-blur">
-    <image  mode="widthFix" src="https://i.loli.net/2020/11/24/WvET8u4ZSdXtVBA.png"></image>
+    <image  mode="widthFix" src="../../images/login_logo.png"></image>
+    <!-- <image  mode="widthFix" src="https://i.loli.net/2020/11/24/WvET8u4ZSdXtVBA.png"></image> -->
     
-    <view style="padding-top:50px">
+    <view style="padding-top:20px">
         <van-image
         round
         width="150px"

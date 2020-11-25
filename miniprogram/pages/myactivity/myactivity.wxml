@@ -29,7 +29,7 @@
 >
   <view slot="footer">
     <van-button size="mini">按钮</van-button>
-    <van-button size="mini">按钮</van-button>
+    <van-button size="mini">按钮</ van-button>
   </view>
 </van-card>
 <van-card
@@ -45,3 +45,4 @@
     <van-button size="mini">按钮</van-button>
   </view>
 </van-card>
+<view style="height: 3rem;"></view>

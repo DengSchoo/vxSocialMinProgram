@@ -39,9 +39,6 @@
     线上拓客，随时预约，贴心顺手的开单收银
     线上拓客，随时预约，贴心顺手的开单收银
   </van-collapse-item>
-  <van-collapse-item disabled title="无" name="7">
-    
-  </van-collapse-item>
 </van-collapse>
 </view>
-
+<view style="height: 3rem;"></view>
