@@ -18,7 +18,7 @@ Page({
 
     },
     toggle(e) {
-        console.log(e);
+        
         var anmiaton = e.currentTarget.dataset.class;
         var that = this;
         that.setData({
@@ -47,8 +47,8 @@ Page({
             return
           } else 
             {
-              if (this.data.permission == false)
-               app.userInfo = Object.assign(app.userInfo, res.result);
+              
+               app.userInfo = Object.assign(app.userInfo, res.data[0]);
               
               if (this.data.permission == true) {
                 wx.reLaunch({

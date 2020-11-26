@@ -1,4 +1,5 @@
 // pages/setting/setting.js
+const app = getApp();
 Page({
 
     /**
@@ -6,7 +7,8 @@ Page({
      */
     data: {
         activeNames: ['1'],
-        userinfo:{}
+        userinfo:{},
+        cloudUserInfo:{}
     },
     onChange(event) {
         this.setData({
@@ -19,7 +21,9 @@ Page({
      */
     onLoad: function (options) {
         const userinfo=wx.getStorageSync("userinfo");
-        this.setData({userinfo});
+        this.setData({userinfo,
+            cloudUserInfo:app.userInfo
+        });
     },
 
     /**
@@ -27,7 +31,9 @@ Page({
      */
     onReady: function () {
         const userinfo=wx.getStorageSync("userinfo");
-        this.setData({userinfo});
+        this.setData({userinfo,
+            cloudUserInfo:app.userinfo
+        });
     },
 
     /**

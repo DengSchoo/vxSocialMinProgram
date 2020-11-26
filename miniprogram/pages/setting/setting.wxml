@@ -2,7 +2,7 @@
 <view class="cu-bar bg-black search">
 				<view class="cu-avatar round" style="background-image:url({{userinfo.avatarUrl}});"></view>
 				<view class="content">
-					Kindred Spirit - {{app.globalData.position}}
+					Kindred Spirit - 设置
 				</view>
 </view>
 <view style="padding-top:5px">
@@ -18,26 +18,22 @@
 <view>
   <van-collapse value="{{ activeNames }}" bind:change="onChange">
   <van-collapse-item title="年级" name="1">
-    提供多样店铺模板，快速搭建网上商城
+    {{cloudUserInfo.nj}}
   </van-collapse-item>
   <van-collapse-item title="学号" name="2">
-    网店吸粉获客、会员分层营销、一机多种收款，告别经营低效和客户流失
+    {{cloudUserInfo.xh}}
   </van-collapse-item>
   <van-collapse-item title="专业" name="3">
-    线上拓客，随时预约，贴心顺手的开单收银
+    {{cloudUserInfo.zy}}
   </van-collapse-item>
   <van-collapse-item title="性别" name="4">
-    线上拓客，随时预约，贴心顺手的开单收银
+    {{userinfo.gender}}
   </van-collapse-item>
   <van-collapse-item title="年龄" name="5">
-    线上拓客，随时预约，贴心顺手的开单收银
+    {{cloudUserInfo.nl}}
   </van-collapse-item>
   <van-collapse-item title="自我描述" name="6">
-    线上拓客，随时预约，贴心顺手的开单收银线上拓客，随时预约，贴心顺手的开单收银
-    线上拓客，随时预约，贴心顺手的开单收银
-    线上拓客，随时预约，贴心顺手的开单收银
-    线上拓客，随时预约，贴心顺手的开单收银
-    线上拓客，随时预约，贴心顺手的开单收银
+    {{cloudUserInfo.zwms}}
   </van-collapse-item>
 </van-collapse>
 </view>

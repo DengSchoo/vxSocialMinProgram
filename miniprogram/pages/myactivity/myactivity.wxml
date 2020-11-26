@@ -1,8 +1,8 @@
 <!--pages/myactivity/myactivity.wxml-->
 <view class="cu-bar bg-black search">
-				<view class="cu-avatar round" style="background-image:url({{userinfo.avatarUrl}});"></view>
+				<view class="cu-avatar round" style="background-image:url({{UserInfo.userPhoto}});"></view>
 				<view class="content">
-					Kindred Spirit - {{app.globalData.position}}
+					Kindred Spirit - 我的
 				</view>
 </view>
 <van-panel title="标题" desc="描述信息" status="状态" use-footer-slot>

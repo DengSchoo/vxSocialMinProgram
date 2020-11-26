@@ -1,11 +1,12 @@
 // pages/myactivity/myactivity.js
+const app = getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        UserInfo:{}
     },
 
     /**
@@ -13,6 +14,9 @@ Page({
      */
     onLoad: function (options) {
 
+        this.setData({
+            UserInfo:app.globalData
+        })
     },
 
     /**
