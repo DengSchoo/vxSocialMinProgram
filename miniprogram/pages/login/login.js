@@ -7,7 +7,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        Img:"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1453718649,1499996929&fm=26&gp=0.jpg",
+        Img:"https://images.pexels.com/photos/3662824/pexels-photo-3662824.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
         btninfo:"微信用户实名登录",
         permission:false,
         userinfo:{},

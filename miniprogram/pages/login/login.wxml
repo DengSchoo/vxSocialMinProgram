@@ -1,6 +1,6 @@
 <!--pages/login/login.wxml-->
 
-<view  class="bg-white padding radius text-center shadow-blur">
+<view  class="bg-orange padding radius text-center light">
     <image  mode="widthFix" src="../../images/login_logo.png"></image>
     <!-- <image  mode="widthFix" src="https://i.loli.net/2020/11/24/WvET8u4ZSdXtVBA.png"></image> -->
     
@@ -12,10 +12,12 @@
         src="{{Img}}"
     />
     </view>
-    
+
     <view style="padding-top:14%" class="padding flex flex-direction btnlogin">
         <button style="flex-basis:20%;font-size:14px"  class="cu-btn bg-green  button-hover animation-{{animation==item.name?item.name:''}} margin-sm basis-sm shadow" bindtap="toggle" data-class="{{item.name}}" wx:for="{{list}}" wx:key="{{index}}"  open-type="getUserInfo" bindgetuserinfo="handleUserInfo" role="button" aria-disabled="false">
             {{btninfo}}
         </button>
     </view>
+
+   
 </view>
