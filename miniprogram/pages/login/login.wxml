@@ -1,6 +1,6 @@
 <!--pages/login/login.wxml-->
 
-<view  class="bg-white padding radius text-center shadow-blur">
+<view  class="bg-white padding radius text-center light">
     <image  mode="widthFix" src="../../images/login_logo.png"></image>
     <!-- <image  mode="widthFix" src="https://i.loli.net/2020/11/24/WvET8u4ZSdXtVBA.png"></image> -->
     
@@ -12,6 +12,7 @@
         src="{{Img}}"
     />
     </view>
+
     <view class="bg-white flex-sub radius shadow-lg">
     <image src="https://image.weilanwl.com/gif/loading-white.gif" mode="aspectFit" class="gif-white response" style="height:240rpx"></image>
     </view>
