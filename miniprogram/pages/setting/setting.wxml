@@ -17,12 +17,66 @@
 
 <van-cell-group>
   <van-field
-    value="{{tempUserInfo.xm}}"
+    value="{{xm}}"
     label="姓名"
     size="large"
     left-icon="star"
-    
+    id="xm"
     disabled="{{disabled}}"
+    input-align="right"
+    bind:change="onChange"
+    border="{{ false }}"
+  />
+</van-cell-group>
+
+<van-cell-group>
+  <van-field
+    value="{{nj}}"
+    label="年级"
+    size="large"
+    bind:change="onChange"
+    left-icon="star"
+    id="nj"
+    disabled="{{disabled}}"
+    input-align="right"
+    border="{{ false }}"
+  />
+</van-cell-group>
+<van-cell-group>
+  <van-field
+    value="{{xh}}"
+    label="学号"
+    disabled="{{disabled}}"
+    size="large"
+    bind:change="onChange"
+    left-icon="contact"
+    id="xh"
+    input-align="right"
+    border="{{ false }}"
+  />
+</van-cell-group>
+<van-cell-group>
+  <van-field
+    value="{{lxfs}}"
+    label="联系方式"
+    disabled="{{disabled}}"
+    size="large"
+    bind:change="onChange"
+    left-icon="contact"
+    id="lxfs"
+    input-align="right"
+    border="{{ false }}"
+  />
+</van-cell-group>
+<van-cell-group>
+  <van-field
+    value="{{xy}}"
+    label="学院"
+    disabled="{{disabled}}"
+    size="large"
+    bind:change="onChange"
+    left-icon="contact"
+    id="xy"
     input-align="right"
     border="{{ false }}"
   />
@@ -30,37 +84,14 @@
 
 <van-cell-group>
   <van-field
-    value="{{tempUserInfo.nj}}"
-    label="年级"
-    size="large"
-    left-icon="star"
-    
-    disabled="{{disabled}}"
-    input-align="right"
-    border="{{ false }}"
-  />
-</van-cell-group>
-<van-cell-group>
-  <van-field
-    value="{{tempUserInfo.xh}}"
-    label="学号"
-    disabled="{{disabled}}"
-    size="large"
-    left-icon="contact"
-    
-    input-align="right"
-    border="{{ false }}"
-  />
-</van-cell-group>
-<van-cell-group>
-  <van-field
-    value="{{tempUserInfo.zy}}"
+    value="{{zy}}"
     label="专业"
     size="large"
     disabled="{{disabled}}"
     input-align="right"
+    bind:change="onChange"
     left-icon="contact"
-    
+    id="zy"
     border="{{ false }}"
   />
 </van-cell-group>
@@ -72,7 +103,8 @@
     disabled
     value="{{userinfo.gender==1?'男':'女'}}"
     left-icon="contact"
-    
+    id="xb"
+    bind:change="onChange"
     border="{{ false }}"
   />
 </van-cell-group>
@@ -81,11 +113,12 @@
   <van-field
     label="年龄"
     input-align="right"
-    value="{{tempUserInfo.nl}}"
+    value="{{nl}}"
     disabled="{{disabled}}"
     left-icon="contact"
+    bind:change="onChange"
     size="large"
-    
+    id="nl"
     border="{{ false }}"
   />
 </van-cell-group>
@@ -94,9 +127,11 @@
 <view>
   <van-cell-group>
   <van-field
-    value="{{ tempUserInfo.zwms }}"
+    value="{{ zwms }}"
     label="自我描述"
+    bind:change="onChange"
     type="textarea"
+    id="zwms"
     disabled="{{disabled}}"
     autosize
     border="{{ false }}"
@@ -108,5 +143,5 @@
   <button class="cu-btn bg-cyan lg" bindtap="modifyBtn">{{msg}}</button>
   <button class="cu-btn bg-red margin-tb-sm lg" disabled="{{disabled==false?false:true}}" bindtap="cancelBtn">取消</button>
 </view>
-
+<van-toast id="van-toast" />
 <view style="height: 3rem;"></view>

@@ -8,14 +8,18 @@ Page({
     data: {
         UserInfo:{},
         activities:[{
-            id:"", // 活动唯一标识
+            //id:"", // 活动唯一标识
             status:true, // 活动状态  用于判断是否正在进行
-            photo:"https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg", // 用户头像
-            type:"史诗 - 正在进行", // 卡片展示状态 为： 类型 - 活动状态
+            type:"", // 卡片展示状态 为： 类型 - 活动状态
+            photo:"", // 用户头像
+            
             content:"sss", // 活动的具体内容
-            nickName:"周杰伦", // 活动发起人
-            startTime:"2018-02", // 活动开始时间 精确到分钟
-            join:"10"  // 当前参加人数
+            location:"", //地点
+            nickName:"", // 活动发起人
+            Img:"", // 发起人头像
+            startTime:"", // 活动开始时间 精确到分钟
+            lastTime:"",
+            join:""  // 当前参加人数
         },{
             id:"",
             status:true,

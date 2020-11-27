@@ -7,7 +7,10 @@ App({
           //env:'dsh1999',
         })
       }
-      this.globalData = {}
+      this.globalData = {
+        "permission":false
+      },
+      
       this.userInfo = {}
     }
     

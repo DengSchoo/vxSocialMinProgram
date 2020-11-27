@@ -9,7 +9,7 @@ Page({
     data: {
         Img:"https://images.pexels.com/photos/3662824/pexels-photo-3662824.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
         btninfo:"微信用户实名登录",
-        permission:false,
+        //permission:false,
         userinfo:{},
         list: [{
           name: 'shake',
@@ -33,6 +33,16 @@ Page({
 
     handleUserInfo:function(e){
       // 用户先授权登录 获得openid  再根据id去数据库查询 若查询结果不存在则转去完善用户信息 存在则继续现在开始
+      //console.log(e.detail.userInfo.avatarUrl);
+      const {userInfo} = e.detail;
+      wx.setStorageSync('userinfo', userInfo);
+      app.globalData['userPhoto'] = e.detail.userInfo.avatarUrl;
+      app.globalData['nickName'] = e.detail.userInfo.nickName;
+      app.globalData['gender'] = e.detail.userInfo.gender;
+
+      
+      
+
       wx.cloud.callFunction({
         name:'login',
         data:{}
@@ -48,30 +58,28 @@ Page({
           } else 
             {
               
-               app.userInfo = Object.assign(app.userInfo, res.data[0]);
-              
-              if (this.data.permission == true) {
+              if (this.data.userinfo.length != 0) {
+                app.globalData["permission"] = true
+              }
+
+              if (app.globalData["permission"] == true) {
+                app.userInfo = Object.assign(app.userInfo, res.data[0]);
                 wx.reLaunch({
                   url: '../index/index',
                 })
+                return;
               }
-
+               
+               this.setData({
+                Img:app.globalData['userPhoto'],
+                btninfo:app.globalData['nickName'] + " 现在开始",
+                //permission:true
+                })
+                app.globalData["permission"] = true
             }
-            
-            const {userInfo} = e.detail;
 
-            wx.setStorageSync('userinfo', userInfo);
-    
-            const userinfo = wx.getStorageSync("userinfo");
-            app.globalData['userPhoto'] = userinfo.avatarUrl;
-            app.globalData['nickName'] = userinfo.nickName;
-            app.globalData['gender'] = userinfo.gender;
             
-            this.setData({
-            Img:userinfo.avatarUrl,
-            btninfo:userinfo.nickName + " 现在开始",
-            permission:true
-        })
+            
         })
       })
 
@@ -97,14 +105,14 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+      
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-     
+      
     },
 
     /**
@@ -117,16 +125,16 @@ Page({
         this.setData({
             userinfo
         })
-        if(this.data.permission == true) {
+        if(app.globalData['permission'] == true) {
             wx.reLaunch({
               url: '../index/index',
             })
         }
         this.setData({
             Img:userinfo.avatarUrl,
-            btninfo:userinfo.nickName + " 现在开始",
-            permission:true
+            btninfo:userinfo.nickName + " 现在开始"
         })
+        app.globalData['permission'] = false;
         
         
     },

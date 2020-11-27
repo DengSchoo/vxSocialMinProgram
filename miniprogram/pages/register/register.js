@@ -19,6 +19,7 @@ Page({
         xm:"",
         index: null,
         picker: ['2016', '2017', '2018','2019','2020'],
+        photo:"",
         
       },
       PickerChange(e) {
@@ -43,7 +44,7 @@ Page({
           app.userInfo['userPhoto']=app.globalData['userPhoto'];
           app.userInfo['nickName']=app.globalData['nickName'];
           
-          console.log(this.data.xh);
+          
           
           db.collection('users').add({
             data:{
@@ -57,13 +58,14 @@ Page({
                 nl: app.userInfo['nl'],
                 lxfs: app.userInfo['lxfs'],
                 zwms: app.userInfo['zwms'],
-                
+
             }
           }).then((res)=>{
               db.collection('users').doc(res._id).get().then((res)=>{
                   app.userInfo = Object.assign(app.userInfo, res.data);
               });
               Toast.success('注册成功!');
+              //app.globalData["permission"] = true;
               wx.reLaunch({
                 url: '../login/login',
               })
@@ -102,14 +104,16 @@ Page({
             });break;
 
         }
-        console.log(event);
+        //console.log(event);
       },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.setData({
+            photo: app.globalData['userPhoto']
+        })
     },
 
     /**
