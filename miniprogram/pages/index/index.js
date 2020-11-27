@@ -41,81 +41,81 @@ Page({
     
     iconList: [{
       id:0,
-      icon: 'btn',
+      icon: 'musicfill',
       color: 'red',
       badge: 120,
-      name: 'VR'
+      name: '音乐'
     }, {
       id:1,
-      icon: 'btn',
+      icon: 'colorlens',
       color: 'orange',
       badge: 1,
-      name: '录像'
+      name: '美术'
     }, {
-      icon: 'picfill',
+      icon: 'camerafill',
       color: 'yellow',
       badge: 0,
-      name: '图像'
+      name: '摄影'
     }, {
       icon: 'noticefill',
-      color: 'olive',
+      color: 'orange',
       badge: 22,
-      name: '通知'
+      name: '跑步'
+    }, {
+      icon: 'appreciate',
+      color: 'red',
+      badge: 0,
+      name: '球类'
+    }, {
+      icon: 'game',
+      color: 'orange',
+      badge: 0,
+      name: '游戏'
+    }, {
+      icon: 'discoverfill',
+      color: 'yellow',
+      badge: 0,
+      name: '美食'
+    }, {
+      icon: 'questionfill',
+      color: 'pink',
+      badge: 0,
+      name: '学习'
     }, {
       icon: 'upstagefill',
-      color: 'cyan',
+      color: 'red',
       badge: 0,
-      name: '排行榜'
+      name: '竞赛'
     }, {
-      icon: 'clothesfill',
-      color: 'blue',
+      icon: 'creative',
+      color: 'orange',
       badge: 0,
-      name: '皮肤'
+      name: '讲座'
     }, {
-      icon: 'discoverfill',
-      color: 'purple',
+      icon: 'community',
+      color: 'red',
       badge: 0,
-      name: '发现'
-    }, {
-      icon: 'questionfill',
-      color: 'mauve',
-      badge: 0,
-      name: '帮助'
-    }, {
-      icon: 'commandfill',
-      color: 'purple',
-      badge: 0,
-      name: '问答'
-    }, {
-      icon: 'brandfill',
-      color: 'mauve',
-      badge: 0,
-      name: '版权'
-    }, {
-      icon: 'clothesfill',
-      color: 'blue',
-      badge: 0,
-      name: '皮肤'
+      name: '交流'
     }, {
       icon: 'discoverfill',
-      color: 'purple',
+      color: 'pink',
       badge: 0,
-      name: '发现'
+      name: '公益'
     }, {
       icon: 'questionfill',
-      color: 'mauve',
+      color: 'red',
       badge: 0,
-      name: '帮助'
+      name: '培训'
     }, {
-      icon: 'commandfill',
-      color: 'purple',
+      icon: 'clothesfill',
+      color: 'orange',
       badge: 0,
-      name: '问答'
+      name: '美妆'
     }, {
       icon: 'brandfill',
-      color: 'mauve',
+      color: 'purple',
       badge: 0,
-      name: '版权'
+      name: '其他'
     }],
     gridCol:3,
     skin: false,
