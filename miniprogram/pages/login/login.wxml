@@ -4,7 +4,7 @@
     <image  mode="widthFix" src="../../images/login_logo.png"></image>
     <!-- <image  mode="widthFix" src="https://i.loli.net/2020/11/24/WvET8u4ZSdXtVBA.png"></image> -->
     
-    <view style="padding-top:8%">
+    <view style="padding-top:6%">
         <van-image
         round
         width="200px"
@@ -12,10 +12,13 @@
         src="{{Img}}"
     />
     </view>
-    
-    <view style="padding-top:14%" class="padding flex flex-direction btnlogin">
-        <button style="flex-basis:20%;font-size:14px"  class="cu-btn bg-green  button-hover animation-{{animation==item.name?item.name:''}} margin-sm basis-sm shadow" bindtap="toggle" data-class="{{item.name}}" wx:for="{{list}}" wx:key="{{index}}"  open-type="getUserInfo" bindgetuserinfo="handleUserInfo" role="button" aria-disabled="false">
+    <view class="bg-white flex-sub radius shadow-lg">
+    <image src="https://image.weilanwl.com/gif/loading-white.gif" mode="aspectFit" class="gif-white response" style="height:240rpx"></image>
+    </view>
+    <view style="padding-top:5%" class="padding flex flex-direction btnlogin">
+        <button style="flex-basis:20%;font-size:15px"  class="cu-btn bg-green  button-hover animation-{{animation==item.name?item.name:''}} margin-sm basis-sm shadow" bindtap="toggle" data-class="{{item.name}}" wx:for="{{list}}" wx:key="{{index}}"  open-type="getUserInfo" bindgetuserinfo="handleUserInfo" role="button" aria-disabled="false">
             {{btninfo}}
         </button>
     </view>
+    
 </view>

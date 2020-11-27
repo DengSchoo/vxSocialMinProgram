@@ -8,9 +8,25 @@ Page({
     data: {
         activeNames: ['1'],
         userinfo:{},
-        cloudUserInfo:{}
+        cloudUserInfo:{},
+        disabled:true,
+        msg:"修改信息"
+    },
+    modifyBtn(e) {
+        this.setData({
+            disabled:false,
+            msg:"保存提交"
+        })
+        
+    },
+    cancelBtn(){
+        this.setData({
+            disabled:true,
+            msg:"修改信息"
+        })
     },
     onChange(event) {
+        
         this.setData({
           activeNames: event.detail,
         });

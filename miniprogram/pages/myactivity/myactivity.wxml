@@ -5,44 +5,35 @@
 					Kindred Spirit - 我的
 				</view>
 </view>
-<van-panel title="标题" desc="描述信息" status="状态" use-footer-slot>
-  <view>内容</view>
-  <view slot="footer" flex>
-    <van-button size="small">按钮</van-button>
-    <van-button size="small" type="danger">按钮</van-button>
+
+<view  class="cu-card case {{isCard?'no-card':''}}" wx:for="{{activities}}">
+  <view style="margin:10px 12px 0 12px" class="cu-item shadow">
+    <view class="image">
+      <image src="{{item.photo}}" mode="widthFix"></image>
+      <view class="cu-tag bg-blue">{{item.type}}</view>
+      <view class="cu-bar bg-shadeBottom">
+        <text class="text-cut">{{item.content}}</text>
+      </view>
+    </view>
+
+    <view class="cu-list menu-avatar">
+      <view class="cu-item">
+        <view class="cu-avatar round lg" style="background-image:url({{item.photo}})"></view>
+        <view class="content flex-sub">
+          <view class="text-grey">{{item.nickName}}</view>
+          <view class="text-gray text-sm flex justify-between">
+            {{item.startTime}}
+            <view class="text-blue text-lg">
+              <text class="cuIcon-friend margin-lr-xs"></text> {{item.join}}
+              <!-- <text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
+              <text class="cuIcon-messagefill margin-lr-xs"></text> 30 -->
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
   </view>
-</van-panel>
-<van-panel title="标题" desc="描述信息" status="状态" use-footer-slot>
-  <view>内容</view>
-  <view slot="footer" flex>
-    <van-button size="small">按钮</van-button>
-    <van-button size="small" type="danger">按钮</van-button>
-  </view>
-</van-panel>
-<van-card
-  num="2"
-  tag="标签"
-  price="10.00"
-  desc="描述信息"
-  title="商品标题"
-  thumb="{{ imageURL }}"
->
-  <view slot="footer">
-    <van-button size="mini">按钮</van-button>
-    <van-button size="mini">按钮</ van-button>
-  </view>
-</van-card>
-<van-card
   
-  tag="标签"
-  price="10.00"
-  desc="描述信息"
-  title="商品标题"
-  thumb="{{ imageURL }}"
->
-  <view slot="footer">
-    <van-button size="mini">按钮</van-button>
-    <van-button size="mini">按钮</van-button>
-  </view>
-</van-card>
+</view>
+
 <view style="height: 3rem;"></view>

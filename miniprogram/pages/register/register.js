@@ -15,10 +15,21 @@ Page({
         zy:"",
         nl:"",
         lxfs:"",
-        zwms:""
+        zwms:"",
+        xm:"",
+        index: null,
+        picker: ['2016', '2017', '2018','2019','2020'],
         
       },
-      
+      PickerChange(e) {
+        console.log(e);
+        this.setData({
+          index: e.detail.value
+        })
+      },
+      onClickIcon(){
+        Toast('请根据提示如实填写');
+      },
       commitInfo(e){
           for(let key in this.data){
             if(this.data[key] == "") {
@@ -38,6 +49,7 @@ Page({
             data:{
                 nickName: app.userInfo['nickName'],
                 userPhoto: app.userInfo['userPhoto'],
+                xm: app.userInfo['xm'],
                 xh: app.userInfo['xh'],
                 nj: app.userInfo['nj'],
                 xy: app.userInfo['xy'],
@@ -45,6 +57,7 @@ Page({
                 nl: app.userInfo['nl'],
                 lxfs: app.userInfo['lxfs'],
                 zwms: app.userInfo['zwms'],
+                
             }
           }).then((res)=>{
               db.collection('users').doc(res._id).get().then((res)=>{
@@ -63,6 +76,9 @@ Page({
         // event.detail 为当前输入的值
         
         switch(event.currentTarget.id){
+            case "xm": this.setData({
+                xm:event.detail
+            });break;
             case "xh": this.setData({
                 xh:event.detail
             });break;

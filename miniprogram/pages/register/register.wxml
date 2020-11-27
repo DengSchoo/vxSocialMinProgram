@@ -14,7 +14,30 @@
     clearable
     label="学号"
     icon="question-o"
-    placeholder="请输入学号"
+    placeholder="请输入学号 如2020xxxxxx"
+    bind:click-icon="onClickIcon"
+    bind:change="onChange"
+  />
+  
+
+  <!-- <view class="cu-form-group margin-top">
+		<view class="title">年级</view>
+		<picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+			<view class="picker">
+				{{index?picker[index]:'选择年级'}}
+			</view>
+		</picker>
+	</view> -->
+  <view style="height: 10px;"></view>
+
+  <van-field
+    id="xm"
+    value="{{ xm }}"
+    required
+    clearable
+    label="姓名"
+    icon="question-o"
+    placeholder="请输入姓名 如吴彦祖"
     bind:click-icon="onClickIcon"
     bind:change="onChange"
   />
@@ -26,7 +49,7 @@
     clearable
     label="年级"
     icon="question-o"
-    placeholder="请输入年级"
+    placeholder="请输入年级 如2020"
     bind:click-icon="onClickIcon"
     bind:change="onChange"
   />
@@ -38,7 +61,7 @@
     clearable
     label="学院"
     icon="question-o"
-    placeholder="请输入学院"
+    placeholder="请输入学院 如数学学院"
     bind:click-icon="onClickIcon"
     bind:change="onChange"
   />
@@ -50,7 +73,7 @@
     clearable
     label="专业"
     icon="question-o"
-    placeholder="请输入专业"
+    placeholder="请输入专业 如电气工程"
     bind:click-icon="onClickIcon"
     bind:change="onChange"
   />
@@ -62,7 +85,7 @@
     clearable
     label="年龄"
     icon="question-o"
-    placeholder="请输入年龄"
+    placeholder="请输入年龄 如20"
     bind:click-icon="onClickIcon"
     bind:change="onChange"
   />
