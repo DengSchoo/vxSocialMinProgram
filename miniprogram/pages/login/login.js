@@ -65,7 +65,8 @@ Page({
             const userinfo = wx.getStorageSync("userinfo");
             app.globalData['userPhoto'] = userinfo.avatarUrl;
             app.globalData['nickName'] = userinfo.nickName;
-
+            app.globalData['gender'] = userinfo.gender;
+            
             this.setData({
             Img:userinfo.avatarUrl,
             btninfo:userinfo.nickName + " 现在开始",

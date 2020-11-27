@@ -17,7 +17,7 @@
 
 <van-cell-group>
   <van-field
-    value="{{cloudUserInfo.xm}}"
+    value="{{tempUserInfo.xm}}"
     label="姓名"
     size="large"
     left-icon="star"
@@ -27,9 +27,10 @@
     border="{{ false }}"
   />
 </van-cell-group>
+
 <van-cell-group>
   <van-field
-    value="{{cloudUserInfo.nj}}"
+    value="{{tempUserInfo.nj}}"
     label="年级"
     size="large"
     left-icon="star"
@@ -41,7 +42,7 @@
 </van-cell-group>
 <van-cell-group>
   <van-field
-    value="{{cloudUserInfo.xh}}"
+    value="{{tempUserInfo.xh}}"
     label="学号"
     disabled="{{disabled}}"
     size="large"
@@ -53,7 +54,7 @@
 </van-cell-group>
 <van-cell-group>
   <van-field
-    value="{{cloudUserInfo.zy}}"
+    value="{{tempUserInfo.zy}}"
     label="专业"
     size="large"
     disabled="{{disabled}}"
@@ -68,8 +69,8 @@
     label="性别"
     size="large"
     input-align="right"
-    disabled="{{disabled}}"
-    value="{{cloudUserInfo.gender=='1'?'女':'男'}}"
+    disabled
+    value="{{userinfo.gender==1?'男':'女'}}"
     left-icon="contact"
     
     border="{{ false }}"
@@ -80,7 +81,7 @@
   <van-field
     label="年龄"
     input-align="right"
-    value="{{cloudUserInfo.nl}}"
+    value="{{tempUserInfo.nl}}"
     disabled="{{disabled}}"
     left-icon="contact"
     size="large"
@@ -93,7 +94,7 @@
 <view>
   <van-cell-group>
   <van-field
-    value="{{ cloudUserInfo.zwms }}"
+    value="{{ tempUserInfo.zwms }}"
     label="自我描述"
     type="textarea"
     disabled="{{disabled}}"

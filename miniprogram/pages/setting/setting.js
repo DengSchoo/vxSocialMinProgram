@@ -9,6 +9,7 @@ Page({
         activeNames: ['1'],
         userinfo:{},
         cloudUserInfo:{},
+        tempUserInfo:{},
         disabled:true,
         msg:"修改信息"
     },
@@ -22,7 +23,8 @@ Page({
     cancelBtn(){
         this.setData({
             disabled:true,
-            msg:"修改信息"
+            msg:"修改信息",
+            tempUserInfo:this.data.cloudUserInfo
         })
     },
     onChange(event) {
@@ -38,7 +40,8 @@ Page({
     onLoad: function (options) {
         const userinfo=wx.getStorageSync("userinfo");
         this.setData({userinfo,
-            cloudUserInfo:app.userInfo
+            cloudUserInfo:app.userInfo,
+            tempUserInfo:app.userInfo
         });
     },
 
@@ -48,7 +51,8 @@ Page({
     onReady: function () {
         const userinfo=wx.getStorageSync("userinfo");
         this.setData({userinfo,
-            cloudUserInfo:app.userinfo
+            cloudUserInfo:app.userInfo,
+            tempUserInfo:app.userInfo
         });
     },
 
@@ -59,7 +63,6 @@ Page({
         this.getTabBar().init();
         const userinfo=wx.getStorageSync("userinfo");
         this.setData({userinfo});
-        
         
         
     },
