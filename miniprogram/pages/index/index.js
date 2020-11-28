@@ -33,7 +33,8 @@ Page({
     }, {
       id: 4,
       type: 'image',
-      url:'https://images.pexels.com/photos/2956376/pexels-photo-2956376.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+      url:'https://images.pexels.com/photos/863988/pexels-photo-863988.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+      //url:'https://images.pexels.com/photos/2956376/pexels-photo-2956376.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
      //url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big25011.jpg'
     }, {
       id: 5,
@@ -53,22 +54,22 @@ Page({
       icon: 'musicfill',
       color: 'red',
       badge: 120,
-      name: '音乐'
+      name: '演出'
     }, {
       id:1,
       icon: 'colorlens',
       color: 'orange',
       badge: 1,
-      name: '美术'
+      name: '出游'
     }, {
       id:2,
       icon: 'camerafill',
       color: 'yellow',
       badge: 0,
-      name: '摄影'
+      name: '电影'
     }, {
       id:3,
-      icon: 'noticefill',
+      icon: 'play_forward_fill',
       color: 'olive',
       badge: 22,
       name: '跑步'
@@ -113,7 +114,7 @@ Page({
       icon: 'group_fill',
       color: 'brown',
       badge: 0,
-      name: '交流'
+      name: '奶茶会'
     }, {
       id:11,
       icon: 'discoverfill',
@@ -122,16 +123,16 @@ Page({
       name: '公益'
     }, {
       id:12,
-      icon: 'questionfill',
+      icon: 'choicenessfill',
       color: 'orange',
       badge: 0,
-      name: '培训'
+      name: '游泳'
     }, {
       id:13,
-      icon: 'clothesfill',
+      icon: 'goodsfill',
       color: 'yellow',
       badge: 0,
-      name: '美妆'
+      name: '购物'
     }, {
       id:14,
       icon: 'brandfill',

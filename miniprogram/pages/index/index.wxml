@@ -24,6 +24,7 @@
       <text>{{item.name}}</text>
     </view>
 </view>
+
 <view style="height: 3rem;"></view>
 <!-- <van-grid gutter="{{ 10 }}" >
   <van-grid-item icon="{{item.icon}}" color="{{item.color}}" wx:key text="文字"  wx:for="{{ iconList }}" />

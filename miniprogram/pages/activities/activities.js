@@ -1,5 +1,6 @@
 // pages/myactivity/myactivity.js
 const app = getApp();
+const db = wx.cloud.database();
 Page({
 
     /**
@@ -8,6 +9,7 @@ Page({
     data: {
         UserInfo:{},
         cur_act:"",
+        acti:[],
         activities:[{
             id:"", // 活动唯一标识
             status:true, // 活动状态  用于判断是否正在进行
@@ -49,7 +51,23 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
+        let temp = this.data.acti;
+        console.log(app.userInfo["_openid"])
+        db.collection('activities').where({
+            _openId : app.userInfo["_openid"]
+          }).get({}).then((res)=>{
+                console.log(res.data)
 
+                for (let a in res.data){
+                    temp.push(res.data[a])
+                }
+                this.setData({
+                    acti:temp
+                })
+                console.log(this.data.acti)
+          })
+
+          
     },
 
     /**

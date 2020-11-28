@@ -19,7 +19,7 @@ Page({
             Img:"", // 发起人头像
             startTime:"ss", // 活动开始时间 精确到分钟
             lastTime:"ss",
-            join:"1"  // 当前参加人数
+            join:"10"  // 当前参加人数
         },{
             id:"",
             status:true,
@@ -28,11 +28,16 @@ Page({
             content:"sss",
             nickName:"周杰伦",
             startTime:"2018-02",
-            join:"10"
+            join:"1"
         }
     ]
     },
+    quit(e){
 
+    },
+    join(e){
+
+    },
     /**
      * 生命周期函数--监听页面加载
      */
@@ -47,7 +52,7 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
+        
     },
 
     /**
