@@ -10,8 +10,8 @@ Component({
       },
       {
         "url": "/pages/myactivity/myactivity",
-        "icon": "like-o",
-        "text": "我的"
+        "icon": "point-gift-o",
+        "text": "活动"
       },
       {
         "url": "/pages/setting/setting",

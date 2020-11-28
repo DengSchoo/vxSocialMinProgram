@@ -27,6 +27,7 @@ Page({
     modifyBtn(e) {
         
         var id = app.userInfo["_id"]
+        console.log(id);
         
         this.setData({
             disabled:false,
@@ -52,7 +53,7 @@ Page({
             }).then((res)=>{
 
                 db.collection('users').where({
-                    _openid : res.result.openid
+                    _id : app.userInfo["_id"]
                   }).get().then((res)=>{
                     app.userInfo = Object.assign(app.userInfo, res.data[0]);
                     

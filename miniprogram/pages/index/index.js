@@ -69,67 +69,67 @@ Page({
     }, {
       id:3,
       icon: 'noticefill',
-      color: 'orange',
+      color: 'olive',
       badge: 22,
       name: '跑步'
     }, {
       id:4,
-      icon: 'appreciate',
-      color: 'red',
+      icon: 'medalfill',
+      color: 'green',
       badge: 0,
       name: '球类'
     }, {
       id:5,
-      icon: 'game',
-      color: 'orange',
+      icon: 'emojifill',
+      color: 'cyan',
       badge: 0,
       name: '游戏'
     }, {
       id:6,
       icon: 'discoverfill',
-      color: 'yellow',
+      color: 'blue',
       badge: 0,
       name: '美食'
     }, {
       id:7,
       icon: 'questionfill',
-      color: 'pink',
+      color: 'purple',
       badge: 0,
       name: '学习'
     }, {
       id:8,
       icon: 'upstagefill',
-      color: 'red',
+      color: 'mauve',
       badge: 0,
       name: '竞赛'
     }, {
       id:9,
-      icon: 'creative',
-      color: 'orange',
+      icon: 'voicefill',
+      color: 'pink',
       badge: 0,
       name: '讲座'
     }, {
       id:10,
-      icon: 'community',
-      color: 'red',
+      icon: 'group_fill',
+      color: 'brown',
       badge: 0,
       name: '交流'
     }, {
       id:11,
       icon: 'discoverfill',
-      color: 'pink',
+      color: 'red',
       badge: 0,
       name: '公益'
     }, {
       id:12,
       icon: 'questionfill',
-      color: 'red',
+      color: 'orange',
       badge: 0,
       name: '培训'
     }, {
       id:13,
       icon: 'clothesfill',
-      color: 'orange',
+      color: 'yellow',
       badge: 0,
       name: '美妆'
     }, {
