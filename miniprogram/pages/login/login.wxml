@@ -17,7 +17,7 @@
     <image src="https://image.weilanwl.com/gif/loading-white.gif" mode="aspectFit" class="gif-white response" style="height:240rpx"></image>
     </view>
     <view style="padding-top:5%" class="padding flex flex-direction btnlogin">
-        <button style="flex-basis:20%;font-size:15px"  class="cu-btn bg-green  button-hover animation-{{animation==item.name?item.name:''}} margin-sm basis-sm shadow" bindtap="toggle" data-class="{{item.name}}" wx:for="{{list}}" wx:key="{{index}}"  open-type="getUserInfo" bindgetuserinfo="handleUserInfo" role="button" aria-disabled="false">
+        <button style="flex-basis:20%;font-size:15px"  class="cu-btn bg-green  button-hover animation-{{animation==item.name?item.name:''}} margin-sm basis-sm shadow" bindtap="toggle" data-class="{{item.name}}" wx:for="{{list}}" wx:key="index"  open-type="getUserInfo" bindgetuserinfo="handleUserInfo" role="button" aria-disabled="false">
             {{btninfo}}
         </button>
     </view>

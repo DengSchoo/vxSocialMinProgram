@@ -8,18 +8,18 @@ Page({
     data: {
         UserInfo:{},
         activities:[{
-            //id:"", // 活动唯一标识
+            id:"", // 活动唯一标识
             status:true, // 活动状态  用于判断是否正在进行
-            type:"", // 卡片展示状态 为： 类型 - 活动状态
-            photo:"", // 用户头像
+            type:"sss", // 卡片展示状态 为： 类型 - 活动状态
+            photo:"https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLkGZ7klSn27UHeDfCg1VH72JoeVHpEE8c7nabanA0sgSYNJibNgRn55PxNS7ibhibsCQQ93Xj9st1JA/132", // 用户头像
             
             content:"sss", // 活动的具体内容
-            location:"", //地点
-            nickName:"", // 活动发起人
+            location:"ss", //地点
+            nickName:"ss", // 活动发起人
             Img:"", // 发起人头像
-            startTime:"", // 活动开始时间 精确到分钟
-            lastTime:"",
-            join:""  // 当前参加人数
+            startTime:"ss", // 活动开始时间 精确到分钟
+            lastTime:"ss",
+            join:"1"  // 当前参加人数
         },{
             id:"",
             status:true,

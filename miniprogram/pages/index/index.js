@@ -61,66 +61,79 @@ Page({
       badge: 1,
       name: '美术'
     }, {
+      id:2,
       icon: 'camerafill',
       color: 'yellow',
       badge: 0,
       name: '摄影'
     }, {
+      id:3,
       icon: 'noticefill',
       color: 'orange',
       badge: 22,
       name: '跑步'
     }, {
+      id:4,
       icon: 'appreciate',
       color: 'red',
       badge: 0,
       name: '球类'
     }, {
+      id:5,
       icon: 'game',
       color: 'orange',
       badge: 0,
       name: '游戏'
     }, {
+      id:6,
       icon: 'discoverfill',
       color: 'yellow',
       badge: 0,
       name: '美食'
     }, {
+      id:7,
       icon: 'questionfill',
       color: 'pink',
       badge: 0,
       name: '学习'
     }, {
+      id:8,
       icon: 'upstagefill',
       color: 'red',
       badge: 0,
       name: '竞赛'
     }, {
+      id:9,
       icon: 'creative',
       color: 'orange',
       badge: 0,
       name: '讲座'
     }, {
+      id:10,
       icon: 'community',
       color: 'red',
       badge: 0,
       name: '交流'
     }, {
+      id:11,
       icon: 'discoverfill',
       color: 'pink',
       badge: 0,
       name: '公益'
     }, {
+      id:12,
       icon: 'questionfill',
       color: 'red',
       badge: 0,
       name: '培训'
     }, {
+      id:13,
       icon: 'clothesfill',
       color: 'orange',
       badge: 0,
       name: '美妆'
     }, {
+      id:14,
       icon: 'brandfill',
       color: 'purple',
       badge: 0,
@@ -128,6 +141,13 @@ Page({
     }],
     gridCol:3,
     skin: false,
+  },
+  findActivity(e){
+    app.globalData['target_act'] = e.currentTarget.id;
+    console.log(app.globalData['target_act']);
+    wx.reLaunch({
+      url: '../activities/activities',
+    })
   },
   TapTest(e){
     console.log(e);

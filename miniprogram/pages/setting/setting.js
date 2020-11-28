@@ -1,5 +1,5 @@
 // pages/setting/setting.js
-import Toast from '@vant/weapp/toast/toast';
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 const db = wx.cloud.database();
 const app = getApp();
 Page({
@@ -35,7 +35,6 @@ Page({
         if (this.data.permmsion != false)
             wx.cloud.callFunction({
                 name:'updateSetting',
-                
                 data:{
                     collection : 'users',
                     doc : id,
@@ -51,54 +50,35 @@ Page({
                     }
                 }
             }).then((res)=>{
-                Toast.success('修改信息成功!');
-                console.log(res);
-                //app.globalData["permission"] = true;
-                this.setData({
-                    permmsion:false
-                })
-                wx.reLaunch({
-                    url: '../setting/setting',
-                })
+
+                db.collection('users').where({
+                    _openid : res.result.openid
+                  }).get().then((res)=>{
+                    app.userInfo = Object.assign(app.userInfo, res.data[0]);
+                    
+                
+                    this.setData({
+                        permmsion:false,
+                        xh:app.userInfo['xh'],
+                        nj:app.userInfo['nj'],
+                        xy:app.userInfo['xy'],
+                        zy:app.userInfo['zy'],
+                        nl:app.userInfo['nl'],
+                        lxfs:app.userInfo['lxfs'],
+                        zwms:app.userInfo['zwms'],
+                        xm:app.userInfo['xm'],
+                    })
+                    wx.reLaunch({
+                        url: '../setting/setting',
+                    });
+                    Toast.success('修改信息成功!');
+                  });
+
+                
+                
                 
             })
 
-            // db.collection('users').update({
-            //     data:{
-            //         nickName: app.userInfo['nickName'],
-            //         userPhoto: app.userInfo['userPhoto'],
-            //         xm: this.data.xm,
-            //         xh: this.data.xh,
-            //         nj: this.data.nj,
-            //         xy: this.data.xy,
-            //         zy: this.data.zy,
-            //         nl: this.data.nl,
-            //         lxfs: this.data.lxfs,
-            //         zwms: this.data.zwms,
-            //     }
-            // }).then((res)=>{
-            //     db.collection('users').doc(res._id).get().then((res)=>{
-            //         app.userInfo = Object.assign(app.userInfo, res.data[0]);
-            //         this.setData({
-            //             xh:app.userInfo['xh'],
-            //             nj:app.userInfo['nj'],
-            //             xy:app.userInfo['xy'],
-            //             zy:app.userInfo['zy'],
-            //             nl:app.userInfo['nl'],
-            //             lxfs:app.userInfo['lxfs'],
-            //             zwms:app.userInfo['zwms'],
-            //             xm:app.userInfo['xm'],
-            //         })
-            //     });
-            //     Toast.success('修改信息成功!');
-            //     //app.globalData["permission"] = true;
-            //     wx.reLaunch({
-            //         url: '../setting/setting',
-            //     })
-            //     this.setData({
-            //         permmsion:false
-            //     })
-            // });
         this.setData({
             permmsion:true
         });

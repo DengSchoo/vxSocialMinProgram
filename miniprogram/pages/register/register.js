@@ -1,5 +1,5 @@
 // pages/register/register.js
-import Toast from '@vant/weapp/toast/toast';
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 const db = wx.cloud.database();
 const app = getApp();
 

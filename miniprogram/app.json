@@ -5,7 +5,9 @@
     "pages/activities/activities",
     "pages/myactivity/myactivity",
     "pages/setting/setting",
-    "pages/register/register"
+    "pages/register/register",
+    "pages/act_detail/act_detail",
+    "pages/create_act/create_act"
   
   ],
   "window": {
@@ -19,7 +21,8 @@
   "usingComponents": {
     "van-button": "@vant/weapp/button/index",
     "van-tabbar": "@vant/weapp/tabbar/index",
-   "van-tabbar-item": "@vant/weapp/tabbar-item/index"
+   "van-tabbar-item": "@vant/weapp/tabbar-item/index",
+   "van-icon": "@vant/weapp/icon/index"
   },
   "tabBar": {
     "custom": true,

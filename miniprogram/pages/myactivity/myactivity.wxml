@@ -6,10 +6,10 @@
 				</view>
 </view>
 
-<view  class="cu-card case {{isCard?'no-card':''}}" wx:for="{{activities}}">
+<view  class="cu-card case {{isCard?'no-card':''}}" wx:for="{{activities}}" wx:key="index">
   <view style="margin:10px 12px 0 12px" class="cu-item shadow">
     <view class="image">
-      <image src="{{item.photo}}" mode="widthFix"></image>
+      <image id="{{item.id}}" bindtap="toDetail" src="{{item.photo}}" mode="heightFix" style="height:125px"></image>
       <view class="cu-tag bg-blue">{{item.type}}</view>
       <view class="cu-bar bg-shadeBottom">
         <text class="text-cut">{{item.content}}</text>
@@ -22,7 +22,8 @@
         <view class="content flex-sub">
           <view class="text-grey">{{item.nickName}}</view>
           <view class="text-gray text-sm flex justify-between">
-            {{item.startTime}}
+            {{item.startTime}} 
+            
             <view class="text-blue text-lg">
               <text class="cuIcon-friend margin-lr-xs"></text> {{item.join}}
               <!-- <text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
@@ -30,6 +31,10 @@
             </view>
           </view>
         </view>
+      </view>
+      <view class="flex" style="flex;flex-direction:row-reverse" >
+          <van-button bindtap="quit" size="small" icon="minus" disabled type="warn">退出</van-button>
+          <van-button bindtap="join"  size="small" icon="plus" type="primary">加入</van-button>
       </view>
     </view>
   </view>
