@@ -11,13 +11,23 @@ Component({
       {
         "url": "/pages/myactivity/myactivity",
         "icon": "point-gift-o",
-        "text": "活动"
+        "text": "我的"
+      },
+      {
+        "url":"/pages/create_act/create_act",
+        "icon":"add-o",
+        "text":"创建"
+      },
+      {
+        "url":"/pages/notice/notice",
+        "icon":"chat-o",
+        "text":"消息"
       },
       {
         "url": "/pages/setting/setting",
         "icon": "setting-o",
         "text": "设置"
-      }
+      }     
     ]
     },
     methods: {

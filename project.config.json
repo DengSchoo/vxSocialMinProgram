@@ -77,6 +77,12 @@
         {
           "name": "首页",
           "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "详情",
+          "pathName": "pages/act_detail/act_detail",
           "scene": null
         }
       ]

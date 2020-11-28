@@ -9,6 +9,7 @@
         round
         width="200px"
         height="200px"
+        fit="cover"
         src="{{Img}}"
     />
     </view>

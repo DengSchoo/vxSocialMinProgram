@@ -7,8 +7,9 @@
     "pages/setting/setting",
     "pages/register/register",
     "pages/act_detail/act_detail",
-    "pages/create_act/create_act"
-  
+    "pages/create_act/create_act",
+    "pages/notice",
+    "pages/notice/notice"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -21,8 +22,8 @@
   "usingComponents": {
     "van-button": "@vant/weapp/button/index",
     "van-tabbar": "@vant/weapp/tabbar/index",
-   "van-tabbar-item": "@vant/weapp/tabbar-item/index",
-   "van-icon": "@vant/weapp/icon/index"
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index",
+    "van-icon": "@vant/weapp/icon/index"
   },
   "tabBar": {
     "custom": true,
@@ -32,21 +33,16 @@
     "list": [
       {
         "pagePath": "pages/index/index"
-        
       },
       {
         "pagePath": "pages/activities/activities"
-        
-      },{
-      
+      },
+      {
         "pagePath": "pages/myactivity/myactivity"
-        
       },
       {
         "pagePath": "pages/setting/setting"
-        
       }
     ]
   }
-  
 }
