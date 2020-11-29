@@ -14,15 +14,15 @@ Page({
             id:"", // 活动唯一标识
             status:true, // 活动状态  用于判断是否正在进行
             type:"", // 卡片展示状态 为： 类型 - 活动状态
-            photo:"https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLkGZ7klSn27UHeDfCg1VH72JoeVHpEE8c7nabanA0sgSYNJibNgRn55PxNS7ibhibsCQQ93Xj9st1JA/132", // 用户头像
+            photo:"https://i.loli.net/2020/11/29/EQJZ1uAHvpm8f34.jpg", // 用户头像
             
-            content:"sss", // 活动的具体内容
+            content:"在南区体育场跑步三圈", // 活动的具体内容
             location:"", //地点
-            nickName:"", // 活动发起人
+            nickName:"刘德华", // 活动发起人
             Img:"", // 发起人头像
-            startTime:"", // 活动开始时间 精确到分钟
+            startTime:"2020-11-19-14:00", // 活动开始时间 精确到分钟
             lastTime:"",
-            join:""  // 当前参加人数
+            join:"1"  // 当前参加人数
         },{
             id:"",
             status:true,

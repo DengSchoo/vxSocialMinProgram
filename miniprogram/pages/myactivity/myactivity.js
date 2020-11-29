@@ -10,8 +10,8 @@ Page({
         activities:[{
             id:"", // 活动唯一标识
             status:true, // 活动状态  用于判断是否正在进行
-            type:"sss", // 卡片展示状态 为： 类型 - 活动状态
-            photo:"https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLkGZ7klSn27UHeDfCg1VH72JoeVHpEE8c7nabanA0sgSYNJibNgRn55PxNS7ibhibsCQQ93Xj9st1JA/132", // 用户头像
+            type:"跑步-正在进行", // 卡片展示状态 为： 类型 - 活动状态
+            photo:"https://i.loli.net/2020/11/29/EQJZ1uAHvpm8f34.jpg", // 用户头像
             
             content:"sss", // 活动的具体内容
             location:"ss", //地点

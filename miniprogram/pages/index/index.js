@@ -138,7 +138,7 @@ Page({
       icon: 'brandfill',
       color: 'purple',
       badge: 0,
-      name: '其他'
+      name: '其它'
     }],
     gridCol:3,
     skin: false,
