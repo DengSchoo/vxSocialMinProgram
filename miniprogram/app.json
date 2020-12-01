@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/login/login",
+    "pages/login/login", 
     "pages/index/index",
     "pages/activities/activities",
     "pages/myactivity/myactivity",
@@ -8,8 +8,7 @@
     "pages/register/register",
     "pages/act_detail/act_detail",
     "pages/create_act/create_act",
-    "pages/notice",
-    "pages/notice/notice"
+    "pages/moments/moments"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -42,6 +41,9 @@
       },
       {
         "pagePath": "pages/setting/setting"
+      },
+      {
+        "pagePath": "pages/moments/moments"
       }
     ]
   }

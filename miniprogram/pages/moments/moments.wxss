@@ -1,0 +1,20 @@
+/* pages/moments/moments.wxss */
+
+
+
+
+.createBtn{
+    position: fixed;
+    right: 40rpx;
+    bottom: 120rpx;
+    width: 100rpx;
+    height: 100rpx;
+    background: rgb(116, 194, 223);
+    border-radius: 50%;
+    display: flex;
+    font-size: 80rpx;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}

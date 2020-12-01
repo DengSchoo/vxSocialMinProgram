@@ -1,0 +1,47 @@
+<!--pages/moments/moments.wxml-->
+<view class="cu-bar bg-black search">
+				<view class="cu-avatar round" style="background-image:url({{UserInfo.userPhoto}});"></view>
+				<view class="content">
+					Kindred Spirit - 瞬间
+				</view>
+</view>
+
+<view class="cu-card dynamic" wx:for="{{momentsList}}">
+  <view class="cu-item shadow">
+    <view class="cu-list menu-avatar">
+      <view class="cu-item">
+        <view class="cu-avatar round lg" style="background-image:url({{item.avatarUrl}});"></view>
+        <view class="content flex-sub">
+          <view>{{item.nickName}}</view>
+          <view class="text-gray text-sm flex justify-between">
+            {{item.postTime}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="text-content">
+      {{item.content}}
+    </view>
+
+    <view class="grid flex-sub padding-lr {{false?'col-3 grid-square':'col-1'}}">
+      <view class="bg-img {{false?'':'only-img'}}" style="background-image:url({{ item.photo }});" >
+      </view>
+    </view>
+    
+    <view class="text-gray text-sm text-right padding">
+      <text class="cuIcon-attentionfill margin-lr-xs"></text> 10
+      <text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
+      <text class="cuIcon-messagefill margin-lr-xs"></text> 30
+    </view>
+
+    
+  </view>
+</view>
+
+
+
+<view class="createBtn" bindtap="creatMoments">
+    <view>
+            +
+    </view>
+</view>

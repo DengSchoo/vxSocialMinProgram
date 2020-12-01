@@ -16,10 +16,11 @@
         "scopeDataCheck": false,
         "uglifyFileName": false,
         "checkInvalidKey": true,
-        "checkSiteMap": true,
+        "checkSiteMap": false,
         "uploadWithSourceMap": true,
         "compileHotReLoad": false,
         "useMultiFrameRuntime": false,
+        
         "useApiHook": true,
         "babelSetting": {
             "ignore": [],
@@ -35,7 +36,7 @@
     },
     "appid": "wx56d285e270d90fba",
     "projectname": "vxSocialMiniProgm",
-    "libVersion": "2.8.1",
+    "libVersion": "2.14.0",
     "simulatorType": "wechat",
     "simulatorPluginLibVersion": {},
     "condition": {
@@ -83,6 +84,12 @@
                 {
                     "name": "详情",
                     "pathName": "pages/act_detail/act_detail",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "瞬间",
+                    "pathName": "pages/moments/moments",
                     "scene": null
                 }
             ]

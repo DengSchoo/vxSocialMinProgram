@@ -19,7 +19,7 @@ Component({
         "text":"创建"
       },
       {
-        "url":"/pages/notice/notice",
+        "url":"/pages/moments/moments",
         "icon":"notes-o",
         "text":"瞬间"
       },
