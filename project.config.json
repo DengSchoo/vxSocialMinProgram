@@ -33,21 +33,7 @@
         "packNpmRelationList": [],
         "minifyWXSS": true
     },
-    "appid": "wx56d285e270d90fba",
-    "projectname": "vxSocialMiniProgm",
-    "libVersion": "2.14.0",
-    "simulatorType": "wechat",
-    "simulatorPluginLibVersion": {},
-    "condition": {
-        "plugin": {
-            "list": []
-        },
-        "game": {
-            "list": []
-        },
-        "gamePlugin": {
-            "list": []
-        },
+    
         "miniprogram": {
             "list": [
                 {
@@ -99,5 +85,6 @@
                 }
             ]
         }
+      
     }
-}
+  
