@@ -1,26 +1,104 @@
 <!--pages/act_detail/act_detail.wxml-->
-<text>pages/act_detail/act_detail.wxml</text>
-<view class="cu-bar tabbar margin-bottom-xl bg-white">
-    <view class="action text-green">
-      <view class="cuIcon-homefill"></view> 首页
-    </view>
-    <view class="action text-gray">
-      <view class="cuIcon-similar"></view> 分类
-    </view>
-    <view class="action text-gray add-action">
-      <button class="cu-btn cuIcon-add bg-green shadow"></button>
-      发布
-    </view>
-    <view class="action text-gray">
-      <view class="cuIcon-cart">
-        <view class="cu-tag badge">99</view>
+<view class="cu-bar bg-black search">
+				<view class="content">
+					Kindred Spirit - 活动详情
+				</view>
+</view>
+
+<view class="cu-card dynamic {{isCard?'no-card':''}}">
+  <view class="cu-item shadow">
+    <view class="cu-list menu-avatar">
+      <view class="cu-item">
+        <view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);"></view>
+        <view class="content flex-sub">
+          <view>活动创建者</view>
+          <view class="text-gray text-sm flex justify-between">
+            2020-12-3
+          </view>
+        </view>
       </view>
-      购物车
     </view>
-    <view class="action text-gray">
-      <view class="cuIcon-my">
-        <view class="cu-tag badge"></view>
+    <view class="text-content">
+      <text class="text-black text-bold">活动名称</text>
+    </view>
+    <view class="grid flex-sub padding-lr {{isCard?'col-3 grid-square':'col-1'}}">
+      <view class="bg-img {{isCard?'':'only-img'}}" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);" wx:for="{{isCard?9:1}}" wx:key="{{index}}">
       </view>
-      我的
+    </view>
+    <view class="text-gray text-sm text-right padding">
+      <button class="cu-btn bg-red margin-tb-sm">加入活动</button>
     </view>
   </view>
+  </view>
+
+  <van-cell-group>
+  <van-field
+    value="{{hdsj}}"
+    label="活动时间"
+    size="large"
+    left-icon="star"
+    id="hdsj"
+    disabled="{{disabled}}"
+    input-align="right"
+    bind:change="onChange"
+    border="{{ false }}"
+  />
+</van-cell-group>
+
+<van-cell-group>
+  <van-field
+    value="{{hddd}}"
+    label="活动地点"
+    size="large"
+    bind:change="onChange"
+    left-icon="star"
+    id="hddd"
+    disabled="{{disabled}}"
+    input-align="right"
+    border="{{ false }}"
+  />
+</van-cell-group>
+
+<view>
+  <van-cell-group>
+  <van-field
+    value="{{hdms }}"
+    label="活动描述"
+    bind:change="onChange"
+    type="textarea"
+    id="hdms"
+    disabled="{{disabled}}"
+    autosize
+    border="{{ false }}"
+  />
+</van-cell-group>
+</view>
+
+<van-cell-group>
+  <van-field
+    value="{{lxfs}}"
+    label="联系方式"
+    disabled="{{disabled}}"
+    size="large"
+    bind:change="onChange"
+    left-icon="contact"
+    id="lxfs"
+    input-align="right"
+    border="{{ false }}"
+  />
+</van-cell-group>
+
+<view>
+  <van-cell-group>
+  <van-field
+    value="{{bz}}"
+    label="备注"
+    bind:change="onChange"
+    type="textarea"
+    id="bz"
+    disabled="{{disabled}}"
+    autosize
+    border="{{ false }}"
+  />
+</van-cell-group>
+</view>
