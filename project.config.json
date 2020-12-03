@@ -20,7 +20,6 @@
         "uploadWithSourceMap": true,
         "compileHotReLoad": false,
         "useMultiFrameRuntime": false,
-        
         "useApiHook": true,
         "babelSetting": {
             "ignore": [],
@@ -90,6 +89,12 @@
                 {
                     "name": "瞬间",
                     "pathName": "pages/moments/moments",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "创建瞬间",
+                    "pathName": "pages/create_mom/create_mom",
                     "scene": null
                 }
             ]

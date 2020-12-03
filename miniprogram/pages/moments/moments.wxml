@@ -1,20 +1,20 @@
 <!--pages/moments/moments.wxml-->
 <view class="cu-bar bg-black search">
-				<view class="cu-avatar round" style="background-image:url({{UserInfo.userPhoto}});"></view>
+				<view class="cu-avatar round" style="background-image:url({{ userinfo.userPhoto }});"></view>
 				<view class="content">
 					Kindred Spirit - 瞬间
 				</view>
 </view>
 
-<view class="cu-card dynamic" wx:for="{{momentsList}}">
+<view class="cu-card dynamic" wx:for="{{ momentsList }}">
   <view class="cu-item shadow">
     <view class="cu-list menu-avatar">
       <view class="cu-item">
-        <view class="cu-avatar round lg" style="background-image:url({{item.avatarUrl}});"></view>
+        <view class="cu-avatar round lg" style="background-image:url({{ item.avatarUrl }});"></view>
         <view class="content flex-sub">
           <view>{{item.nickName}}</view>
           <view class="text-gray text-sm flex justify-between">
-            {{item.postTime}}
+            {{item.time + space +  item.device}}
           </view>
         </view>
       </view>
@@ -23,8 +23,8 @@
       {{item.content}}
     </view>
 
-    <view class="grid flex-sub padding-lr {{false?'col-3 grid-square':'col-1'}}">
-      <view class="bg-img {{false?'':'only-img'}}" style="background-image:url({{ item.photo }});" >
+    <view  wx:for="{{item.imgList}}" wx:key="index" class="grid flex-sub padding-lr {{false?'col-3 grid-square':'col-1'}}">
+      <view class="bg-img {{false?'':'only-img'}}"  style="background-image:url({{ item[index] }});" >
       </view>
     </view>
     
