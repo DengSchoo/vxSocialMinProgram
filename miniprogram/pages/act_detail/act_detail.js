@@ -1,4 +1,7 @@
 // pages/act_detail/act_detail.js
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+const app = getApp();
+const db = wx.cloud.database();
 Page({
 
     /**
@@ -12,7 +15,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.setData({
+            UserInfo:app.globalData
+        })
     },
 
     /**
@@ -26,7 +31,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        this.getTabBar().init();
     },
 
     /**

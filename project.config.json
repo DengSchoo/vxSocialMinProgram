@@ -20,7 +20,6 @@
         "uploadWithSourceMap": true,
         "compileHotReLoad": false,
         "useMultiFrameRuntime": false,
-        
         "useApiHook": true,
         "babelSetting": {
             "ignore": [],
@@ -34,21 +33,7 @@
         "packNpmRelationList": [],
         "minifyWXSS": true
     },
-    "appid": "wx56d285e270d90fba",
-    "projectname": "vxSocialMiniProgm",
-    "libVersion": "2.14.0",
-    "simulatorType": "wechat",
-    "simulatorPluginLibVersion": {},
-    "condition": {
-        "plugin": {
-            "list": []
-        },
-        "game": {
-            "list": []
-        },
-        "gamePlugin": {
-            "list": []
-        },
+    
         "miniprogram": {
             "list": [
                 {
@@ -90,9 +75,16 @@
                 {
                     "name": "瞬间",
                     "pathName": "pages/moments/moments",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "创建瞬间",
+                    "pathName": "pages/create_mom/create_mom",
                     "scene": null
                 }
             ]
         }
+      
     }
-}
+  

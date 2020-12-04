@@ -8,7 +8,8 @@
     "pages/register/register",
     "pages/act_detail/act_detail",
     "pages/create_act/create_act",
-    "pages/moments/moments"
+    "pages/moments/moments",
+    "pages/create_mom/create_mom"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -33,9 +34,7 @@
       {
         "pagePath": "pages/index/index"
       },
-      {
-        "pagePath": "pages/activities/activities"
-      },
+      
       {
         "pagePath": "pages/myactivity/myactivity"
       },
@@ -45,6 +44,7 @@
       {
         "pagePath": "pages/moments/moments"
       }
+      
     ]
   }
 }

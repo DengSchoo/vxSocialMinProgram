@@ -1,33 +1,46 @@
 // pages/moments/moments.js
+const app = getApp();
+const db = wx.cloud.database();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        userinfo:{},
+        space:"    ",
         momentsList:[
-            {
-                content:"ssss",
-                postTime:"2020-12-01",
-                nickName:"吴彦祖",
-                avatarUrl:"https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
-                photo:"https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg"
-            }
+            
         ]
     },
-
+    creatMoments(e){
+        wx.redirectTo({
+          url: '../create_mom/create_mom',
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        this.getTabBar().init();
+        this.setData({
+            userinfo: app.userInfo
+        })
+        db.collection('moments').where({
+          }).get({}).then((res)=>{
+                this.setData({
+                    momentsList:res.data
+                })
+                console.log(res.data)
 
+          })
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
+        
     },
 
     /**
