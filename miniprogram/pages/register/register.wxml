@@ -13,10 +13,12 @@
     required
     clearable
     label="学号"
-    icon="question-o"
+    icon="question-o" 
+    type = number 
     placeholder="请输入学号 如2020xxxxxx"
     bind:click-icon="onClickIcon"
     bind:change="onChange"
+    bind:blur="onDectError" 
   />
   
 
@@ -35,12 +37,13 @@
     value="{{ xm }}"
     required
     clearable
-    label="姓名"
-    icon="question-o"
-    placeholder="请输入姓名 如吴彦祖"
-    bind:click-icon="onClickIcon"
+    label="昵称"
+    placeholder="请输入昵称"
     bind:change="onChange"
-  />
+    bind:confirm="onDectError" 
+    >
+    <van-button slot="button" size="small" type="primary">验证</van-button>
+  </van-field>
   <view style="height: 10px;"></view>
   <van-field
     id="nj"
@@ -103,7 +106,6 @@
   />
   <view style="height: 10px;"></view>
   <van-field
-    required
     id="zwms"
     value="{{ zwms }}"
     label="自我描述"

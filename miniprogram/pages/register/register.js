@@ -27,29 +27,29 @@ Page({
         this.setData({
           index: e.detail.value
         })
+        
       },
       onClickIcon(){
         Toast('请根据提示如实填写');
       },
       commitInfo(e){
           for(let key in this.data){
-            if(this.data[key] == "") {
+            if(this.data[key] == "" && key != "zwms") {
                 Toast.fail('必填不能为空');
                 return
             }
           }
+
           for(let key in this.data){
               app.userInfo[key]=this.data[key];
           }
-          app.userInfo['userPhoto']=app.globalData['userPhoto'];
+          app.userInfo['avatarUrl']=app.globalData['avatarUrl'];
           app.userInfo['nickName']=app.globalData['nickName'];
-          
-          
           
           db.collection('users').add({
             data:{
                 nickName: app.userInfo['nickName'],
-                userPhoto: app.userInfo['userPhoto'],
+                userPhoto: app.userInfo['avatarUrl'],
                 xm: app.userInfo['xm'],
                 xh: app.userInfo['xh'],
                 nj: app.userInfo['nj'],
@@ -73,17 +73,33 @@ Page({
           
       },
 
-
+      onDectError(e) {
+        switch(e.currentTarget.id){
+            case "xh":{
+                if (!(/(20)\d{8}/.test(e.detail.value))) {
+                    wx.showToast({
+                    title: '学号格式有误,请检查',        
+                    duration: 2000,
+                    icon:'none'
+                    });          
+                    return        
+                }
+            }break;
+            case "xm":{
+                
+            }break;
+        }
+      },
       onChange(event) {
         // event.detail 为当前输入的值
-        
+       
         switch(event.currentTarget.id){
             case "xm": this.setData({
                 xm:event.detail
             });break;
             case "xh": this.setData({
                 xh:event.detail
-            });break;
+            }); break;
             case 'nj': this.setData({
                 nj:event.detail
             });break;
