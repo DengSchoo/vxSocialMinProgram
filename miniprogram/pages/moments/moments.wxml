@@ -6,7 +6,7 @@
 				</view>
 </view>
 
-<view class="cu-card dynamic" wx:for="{{ momentsList }}">
+<view class="cu-card dynamic" wx:for="{{ momentsList }}" wx:key="index">
   <view class="cu-item shadow">
     <view class="cu-list menu-avatar">
       <view class="cu-item">
@@ -23,11 +23,22 @@
       {{item.content}}
     </view>
 
-    <view wx:if="{{item.imgList.length <= 2}}">
+    <view wx:if="{{item.imgList.length == 1}}">
       <van-grid column-num="{{item.imgList.length % 3}}" border="{{ true }}">
         <van-grid-item use-slot wx:for="{{ item.imgList }}" wx:key="index">
           <image
             style="width: 100%; height: 200px;"
+            mode="aspectFill"
+            src="{{item}}"
+          />
+        </van-grid-item>
+      </van-grid>
+    </view>
+    <view wx:elif="{{item.imgList.length == 2}}">
+      <van-grid column-num="{{item.imgList.length % 3}}" border="{{ true }}">
+        <van-grid-item use-slot wx:for="{{ item.imgList }}" wx:key="index">
+          <image
+            style="width: 100%; height: 100px;"
             mode="aspectFill"
             src="{{item}}"
           />

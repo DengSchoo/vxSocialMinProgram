@@ -32,8 +32,6 @@ Page({
                 this.setData({
                     momentsList:res.data
                 })
-                console.log(res.data)
-
           })
     },
 
