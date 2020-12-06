@@ -19,9 +19,10 @@
         </view>
       </view>
     </view>
-    <view class="text-content">
+    <view  style="overflow:scroll;max-height: 6.7rem" class="text-content"  >
       {{item.content}}
     </view>
+    
 
     <view wx:if="{{item.imgList.length == 1}}">
       <van-grid column-num="{{item.imgList.length % 3}}" border="{{ true }}">

@@ -8,6 +8,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        
         imgList: [],
         textareaAValue :""
     },
@@ -35,6 +36,7 @@ Page({
                 device:moments.device
             }
           }).then((res)=>{
+            setTimeout(function(){  }, 500);
               wx.reLaunch({
                 url: '../moments/moments',
               })
@@ -69,6 +71,9 @@ Page({
 
         // 上传图片获取云存储路径
         const cloudUrl = [];
+        wx.showLoading({
+          title: '请稍后....',
+        })
         if(that.data.imgList.length > 0) {
           
             that.data.imgList.forEach((value, index) => {
@@ -81,6 +86,7 @@ Page({
                         if (cloudUrl.length == that.data.imgList.length) {
                             moments.images = cloudUrl;
                             that.post(moments);
+                            wx.hideLoading({});
                             wx.showToast({
                               title: '图片上传完成',
                             })

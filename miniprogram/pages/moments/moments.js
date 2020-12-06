@@ -27,12 +27,13 @@ Page({
             userinfo: app.userInfo
         })
         db.collection('moments').where({
-          }).get({}).then((res)=>{
+          }).get().then( res=>{
                 res.data.reverse();
                 this.setData({
                     momentsList:res.data
                 })
           })
+          
     },
 
     /**
