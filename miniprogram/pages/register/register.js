@@ -3,6 +3,27 @@ import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 const db = wx.cloud.database();
 const app = getApp();
 
+const majors = {
+    信息科学与技术学院: ['计算机科学与技术', '人工智能', '软件工程', '电子科学与技术', '通信工程','自动化','轨道交通信号与控制','网络工程'],
+    土木工程学院: ['土木工程', '铁道工程', '道路桥梁与渡河工程', '城市地下空间'],
+    机械工程学院: ['机械设计制造', '能源与动力工程', '车辆工程', '建筑环境与能源应用','测控技术与仪器','工业工程'],
+    电气工程学院: ['电气工程及其自动化', '电子信息工程', '电气工程与智能控制'],
+    经济管理学院: ['会计学','经济学','市场学', '工程与运营管理', '金融与财务学', '信息系统与运营管理','创新创业与管理学'],
+    外国语学院: ['英语', '日语', '德语', '法俄','翻译','工程英语','国际汉语','商务英语'],
+    交通运输与物流学院: ['交通运输', '交通工程', '物流工程', '物流管理','安全工程（运输安全）'],
+    材料科学与工程学院: ['材料科学与工程', '材料成型及控制工程', '生物医学工程'],
+    地球科学与环境工程学院: ['测绘工程', '地理信息科学', '地质工程','环境工程','消防工程','遥感科学与技术'],
+    建筑与设计学院: ['建筑学', '城乡规划', '风景园林', '环境设计','视觉传达设计','产品设计','绘画'],
+    物理科学与技术学院: ['应用物理学', '电子信息科学与技术'],
+    人文学院: ['汉语言文学', '传播学', '广告学', '音乐表演'],
+    公共管理与政法学院: ['公共管理', '政治学与行政学', '法学'],
+    生命科学与工程学院: ['生物工程类', '化学化工', ' 药学'],
+    力学与工程学院: ['工程力学', '飞行器设计与工程'],
+    数学学院: ['数学与应用数学', '统计学', '数据科学与大数据技术'],
+    马克思主义学院: ['思想政治教育'],
+    心理研究与咨询中心: ['应用心理学'],
+    利兹学院: ['土木工程', '机械设计制造', '电子信息工程', '计算机科学与技术'],
+  };
 Page({
 
     /**
@@ -10,32 +31,88 @@ Page({
      */
     data: {
         xh:"",
-        nj:"",
+        nj:"请选择年级",
         xy:"",
         zy:"",
         nl:"",
         lxfs:"",
         zwms:"",
-        xm:"",
-        index: null,
-        picker: ['2016', '2017', '2018','2019','2020'],
         photo:"",
-        
+        xhError:"",
+        lxfsError:"",
+        nlError:"",
+        popup: {
+            bottom: false,
+        },
+        grade: {
+          bottom: false,
       },
-      PickerChange(e) {
-        console.log(e);
+        columns: [
+            {
+              values: Object.keys(majors),
+              className: 'column1',
+            },
+            {
+              values: majors['信息科学与技术学院'],
+              className: 'column2',
+            },
+          ],
+          grades: ['2015','2016','2017','2018','2019','2020'],
+      },
+
+      toggle(type, popup) {
         this.setData({
-          index: e.detail.value
-        })
-        
+          [`popup.${type}`]: popup
+        });
       },
+      gtoggle(type, grade) {
+        this.setData({
+          [`grade.${type}`]: grade
+        });
+      },
+
+      showBottom() {
+        this.toggle('bottom', true);
+      },
+      showGradeBottom(){
+        this.gtoggle('bottom', true);
+      },
+
       onClickIcon(){
         Toast('请根据提示如实填写');
       },
+      onConfirm(event) {
+        if(event.currentTarget.id == 'xy'){
+            const { value, index } = event.detail;
+            this.setData({
+                xy:value[0],
+                zy:value[1],
+            });
+            this.toggle('bottom', false);
+          }
+        else if(event.currentTarget.id == 'nj'){
+          const { picker, value, index } = event.detail;
+            this.setData({
+                nj:value
+            });
+            this.gtoggle('bottom', false);
+          }     
+        },
+
+      onCancel() {
+        this.toggle('bottom', false);
+        this.gtoggle('bottom', false);
+      },
+
       commitInfo(e){
           for(let key in this.data){
-            if(this.data[key] == "" && key != "zwms") {
+            if(this.data[key] == "" && key != "zwms" && key!="xhError" && key!="lxfsError" && key!="nlError") {
                 Toast.fail('必填不能为空');
+                return
+            }
+            else if((key == "xh" &&  this.data['xhError'] != "")||(key == "lxfs" &&  this.data['lxfsError'] != "")||(key == "nl" &&  this.data['nlError'] != ""))
+            {
+                Toast.fail('请正确填写信息');
                 return
             }
           }
@@ -50,7 +127,6 @@ Page({
             data:{
                 nickName: app.userInfo['nickName'],
                 userPhoto: app.userInfo['avatarUrl'],
-                xm: app.userInfo['xm'],
                 xh: app.userInfo['xh'],
                 nj: app.userInfo['nj'],
                 xy: app.userInfo['xy'],
@@ -77,37 +153,51 @@ Page({
         switch(e.currentTarget.id){
             case "xh":{
                 if (!(/(20)\d{8}/.test(e.detail.value))) {
-                    wx.showToast({
-                    title: '学号格式有误,请检查',        
-                    duration: 2000,
-                    icon:'none'
-                    });          
-                    return        
+                  this.setData({
+                    xhError : "学号格式错误,请检查"
+                   });             
+                } else{
+                  this.setData({
+                     xhError : ""
+                  });  
                 }
             }break;
-            case "xm":{
-                
+            case "lxfs":{
+                if (!(/^1[3|4|5|7|8][0-9]{9}$/.test(e.detail.value))) {
+                  this.setData({
+                    lxfsError : "手机号格式错误,请检查"
+                   });             
+                } else{
+                  this.setData({
+                     lxfsError : ""
+                  });  
+                }
             }break;
+            case "nl":{
+              if (!(/^[1-9]\d?/.test(e.detail.value))) {
+                this.setData({
+                  nlError : "年龄格式错误,请检查"
+                 });             
+              } else{
+                this.setData({
+                   nlError : ""
+                });  
+              }
+          }break;
         }
       },
       onChange(event) {
         // event.detail 为当前输入的值
-       
-        switch(event.currentTarget.id){
-            case "xm": this.setData({
-                xm:event.detail
-            });break;
+        if(event.currentTarget.id == 'xy'){
+            const { picker, value, index } = event.detail;
+            picker.setColumnValues(1, majors[value[0]]);          
+        }
+        switch(event.currentTarget.id){           
             case "xh": this.setData({
                 xh:event.detail
             }); break;
             case 'nj': this.setData({
                 nj:event.detail
-            });break;
-            case 'xy': this.setData({
-                xy:event.detail
-            });break;
-            case 'zy': this.setData({
-                zy:event.detail
             });break;
             case 'nl': this.setData({
                 nl:event.detail

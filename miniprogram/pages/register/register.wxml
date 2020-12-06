@@ -5,6 +5,7 @@
 					信息完善
 				</view>
 </view>
+
 <van-cell-group>
     <view style="height: 10px;"></view>
   <van-field
@@ -12,6 +13,7 @@
     value="{{ xh }}"
     required
     clearable
+    input-align="right"
     label="学号"
     icon="question-o" 
     type = number 
@@ -19,66 +21,66 @@
     bind:click-icon="onClickIcon"
     bind:change="onChange"
     bind:blur="onDectError" 
+    error-message="{{xhError}}"
+    error-message-align = "right"
   />
-  
-
-  <!-- <view class="cu-form-group margin-top">
-		<view class="title">年级</view>
-		<picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
-			<view class="picker">
-				{{index?picker[index]:'选择年级'}}
-			</view>
-		</picker>
-	</view> -->
   <view style="height: 10px;"></view>
-
-  <van-field
-    id="xm"
-    value="{{ xm }}"
+  <van-cell 
+    title="年级" 
+    id="njcell"
+    is-link 
     required
-    clearable
-    label="昵称"
-    placeholder="请输入昵称"
-    bind:change="onChange"
-    bind:confirm="onDectError" 
-    >
-    <van-button slot="button" size="small" type="primary">验证</van-button>
-  </van-field>
-  <view style="height: 10px;"></view>
-  <van-field
+    value = "{{nj}}"
+    placeholder="请选择年级"
+    bind:click="showGradeBottom"
+    bind:click-icon="onClickIcon"
+  />
+  <van-popup show="{{grade.bottom}}" position="bottom" :overlay="true" round >
+  <van-picker
+    show-toolbar
     id="nj"
-    value="{{ nj }}"
-    required
-    clearable
-    label="年级"
-    icon="question-o"
-    placeholder="请输入年级 如2020"
-    bind:click-icon="onClickIcon"
+    title="年级"
+    columns="{{ grades }}"
     bind:change="onChange"
+    bind:confirm="onConfirm"
+    bind:cancel="onCancel"
   />
+</van-popup>
   <view style="height: 10px;"></view>
-  <van-field
+  <van-cell 
+    title="学院与专业" 
+    id="xycell"
+    is-link 
+    required
+    value = "请选择学院与专业"
+    bind:click="showBottom"
+    bind:click-icon="onClickIcon"
+  />
+  <van-popup show="{{popup.bottom}}" position="bottom" :overlay="true" round >
+  <van-picker
+    show-toolbar
     id="xy"
-    value="{{ xy }}"
-    required
-    clearable
-    label="学院"
-    icon="question-o"
-    placeholder="请输入学院 如数学学院"
-    bind:click-icon="onClickIcon"
+    title="学院与专业"
+    columns="{{ columns }}"
     bind:change="onChange"
+    bind:confirm="onConfirm"
+    bind:cancel="onCancel"
+  />
+</van-popup>
+<van-toast id="van-toast" />
+<view style="height: 10px;"></view>
+  <van-cell 
+    title="学院" 
+    id="xy"
+    required
+    value = "{{xy}}"
   />
   <view style="height: 10px;"></view>
-  <van-field
+  <van-cell 
+    title="专业" 
     id="zy"
-    value="{{ zy }}"
     required
-    clearable
-    label="专业"
-    icon="question-o"
-    placeholder="请输入专业 如电气工程"
-    bind:click-icon="onClickIcon"
-    bind:change="onChange"
+    value = "{{zy}}"
   />
   <view style="height: 10px;"></view>
   <van-field
@@ -86,11 +88,15 @@
     value="{{ nl }}"
     required
     clearable
+    input-align="right"
     label="年龄"
     icon="question-o"
-    placeholder="请输入年龄 如20"
+    placeholder="请输入年龄 如18"
     bind:click-icon="onClickIcon"
     bind:change="onChange"
+    bind:blur="onDectError" 
+    error-message="{{nlError}}"
+    error-message-align = "right"
   />
   <view style="height: 10px;"></view>
   <van-field
@@ -98,11 +104,15 @@
     value="{{ lxfs }}"
     required
     clearable
+    input-align="right"
     label="联系方式"
     icon="question-o"
-    placeholder="请输入手机号或者邮箱"
+    placeholder="请填写手机号"
     bind:click-icon="onClickIcon"
     bind:change="onChange"
+    bind:blur="onDectError" 
+    error-message="{{lxfsError}}"
+    error-message-align = "right"
   />
   <view style="height: 10px;"></view>
   <van-field
@@ -112,13 +122,13 @@
     type="textarea"
     placeholder="请输入自我描述"
     autosize
+    input-align="right"
     border="{{ false }}"
     bind:change="onChange"
   />
-
 </van-cell-group>
 <view style="padding-top:20px">
-    <van-button round size="large" bindtap="commitInfo"  type="primary">点击提交注册</van-button>
+    <van-button size="large" bindtap="commitInfo"  type="primary">点击提交注册</van-button>
 </view>
 <van-toast id="van-toast" />
 
