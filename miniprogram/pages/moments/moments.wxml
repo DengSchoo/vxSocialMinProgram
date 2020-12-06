@@ -23,10 +23,49 @@
       {{item.content}}
     </view>
 
-    <view  wx:for="{{item.imgList}}" wx:key="index" class="grid flex-sub padding-lr {{false?'col-3 grid-square':'col-1'}}">
-      <view class="bg-img {{false?'':'only-img'}}"  style="background-image:url({{ item[index] }});" >
-      </view>
+    <view wx:if="{{item.imgList.length <= 2}}">
+      <van-grid column-num="{{item.imgList.length % 3}}" border="{{ true }}">
+        <van-grid-item use-slot wx:for="{{ item.imgList }}" wx:key="index">
+          <image
+            style="width: 100%; height: 200px;"
+            mode="aspectFill"
+            src="{{item}}"
+          />
+        </van-grid-item>
+      </van-grid>
     </view>
+    <view  wx:elif="{{item.imgList.length == 2 || item.imgList.length == 4}}">
+      <van-grid gutter="{{ 1 }}"  column-num="{{ 2}}" border="{{ true }}">
+        <van-grid-item use-slot wx:for="{{ item.imgList }}" wx:key="index">
+          <image
+            style="width: 100%; height: 100px; margin:-10px 2px"
+            mode="aspectFill"
+            
+            src="{{item}}"
+          />
+        </van-grid-item>
+      </van-grid>
+    </view>
+    <view wx:elif="true">
+      <van-grid column-num="{{ 3 }}" border="{{ true }}">
+        <van-grid-item use-slot wx:for="{{ item.imgList }}" wx:key="index">
+          <image
+            style="width: 100%; height: 100px;"
+            mode="aspectFill"
+            src="{{item}}"
+          />
+        </van-grid-item>
+      </van-grid>
+    </view>
+    
+    
+
+    <!-- <view  wx:for="{{item.imgList}}" wx:key="index" class="grid flex-sub padding-lr {{false?'col-3 grid-square':'col-1'}}">
+      <view class="bg-img {{false?'':'only-img'}}"  style="background-image:url('{{ item }}')" >
+        <image style="background-image" mode="widthFix"  src="{{item}}"></image>
+      </view>
+
+    </view> -->
     
     <view class="text-gray text-sm text-right padding">
       <text class="cuIcon-attentionfill margin-lr-xs"></text> 10
@@ -37,8 +76,7 @@
     
   </view>
 </view>
-
-
+<view style="height: 3rem;"></view>
 
 <view class="createBtn" bindtap="creatMoments">
     <view>
