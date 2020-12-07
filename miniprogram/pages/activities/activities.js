@@ -11,11 +11,11 @@ Page({
         cur_act:"",
         acti:[],
         activities:[{
-            id:"", // 活动唯一标识
+            id:"0", // 活动唯一标识
             status:true, // 活动状态  用于判断是否正在进行
             type:"", // 卡片展示状态 为： 类型 - 活动状态
-            photo:"https://i.loli.net/2020/11/29/EQJZ1uAHvpm8f34.jpg", // 用户头像
-            
+            photo:"https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", // 用户头像
+            //url:"../act_detail/act_detail",
             content:"在南区体育场跑步三圈", // 活动的具体内容
             location:"", //地点
             nickName:"刘德华", // 活动发起人
@@ -24,9 +24,10 @@ Page({
             lastTime:"",
             join:"1"  // 当前参加人数
         },{
-            id:"",
+            id:"1",
             status:true,
-            photo:"https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
+            photo:"https://images.pexels.com/photos/1677710/pexels-photo-1677710.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+            //url:"../act_detail/act_detail",
             type:"史诗 - 正在进行",
             content:"sss",
             nickName:"周杰伦",
@@ -36,6 +37,14 @@ Page({
     ]
     },
 
+    toDetail:function(e){
+        wx.redirectTo({
+          url: '../act_detail/act_detail',
+        })
+
+    },
+    
+
     /**
      * 生命周期函数--监听页面加载
      */
@@ -43,7 +52,7 @@ Page({
 
         this.setData({
             UserInfo:app.globalData,
-            cur_act:app.act_type[app.globalData['target_act']]
+            //cur_act:app.act_type[app.globalData['target_act']]
         })
     },
 

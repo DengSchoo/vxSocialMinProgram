@@ -1,2 +1,143 @@
 <!--pages/create_act/create_act.wxml-->
-<text>pages/create_act/create_act.wxml</text>
+<view class="cu-bar bg-black search">
+				<view class="cu-avatar round" style="background-image:url({{photo}});"></view>
+				<view class="content">
+					活动创建
+				</view>
+</view>
+<van-cell-group>
+    <view style="height: 10px;"></view>
+  <van-field
+    id="hdmc"
+    value="{{ hdmc }}"
+    required
+    clearable
+    input-align="right"
+    label="活动名称"
+    placeholder="请输入活动名称"
+    bind:click-icon="onClickIcon"
+  />
+
+  <view style="height: 10px;"></view>
+  <van-cell 
+    title="活动类型" 
+    id="hdlx"
+    is-link 
+    required
+    value = "{{hdlx}}"
+    placeholder="请选择活动类型"
+    bind:click="showGradeBottom"
+    bind:click-icon="onClickIcon"
+  />
+  <van-popup show="{{grade.bottom}}" position="bottom" :overlay="true" round >
+  <van-picker
+    show-toolbar
+    id="hdlx"
+    title="活动类型"
+    columns="{{ activityType }}"
+    bind:change="onChange"
+    bind:confirm="onConfirm"
+    bind:cancel="onCancel"
+  />
+</van-popup>
+  <view style="height: 10px;"></view>
+  <van-cell 
+    title="活动开始时间" 
+    id="kssj"
+    is-link 
+    required
+    value = "请选择时间"
+    bind:click="showBottom"
+    bind:click-icon="onClickIcon"
+  />
+  <van-popup show="{{popup.bottom}}" position="bottom" :overlay="true" round >
+  <van-picker
+    show-toolbar
+    id="kssj"
+    title="活动开始时间"
+    columns="{{ columns }}"
+    bind:change="onChange"
+    bind:confirm="onConfirm"
+    bind:cancel="onCancel"
+  />
+</van-popup>
+<view style="height: 10px;"></view>
+  <van-cell 
+    title="活动结束时间" 
+    id="jssj"
+    is-link 
+    required
+    value = "请选择时间"
+    bind:click="showBottom"
+    bind:click-icon="onClickIcon"
+  />
+  <van-popup show="{{popup.bottom}}" position="bottom" :overlay="true" round >
+  <van-picker
+    show-toolbar
+    id="jssj"
+    title="活动结束时间"
+    columns="{{ columns }}"
+    bind:change="onChange"
+    bind:confirm="onConfirm"
+    bind:cancel="onCancel"
+  />
+</van-popup>
+  <view style="height: 10px;"></view>
+  <van-field
+    id="dd"
+    value="{{ dd }}"
+    required
+    clearable
+    input-align="right"
+    label="活动地点"
+    icon="question-o"
+    placeholder="请输入活动地点"
+    bind:click-icon="onClickIcon"
+    bind:change="onChange"
+    bind:blur="onDectError" 
+    error-message="{{nlError}}"
+    error-message-align = "right"
+  />
+  <view style="height: 10px;"></view>
+  <van-field
+    id="lxfs"
+    value="{{ lxfs }}"
+    required
+    clearable
+    input-align="right"
+    label="联系方式"
+    icon="question-o"
+    placeholder="请填写手机号"
+    bind:click-icon="onClickIcon"
+    error-message-align = "right"
+  />
+  <view style="height: 10px;"></view>
+  <van-field
+    id="hdms"
+    value="{{ hdms }}"
+    label="活动描述"
+    icon="question-o"
+    type="textarea"
+    placeholder="请输入活动描述"
+    autosize
+    input-align="right"
+    border="{{ false }}"
+    bind:change="onChange"
+  />
+  <view style="height: 10px;"></view>
+  <van-field
+    id="bz"
+    value="{{ bz }}"
+    label="备注"
+    type="textarea"
+    placeholder="请输入备注"
+    autosize
+    input-align="right"
+    border="{{ false }}"
+    bind:change="onChange"
+  />
+</van-cell-group>
+<view style="padding-top:20px">
+    <van-button size="large" bindtap="commitInfo"  type="primary">点击提交创建</van-button>
+</view>
+<van-toast id="van-toast" />
