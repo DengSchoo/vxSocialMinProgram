@@ -258,6 +258,7 @@ Page({
         this.setData({
             userinfo
         })
+        
   },
 
   /**

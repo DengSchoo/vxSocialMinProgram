@@ -8,8 +8,20 @@ Page({
      * 页面的初始数据
      */
     data: {
+        
         imgList: [],
         textareaAValue :""
+    },
+
+    getRandomStr(len){
+      len = len || 32;
+  　　var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+  　　var maxPos = $chars.length;
+  　　var pwd = '';
+  　　for (let i = 0; i < len; i++) {
+  　　　　pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+  　　}
+  　　return pwd;
     },
 
     post(moments) {
@@ -24,6 +36,7 @@ Page({
                 device:moments.device
             }
           }).then((res)=>{
+            setTimeout(function(){  }, 500);
               wx.reLaunch({
                 url: '../moments/moments',
               })
@@ -45,7 +58,7 @@ Page({
         const res = wx.getSystemInfoSync();
         device = res.brand + res.model;
         var currenTime= util.formatTime(new Date());
-        console.log(device + currenTime);
+        
 
         const moments = {
             time : currenTime,
@@ -58,10 +71,13 @@ Page({
 
         // 上传图片获取云存储路径
         const cloudUrl = [];
+        wx.showLoading({
+          title: '请稍后....',
+        })
         if(that.data.imgList.length > 0) {
-
-            const cloudPath = "moments/" +currenTime + app.userInfo['_openid'] + ".jpg";
+          
             that.data.imgList.forEach((value, index) => {
+              const cloudPath = "moments/"  + app.userInfo['_openid'] + Math.random().toString(36).slice(-6) + ".jpg";
                 wx.cloud.uploadFile({
                     filePath: value,
                     cloudPath: cloudPath,
@@ -70,6 +86,7 @@ Page({
                         if (cloudUrl.length == that.data.imgList.length) {
                             moments.images = cloudUrl;
                             that.post(moments);
+                            wx.hideLoading({});
                             wx.showToast({
                               title: '图片上传完成',
                             })

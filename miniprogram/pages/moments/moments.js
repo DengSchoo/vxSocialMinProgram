@@ -27,13 +27,13 @@ Page({
             userinfo: app.userInfo
         })
         db.collection('moments').where({
-          }).get({}).then((res)=>{
+          }).get().then( res=>{
+                res.data.reverse();
                 this.setData({
                     momentsList:res.data
                 })
-                console.log(res.data)
-
           })
+          
     },
 
     /**
@@ -47,7 +47,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        this.getTabBar().init();
     },
 
     /**

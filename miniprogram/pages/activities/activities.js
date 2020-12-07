@@ -62,19 +62,8 @@ Page({
     onReady: function () {
         let temp = this.data.acti;
         console.log(app.userInfo["_openid"])
-        db.collection('activities').where({
-            _openId : app.userInfo["_openid"]
-          }).get({}).then((res)=>{
-                console.log(res.data)
 
-                for (let a in res.data){
-                    temp.push(res.data[a])
-                }
-                this.setData({
-                    acti:temp
-                })
-                console.log(this.data.acti)
-          })
+        
 
           
     },
