@@ -43,6 +43,9 @@
       },
       {
         "pagePath": "pages/moments/moments"
+      },
+      {
+        "pagePath": "pages/create_act/create_act"
       }
       
     ]

@@ -120,13 +120,13 @@ Page({
           for(let key in this.data){
               app.userInfo[key]=this.data[key];
           }
-          app.userInfo['avatarUrl']=app.globalData['avatarUrl'];
+          app.userInfo['avatarUrl']=app.globalData['userPhoto'];
           app.userInfo['nickName']=app.globalData['nickName'];
           
           db.collection('users').add({
             data:{
                 nickName: app.userInfo['nickName'],
-                userPhoto: app.userInfo['avatarUrl'],
+                avatarUrl: app.userInfo['avatarUrl'],
                 xh: app.userInfo['xh'],
                 nj: app.userInfo['nj'],
                 xy: app.userInfo['xy'],
@@ -134,7 +134,6 @@ Page({
                 nl: app.userInfo['nl'],
                 lxfs: app.userInfo['lxfs'],
                 zwms: app.userInfo['zwms'],
-
             }
           }).then((res)=>{
               db.collection('users').doc(res._id).get().then((res)=>{

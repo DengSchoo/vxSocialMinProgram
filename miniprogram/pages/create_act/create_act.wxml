@@ -1,143 +1,126 @@
 <!--pages/create_act/create_act.wxml-->
+
 <view class="cu-bar bg-black search">
-				<view class="cu-avatar round" style="background-image:url({{photo}});"></view>
+				<view class="cu-avatar round" style="background-image:url({{UserInfo.userPhoto}});"></view>
 				<view class="content">
-					活动创建
+					Kindred Spirit - 活动创建
 				</view>
 </view>
 <van-cell-group>
-    <view style="height: 10px;"></view>
-  <van-field
-    id="hdmc"
-    value="{{ hdmc }}"
-    required
-    clearable
-    input-align="right"
-    label="活动名称"
-    placeholder="请输入活动名称"
-    bind:click-icon="onClickIcon"
-  />
-
   <view style="height: 10px;"></view>
   <van-cell 
     title="活动类型" 
-    id="hdlx"
+    id="hdlxcell"
     is-link 
     required
     value = "{{hdlx}}"
     placeholder="请选择活动类型"
-    bind:click="showGradeBottom"
+    bind:click="showBottom"
     bind:click-icon="onClickIcon"
   />
-  <van-popup show="{{grade.bottom}}" position="bottom" :overlay="true" round >
+  <van-popup show="{{lxbottom}}" position="bottom" :overlay="true" round >
   <van-picker
     show-toolbar
     id="hdlx"
     title="活动类型"
-    columns="{{ activityType }}"
-    bind:change="onChange"
-    bind:confirm="onConfirm"
-    bind:cancel="onCancel"
-  />
-</van-popup>
-  <view style="height: 10px;"></view>
-  <van-cell 
-    title="活动开始时间" 
-    id="kssj"
-    is-link 
-    required
-    value = "请选择时间"
-    bind:click="showBottom"
-    bind:click-icon="onClickIcon"
-  />
-  <van-popup show="{{popup.bottom}}" position="bottom" :overlay="true" round >
-  <van-picker
-    show-toolbar
-    id="kssj"
-    title="活动开始时间"
-    columns="{{ columns }}"
+    columns="{{ activityTypes }}"
     bind:change="onChange"
     bind:confirm="onConfirm"
     bind:cancel="onCancel"
   />
 </van-popup>
 <view style="height: 10px;"></view>
-  <van-cell 
-    title="活动结束时间" 
-    id="jssj"
-    is-link 
-    required
-    value = "请选择时间"
-    bind:click="showBottom"
-    bind:click-icon="onClickIcon"
-  />
-  <van-popup show="{{popup.bottom}}" position="bottom" :overlay="true" round >
-  <van-picker
-    show-toolbar
-    id="jssj"
-    title="活动结束时间"
-    columns="{{ columns }}"
-    bind:change="onChange"
-    bind:confirm="onConfirm"
-    bind:cancel="onCancel"
-  />
-</van-popup>
-  <view style="height: 10px;"></view>
-  <van-field
-    id="dd"
-    value="{{ dd }}"
-    required
-    clearable
-    input-align="right"
-    label="活动地点"
-    icon="question-o"
-    placeholder="请输入活动地点"
-    bind:click-icon="onClickIcon"
-    bind:change="onChange"
-    bind:blur="onDectError" 
-    error-message="{{nlError}}"
-    error-message-align = "right"
-  />
-  <view style="height: 10px;"></view>
-  <van-field
-    id="lxfs"
-    value="{{ lxfs }}"
-    required
-    clearable
-    input-align="right"
-    label="联系方式"
-    icon="question-o"
-    placeholder="请填写手机号"
-    bind:click-icon="onClickIcon"
-    error-message-align = "right"
-  />
-  <view style="height: 10px;"></view>
   <van-field
     id="hdms"
     value="{{ hdms }}"
+    required
+    clearable
+    input-align="right"
     label="活动描述"
     icon="question-o"
-    type="textarea"
-    placeholder="请输入活动描述"
-    autosize
-    input-align="right"
-    border="{{ false }}"
+		maxlength = "15"
+    placeholder="请输入活动描述,不超过15个字"
+    bind:click-icon="onClickIcon"
     bind:change="onChange"
+	/>
+<view style="height: 10px;"></view>
+<van-cell 
+	is-link 
+	required
+	id="ksrq" 
+	title="活动开始日期" 
+	value="{{ ksrq }}"
+	bind:click="showBottom" 
+/>
+<van-calendar 
+		id= "calender" 
+		show-confirm 
+		poppable 
+		color="#04BE02"
+		close-on-click-overlay
+		safe-area-inset-bottom
+		position="top" 
+		show="{{ ksrqbottom }}" 
+		bind:close="onCancel" 
+		bind:confirm="onConfirm" 
+/>
+  <view style="height: 10px;"></view>
+  <van-cell 
+    title="活动开始时间" 
+    id="kssj"
+    is-link 
+    required
+    value = "{{kssj}}"
+    bind:click="showBottom"
+    bind:click-icon="onClickIcon"
   />
+  <van-popup show="{{kssjbottom}}" position="bottom" :overlay="true" round >
+    <van-datetime-picker
+    id="timePicker"
+    title="活动开始时间"
+    type="time"
+    value="{{ currentDate }}"
+    min-hour="{{ minHour }}"
+    max-hour="{{ maxHour }}"
+    bind:cancel="onCancel"
+    bind:confirm="onConfirm"
+/>
+</van-popup>
+  <view style="height: 10px;"></view>
+  <van-cell 
+    title="活动持续时长" 
+    id="cxsc"
+    is-link 
+    required
+    value = "{{cxsc}}"
+    bind:click="showBottom"
+    bind:click-icon="onClickIcon"
+  />
+  <van-popup show="{{cxscbottom}}" position="bottom" :overlay="true" round >
+    <van-datetime-picker
+    id="lasttime"
+    title="活动持续时长"
+    type="time"
+    value="{{ defautlast }}"
+    min-hour="{{ minH }}"
+    max-hour="{{ maxH }}"
+    bind:cancel="onCancel"
+    bind:confirm="onConfirm"
+/>
+</van-popup>
   <view style="height: 10px;"></view>
   <van-field
     id="bz"
     value="{{ bz }}"
     label="备注"
     type="textarea"
-    placeholder="请输入备注"
+    placeholder="请输入活动备注"
     autosize
     input-align="right"
-    border="{{ false }}"
     bind:change="onChange"
   />
 </van-cell-group>
 <view style="padding-top:20px">
-    <van-button size="large" bindtap="commitInfo"  type="primary">点击提交创建</van-button>
+    <van-button size="large" bindtap="commitInfo"  type="primary">点击创建</van-button>
 </view>
 <van-toast id="van-toast" />

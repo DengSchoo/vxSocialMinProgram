@@ -18,7 +18,6 @@ Page({
         nl:app.userInfo['nl'],
         lxfs:app.userInfo['lxfs'],
         zwms:app.userInfo['zwms'],
-        xm:app.userInfo['xm'],
 
         permmsion:false,
         disabled:true,
@@ -40,7 +39,6 @@ Page({
                     collection : 'users',
                     doc : id,
                     data : {
-                        xm: this.data.xm,
                         xh: this.data.xh,
                         nj: this.data.nj,
                         xy: this.data.xy,
@@ -67,24 +65,17 @@ Page({
                         nl:app.userInfo['nl'],
                         lxfs:app.userInfo['lxfs'],
                         zwms:app.userInfo['zwms'],
-                        xm:app.userInfo['xm'],
                     })
                     wx.reLaunch({
                         url: '../setting/setting',
                     });
                     Toast.success('修改信息成功!');
-                  });
-
-                
-                
-                
+                  });            
             })
 
         this.setData({
             permmsion:true
-        });
-        
-        
+        });       
     },
     cancelBtn(){
         this.setData({
@@ -98,7 +89,6 @@ Page({
             nl:app.userInfo['nl'],
             lxfs:app.userInfo['lxfs'],
             zwms:app.userInfo['zwms'],
-            xm:app.userInfo['xm'],
         })
     },
     
@@ -116,7 +106,6 @@ Page({
             nl:app.userInfo['nl'],
             lxfs:app.userInfo['lxfs'],
             zwms:app.userInfo['zwms'],
-            xm:app.userInfo['xm'],
         });
     },
 
@@ -143,9 +132,6 @@ Page({
         // event.detail 为当前输入的值
         
         switch(event.currentTarget.id){
-            case "xm": this.setData({
-                xm:event.detail
-            });break;
             case "xh": this.setData({
                 xh:event.detail
             });break;
