@@ -24,59 +24,75 @@ Page({
         msg:"修改信息"
     },
     modifyBtn(e) {
-        
+        var openid = app.userInfo["_openid"]
         var id = app.userInfo["_id"]
-        console.log(id);
-        
-        this.setData({
-            disabled:false,
-            msg:"保存提交"
-        });
-        if (this.data.permmsion != false)
-            wx.cloud.callFunction({
-                name:'updateSetting',
-                data:{
-                    collection : 'users',
-                    doc : id,
-                    data : {
-                        xh: this.data.xh,
-                        nj: this.data.nj,
-                        xy: this.data.xy,
-                        zy: this.data.zy,
-                        nl: this.data.nl,
-                        lxfs: this.data.lxfs,
-                        zwms: this.data.zwms,
-                    }
+        db.collection('users').where({_openid : openid}).get({}).then(res => {
+               //如果查询成功的话    
+                console.log(res.data[0].num)
+                if (res.data[0].num == 0) {
+                  Toast.fail('修改次数已用完');
+                  return
+              } else{
+                  console.log(res.data[0].num)
+                  this.setData({
+                      disabled:false,
+                      msg:"保存提交"
+                  });
+                  if (this.data.permmsion != false)
+                      wx.cloud.callFunction({
+                          name:'updateSetting',
+                          data:{
+                              collection : 'users',
+                              doc : id,
+                              data : {
+                                  xh: this.data.xh,
+                                  nj: this.data.nj,
+                                  xy: this.data.xy,
+                                  zy: this.data.zy,
+                                  nl: this.data.nl,
+                                  lxfs: this.data.lxfs,
+                                  zwms: this.data.zwms,
+                                  num: 0
+                              }
+                          }
+                      }).then((res)=>{
+      
+                          db.collection('users').where({
+                              _id : app.userInfo["_id"]
+                          }).get().then((res)=>{
+                              app.userInfo = Object.assign(app.userInfo, res.data[0]);
+                              
+                          
+                              this.setData({
+                                  permmsion:false,
+                                  xh:app.userInfo['xh'],
+                                  nj:app.userInfo['nj'],
+                                  xy:app.userInfo['xy'],
+                                  zy:app.userInfo['zy'],
+                                  nl:app.userInfo['nl'],
+                                  lxfs:app.userInfo['lxfs'],
+                                  zwms:app.userInfo['zwms'],
+                                  num: 0
+                              })
+                              wx.reLaunch({
+                                  url: '../setting/setting',
+                              });
+                              Toast.success('修改信息成功!');
+                          });            
+                      })
+                  this.setData({
+                      permmsion:true
+                  });  
                 }
-            }).then((res)=>{
 
-                db.collection('users').where({
-                    _id : app.userInfo["_id"]
-                  }).get().then((res)=>{
-                    app.userInfo = Object.assign(app.userInfo, res.data[0]);
-                    
-                
-                    this.setData({
-                        permmsion:false,
-                        xh:app.userInfo['xh'],
-                        nj:app.userInfo['nj'],
-                        xy:app.userInfo['xy'],
-                        zy:app.userInfo['zy'],
-                        nl:app.userInfo['nl'],
-                        lxfs:app.userInfo['lxfs'],
-                        zwms:app.userInfo['zwms'],
-                    })
-                    wx.reLaunch({
-                        url: '../setting/setting',
-                    });
-                    Toast.success('修改信息成功!');
-                  });            
-            })
+    })
+},
 
-        this.setData({
-            permmsion:true
-        });       
-    },
+
+
+ 
+    
+
     cancelBtn(){
         this.setData({
             disabled:true,

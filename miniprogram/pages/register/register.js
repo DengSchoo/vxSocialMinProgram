@@ -134,6 +134,7 @@ Page({
                 nl: app.userInfo['nl'],
                 lxfs: app.userInfo['lxfs'],
                 zwms: app.userInfo['zwms'],
+                num : 1
             }
           }).then((res)=>{
               db.collection('users').doc(res._id).get().then((res)=>{

@@ -105,6 +105,37 @@ Page({
             }
             app.userInfo['nickName']=app.globalData['nickName']; 
             app.userInfo['avatarUrl']=app.globalData['userPhoto'];
+            var type = app.userInfo['hdlx']
+            var photo
+            if (type == '演出') 
+                photo='http://article.fd.zol-img.com.cn/t_s640x2000/g4/M06/0A/08/Cg-4y1UH3GiILebHAAFXPMRDttIAAW4fgN4pf0AAVdU053.jpg'
+            else if(type == '出游')
+                photo='https://images.pexels.com/photos/5064930/pexels-photo-5064930.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+            else if(type == '电影')
+                photo='https://images.pexels.com/photos/1117132/pexels-photo-1117132.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+            else if(type == '球类')
+                photo='https://images.pexels.com/photos/1752757/pexels-photo-1752757.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+            else if(type == '游戏')
+                photo='https://images.pexels.com/photos/4691567/pexels-photo-4691567.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+            else if(type == '美食')
+                photo='https://images.pexels.com/photos/1234535/pexels-photo-1234535.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+            else if(type == '学习')
+                photo='https://images.pexels.com/photos/5472310/pexels-photo-5472310.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+            else if(type == '竞赛')
+                photo='https://images.pexels.com/photos/1708912/pexels-photo-1708912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+            else if(type == '讲座')
+                photo='https://images.pexels.com/photos/3184317/pexels-photo-3184317.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+            else if(type == '奶茶会')
+                photo='https://cdn.pixabay.com/photo/2019/11/28/06/26/milk-tea-4658495_960_720.jpg'
+            else if(type == '公益')
+                photo='https://images.pexels.com/photos/5340280/pexels-photo-5340280.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+            else if(type == '游泳')
+                photo='https://images.pexels.com/photos/52988/swim-water-diving-underwater-52988.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+            else if(type == '购物')
+                photo='https://images.pexels.com/photos/5910700/pexels-photo-5910700.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+            else if(type == '其它')
+                photo='https://cdn.pixabay.com/photo/2019/02/03/16/52/taiwan-3973014__340.jpg'
+
             db.collection('acti').add({
               data:{
                   nickName: app.userInfo['nickName'],
@@ -115,7 +146,9 @@ Page({
                   kssj: app.userInfo['kssj'],
                   cxsc: app.userInfo['cxsc'],
                   bz: app.userInfo['bz'],
-                  cxrs: 1
+                  cxrs: 1,
+                act_photo: photo
+                  
               }
             }).then((res)=>{
                 db.collection('acti').doc(res._id).get().then((res)=>{

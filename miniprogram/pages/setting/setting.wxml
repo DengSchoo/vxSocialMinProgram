@@ -17,20 +17,6 @@
 
 <van-cell-group>
   <van-field
-    value="{{xm}}"
-    label="姓名"
-    size="large"
-    left-icon="star"
-    id="xm"
-    disabled="{{disabled}}"
-    input-align="right"
-    bind:change="onChange"
-    border="{{ false }}"
-  />
-</van-cell-group>
-
-<van-cell-group>
-  <van-field
     value="{{nj}}"
     label="年级"
     size="large"
