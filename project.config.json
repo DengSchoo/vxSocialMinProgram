@@ -93,51 +93,6 @@
     "game": {
       "list": []
     },
-<<<<<<< HEAD
-    "gamePlugin": {
-      "list": []
-    },
-    "miniprogram": {
-      "list": [
-        {
-          "id": -1,
-          "name": "db guide",
-          "pathName": "pages/databaseGuide/databaseGuide",
-          "query": ""
-        },
-        {
-          "name": "活动详情",
-          "pathName": "pages/act_detail/act_detail",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "活动",
-          "pathName": "pages/activities/activities",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "首页",
-          "pathName": "pages/index/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "创建活动",
-          "pathName": "pages/create_act/create_act",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "注册",
-          "pathName": "pages/register/register",
-          "scene": null
-        }
-      ]
-    }
-  }
-=======
     "miniprogram": {
         "list": [
             {
@@ -192,5 +147,5 @@
     "simulatorType": "wechat",
     "simulatorPluginLibVersion": {},
     "condition": {}
->>>>>>> bd257a3197bc8ca6062672cbf487d26bc935223c
+  }
 }
