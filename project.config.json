@@ -1,97 +1,37 @@
 {
-  "miniprogramRoot": "miniprogram/",
-  "cloudfunctionRoot": "cloudfunctions/",
-  "setting": {
-    "urlCheck": true,
-    "es6": true,
-    "enhance": true,
-    "postcss": true,
-    "preloadBackgroundData": false,
-    "minified": true,
-    "newFeature": true,
-    "coverView": true,
-    "nodeModules": true,
-    "autoAudits": false,
-    "showShadowRootInWxmlPanel": true,
-    "scopeDataCheck": false,
-    "uglifyFileName": false,
-    "checkInvalidKey": true,
-    "checkSiteMap": false,
-    "uploadWithSourceMap": true,
-    "compileHotReLoad": false,
-    "useMultiFrameRuntime": false,
-    "useApiHook": true,
-    "babelSetting": {
-      "ignore": [],
-      "disablePlugins": [],
-      "outputPath": ""
-    },
-    "useIsolateContext": true,
-    "useCompilerModule": true,
-    "userConfirmedUseCompilerModuleSwitch": false,
-    "packNpmManually": false,
-    "packNpmRelationList": [],
-    "minifyWXSS": true
-  },
-  "miniprogram": {
-    "list": [
-      {
-        "id": -1,
-        "name": "db guide",
-        "pathName": "pages/databaseGuide/databaseGuide",
-        "query": ""
-      },
-      {
-        "name": "登录",
-        "pathName": "pages/login/login",
-        "query": "",
-        "scene": null
-      },
-      {
-        "name": "设置",
-        "pathName": "pages/setting/setting",
-        "query": "",
-        "scene": null
-      },
-      {
-        "name": "注册",
-        "pathName": "pages/register/register",
-        "query": "",
-        "scene": null
-      },
-      {
-        "name": "首页",
-        "pathName": "pages/index/index",
-        "query": "",
-        "scene": null
-      },
-      {
-        "name": "详情",
-        "pathName": "pages/act_detail/act_detail",
-        "query": "",
-        "scene": null
-      },
-      {
-        "name": "瞬间",
-        "pathName": "pages/moments/moments",
-        "query": "",
-        "scene": null
-      },
-      {
-        "name": "创建瞬间",
-        "pathName": "pages/create_mom/create_mom",
-        "scene": null
-      }
-    ]
-  },
-  "simulatorType": "wechat",
-  "simulatorPluginLibVersion": {},
-  "condition": {
-    "plugin": {
-      "list": []
-    },
-    "game": {
-      "list": []
+    "miniprogramRoot": "miniprogram/",
+    "cloudfunctionRoot": "cloudfunctions/",
+    "setting": {
+        "urlCheck": true,
+        "es6": true,
+        "enhance": true,
+        "postcss": true,
+        "preloadBackgroundData": false,
+        "minified": true,
+        "newFeature": true,
+        "coverView": true,
+        "nodeModules": true,
+        "autoAudits": false,
+        "showShadowRootInWxmlPanel": true,
+        "scopeDataCheck": false,
+        "uglifyFileName": false,
+        "checkInvalidKey": true,
+        "checkSiteMap": false,
+        "uploadWithSourceMap": true,
+        "compileHotReLoad": false,
+        "useMultiFrameRuntime": false,
+        "useApiHook": true,
+        "babelSetting": {
+            "ignore": [],
+            "disablePlugins": [],
+            "outputPath": ""
+        },
+        "useIsolateContext": true,
+        "useCompilerModule": true,
+        "userConfirmedUseCompilerModuleSwitch": false,
+        "packNpmManually": false,
+        "packNpmRelationList": [],
+        "minifyWXSS": true
     },
     "miniprogram": {
         "list": [
@@ -146,6 +86,66 @@
     },
     "simulatorType": "wechat",
     "simulatorPluginLibVersion": {},
-    "condition": {}
-  }
+    "condition": {
+        "plugin": {
+            "list": []
+        },
+        "game": {
+            "list": []
+        },
+        "simulatorType": "wechat",
+        "simulatorPluginLibVersion": {},
+        "condition": {},
+        "miniprogram": {
+            "list": [
+                {
+                    "id": -1,
+                    "name": "db guide",
+                    "pathName": "pages/databaseGuide/databaseGuide",
+                    "query": ""
+                },
+                {
+                    "name": "登录",
+                    "pathName": "pages/login/login",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "设置",
+                    "pathName": "pages/setting/setting",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "注册",
+                    "pathName": "pages/register/register",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "首页",
+                    "pathName": "pages/index/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "详情",
+                    "pathName": "pages/act_detail/act_detail",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "瞬间",
+                    "pathName": "pages/moments/moments",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "创建瞬间",
+                    "pathName": "pages/create_mom/create_mom",
+                    "scene": null
+                }
+            ]
+        }
+    }
 }

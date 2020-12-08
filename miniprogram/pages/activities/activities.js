@@ -54,7 +54,7 @@ Page({
      */
     onShow: function () {
         db.collection('acti').where({
-           // hdlx : app.globalData['target_act']
+            hdlx : app.globalData['target_act']
         }).get().then( res=>{
               
               this.setData({
@@ -74,9 +74,9 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-        wx.reLaunch({
-          url: '../index/index',
-        })
+        // wx.reLaunch({
+        //   url: '../index/index',
+        // })
     },
 
     /**

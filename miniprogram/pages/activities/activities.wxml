@@ -12,7 +12,7 @@
 <view  class="cu-card case {{isCard?'no-card':''}}" wx:for="{{activities}}" wx:key="index">
   <view style="margin:10px 12px 0 12px" class="cu-item shadow">
     <view class="image">
-      <image id="{{item.id}}" bindtap="toDetail" src="{{}}" mode="widthFix" style="height:125px"></image>
+      <image id="{{item.id}}" bindtap="toDetail" src="{{item.act_photo}}" mode="widthFix" style="height:125px"></image>
       <view class="cu-tag bg-blue">{{item.hdlx}}</view>
       <view class="cu-bar bg-shadeBottom">
         <text class="text-cut">{{item.hdms}}</text>
@@ -21,7 +21,7 @@
 
     <view class="cu-list menu-avatar">
       <view class="cu-item">
-        <view class="cu-avatar round lg" style="background-image:url({{item.act_photo}})"></view>
+        <view class="cu-avatar round lg" style="background-image:url({{item.avatarUrl}})"></view>
         <view class="content flex-sub">
           <view class="text-grey">{{item.nickName}}</view>
           <view class="text-gray text-sm flex justify-between">
