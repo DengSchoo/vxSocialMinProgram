@@ -10,7 +10,7 @@
     round
   width="10rem"
   height="10rem"
-    class="userImage"
+  class="userImage"
   src="{{userinfo.avatarUrl}}"
 />
 </view>
@@ -25,8 +25,20 @@
     id="nj"
     disabled="{{disabled}}"
     input-align="right"
+    bind:focus="showBottom"
     border="{{ false }}"
   />
+  <van-popup show="{{njbottom}}" position="bottom" :overlay="true" round >
+  <van-picker
+    show-toolbar
+    id="njpopup"
+    title="年级"
+    columns="{{ grades }}"
+    bind:confirm="onConfirm"
+    bind:cancel="onCancel"
+  />
+</van-popup>
+
 </van-cell-group>
 <van-cell-group>
   <van-field

@@ -31,18 +31,30 @@
 </van-popup>
 <view style="height: 10px;"></view>
   <van-field
-    id="hdms"
-    value="{{ hdms }}"
+    id="hdbt"
+    value="{{ hdbt }}"
     required
     clearable
     input-align="right"
-    label="活动描述"
+    label="活动标题"
     icon="question-o"
 		maxlength = "15"
     placeholder="请输入活动描述,不超过15个字"
     bind:click-icon="onClickIcon"
     bind:change="onChange"
 	/>
+  <view style="height: 10px;"></view>
+  <van-field
+    id="hdnr"
+    value="{{ hdnr }}"
+    label="活动内容"
+    type="textarea"
+    required
+    placeholder="请输入必要的具体活动内容,如活动地点"
+    autosize
+    input-align="right"
+    bind:change="onChange"
+  />
 <view style="height: 10px;"></view>
 <van-cell 
 	is-link 
@@ -108,17 +120,6 @@
     bind:confirm="onConfirm"
 />
 </van-popup>
-  <view style="height: 10px;"></view>
-  <van-field
-    id="bz"
-    value="{{ bz }}"
-    label="备注"
-    type="textarea"
-    placeholder="请输入活动备注"
-    autosize
-    input-align="right"
-    bind:change="onChange"
-  />
 </van-cell-group>
 <view style="padding-top:20px">
     <van-button size="large" bindtap="commitInfo"  type="primary">点击创建</van-button>
