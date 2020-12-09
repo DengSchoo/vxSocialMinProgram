@@ -9,13 +9,11 @@ Page({
      */
     data: {
         hdlx:"",
-        hdms:"",
+        hdbt:"",
         ksrq: null,
-       // kssj:"",
         cxsc:"",
-        cyrs:"",
         lxfs:"",    
-        bz:"",
+        hdnr:"",
         lxbottom: false,
         ksrqbottom: false,
         kssjbottom: false,
@@ -79,23 +77,22 @@ Page({
                 cxsc:Time
             });
         }
-
     },
     
     onChange(event) {       //输入内容时触发,回调参数为value: 当前输入值
         // event.detail 为当前输入的值
         switch(event.currentTarget.id){           
-            case 'hdms': this.setData({
-                hdms:event.detail
+            case 'hdbt': this.setData({
+                hdbt:event.detail
             });break;
-            case 'bz': this.setData({
-                bz:event.detail
+            case 'hdnr': this.setData({
+                hdnr:event.detail
             });break;
         }
         },
         commitInfo(e){
             for(let key in this.data){
-              if(this.data['hdlx'] == "" || this.data['hdms'] == "" || this.data['ksrq'] == "" || this.data['kssj'] == "" || this.data['cxsc'] == "" ) {
+              if(this.data['hdlx'] == "" || this.data['hdbt'] == "" || this.data['ksrq'] == "" || this.data['kssj'] == "" || this.data['cxsc'] == "" || this.data['hdnr'] == "") {
                   Toast.fail('请填写完整');
                   return
               }
@@ -141,13 +138,14 @@ Page({
                   nickName: app.userInfo['nickName'],
                   avatarUrl: app.userInfo['avatarUrl'],
                   hdlx: app.userInfo['hdlx'],
-                  hdms: app.userInfo['hdms'],
+                  hdbt: app.userInfo['hdbt'],
                   ksrq: app.userInfo['ksrq'],
                   kssj: app.userInfo['kssj'],
                   cxsc: app.userInfo['cxsc'],
-                  bz: app.userInfo['bz'],
-                  cxrs: 1,
+                  hdnr: app.userInfo['hdnr'],
+                  cyrs: 1,
                   act_photo: photo
+                  
               }
             }).then((res)=>{
                 db.collection('join_in').add({
