@@ -14,6 +14,7 @@ Page({
     },
 
     toDetail:function(e){
+        console.log(e);
         wx.redirectTo({
           url: '../act_detail/act_detail',
         })
@@ -36,8 +37,7 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-        let temp = this.data.acti;
-        console.log(app.userInfo["_openid"])
+        
      
     },
     join(){

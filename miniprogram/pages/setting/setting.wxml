@@ -16,7 +16,7 @@
 </view>
 
 <van-cell-group>
-  <van-field
+  <van-cell
     value="{{nj}}"
     label="年级"
     size="large"

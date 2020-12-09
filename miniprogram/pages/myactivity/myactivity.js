@@ -9,7 +9,9 @@ Page({
      */
     data: {
         UserInfo:{},
-        activities:[]
+        act:[],
+        myacti:[],
+        join_list:[]
     },
     quit(e){
 
@@ -20,34 +22,107 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+    onLoad: async function (options) {
 
         this.setData({
             UserInfo:app.globalData
-        })
+        });
+        this.getTabBar().init();
+
+        const that = this;
+        const acti = [];
+        const resList = await Promise.all([
+            db.collection('join_in').where({
+                _openid : app.userInfo["_openid"],
+            }).get({}).then(res => {
+                that.setData({
+                    join_list : res.data
+                });
+                that.data.join_list.forEach( (value, index) =>{
+                    
+                    db.collection( 'acti' ).where({
+                        _id : value.activity
+                    }).get({}).then( res=>{             
+                        acti.push(res.data[0]);
+                    })
+                    acti.reverse();
+                    //console.log(acti);
+                    that.setData({
+                        act : acti
+                    })
+                })
+                return this.data.act;
+            }),
+            db.collection('acti').where({
+                _openid : app.userInfo["_openid"],
+            }).get().then( res=>{
+                res.data.reverse();
+                that.setData({
+                    myacti:res.data
+                })
+                return this.data.myacti;
+            })
+        ])
+        
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-        
+        console.log(this.data.act)
+        console.log(this.data.myacti)
     },
-
+    
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
+    onShow: async  function () {
+        //const that = this;
         this.getTabBar().init();
-        db.collection('acti').where({
 
-        }).get().then( res=>{
-              this.setData({
-                activities:res.data
-              })
-        })
+        const that = this;
+        const acti = [];
+        const resList = await Promise.all([
+            db.collection('join_in').where({
+                _openid : app.userInfo["_openid"],
+            }).get({}).then(res => {
+                that.setData({
+                    join_list : res.data
+                });
+                that.data.join_list.forEach( (value, index) =>{
+                    
+                    db.collection( 'acti' ).where({
+                        _id : value.activity
+                    }).get({}).then( res=>{             
+                        acti.push(res.data[0]);
+                    })
+                    acti.reverse();
+                    //console.log(acti);
+                    that.setData({
+                        act : acti
+                    })
+                })
+                return this.data.act;
+            }),
+            db.collection('acti').where({
+                _openid : app.userInfo["_openid"],
+            }).get().then( res=>{
+                res.data.reverse();
+                that.setData({
+                    myacti:res.data
+                })
+                return this.data.myacti;
+            })
+        ])
+
+        
+        
     },
-
+    test(e){
+        this.getJoin();
+        console.log("sss");
+    },
     /**
      * 生命周期函数--监听页面隐藏
      */

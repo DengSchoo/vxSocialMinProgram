@@ -145,19 +145,12 @@ Page({
   },
   findActivity(e){
     app.globalData['target_act'] = e.currentTarget.id;
-    console.log(app.globalData['target_act']);
+    
     wx.reLaunch({
       url: '../activities/activities',
     })
   },
-  TapTest(e){
-    console.log(e);
-    if( e.currentTarget.id == 1)
-      wx.redirectTo({
-        url: '../activities/activities',
-      })
-    else console.log("111");
-  },
+  
   DotStyle(e) {
     this.setData({
       DotStyle: e.detail.value
