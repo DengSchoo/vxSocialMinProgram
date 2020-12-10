@@ -11,7 +11,8 @@ Page({
         UserInfo:{},
         act:[],
         myacti:[],
-        join_list:[]
+        join_list:[],
+        length:0
     },
     quit(e){
         
@@ -36,47 +37,11 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: async function (options) {
-
+    onLoad: async function () {
         this.setData({
             UserInfo:app.userInfo
         });
         this.getTabBar().init();
-
-        const that = this;
-        const acti = [];
-        const resList = await Promise.all([
-            db.collection('join_in').where({
-                _openid : app.userInfo["_openid"],
-            }).get({}).then(res => {
-                that.setData({
-                    join_list : res.data
-                });
-                that.data.join_list.forEach( (value, index) =>{
-                    
-                    db.collection( 'acti' ).where({
-                        _id : value.activity
-                    }).get({}).then( res=>{             
-                        acti.push(res.data[0]);
-                    })
-                    acti.reverse();
-                    //console.log(acti);
-                    that.setData({
-                        act : acti
-                    })
-                })
-                return this.data.act;
-            }),
-            db.collection('acti').where({
-                _openid : app.userInfo["_openid"],
-            }).get().then( res=>{
-                res.data.reverse();
-                that.setData({
-                    myacti:res.data
-                })
-                return this.data.myacti;
-            })
-        ])
         
     },
 
@@ -84,8 +49,7 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-        console.log(this.data.act)
-        console.log(this.data.myacti)
+        
     },
     
     /**
@@ -94,16 +58,25 @@ Page({
     onShow: async  function () {
         //const that = this;
         this.getTabBar().init();
-
+        
+        if (this.data.length != 0) {
+            this.setData({
+                act:app.globalData['temp']
+            })
+            
+            return;
+        }
         const that = this;
         const acti = [];
         const resList = await Promise.all([
             db.collection('join_in').where({
                 _openid : app.userInfo["_openid"],
             }).get({}).then(res => {
+                
                 that.setData({
                     join_list : res.data
                 });
+                
                 that.data.join_list.forEach( (value, index) =>{
                     
                     db.collection( 'acti' ).where({
@@ -114,9 +87,12 @@ Page({
                     acti.reverse();
                     //console.log(acti);
                     that.setData({
-                        act : acti
+                        act : acti,
+                        length : 1
                     })
                 })
+                
+                app.globalData['temp'] = this.data.act;
                 return this.data.act;
             }),
             db.collection('acti').where({
@@ -126,17 +102,13 @@ Page({
                 that.setData({
                     myacti:res.data
                 })
-                return this.data.myacti;
+                
+                return this.data.myacti;              
             })
         ])
-
-        
-        
+        setTimeout(this.onShow, 500);
     },
-    test(e){
-        this.getJoin();
-        console.log("sss");
-    },
+    
     /**
      * 生命周期函数--监听页面隐藏
      */
