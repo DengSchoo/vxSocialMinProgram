@@ -19,7 +19,7 @@
     <view  class="cu-card case {{isCard?'no-card':''}}" wx:for="{{ act }}" wx:key="index">
       <view style="margin:10px 12px 0 12px" class="cu-item shadow">
         <view class="image">
-          <image id="{{item.id}}" bindtap="toDetail" src="{{item.act_photo}}" mode="widthFix" style="height:125px"></image>
+          <image id="{{item._id}}" bindtap="toDetail" src="{{item.act_photo}}" mode="widthFix" style="height:125px"></image>
           <view class="cu-tag bg-blue">{{item.hdlx}}</view>
           <view class="cu-bar bg-shadeBottom">
             <text class="text-cut">{{item.hdms}}</text>

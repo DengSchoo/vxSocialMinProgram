@@ -15,11 +15,19 @@ Page({
     },
 
     toDetail:function(e){
+        this.setData({
+            userinfo: app.userInfo
+        });
         console.log(e);
         wx.redirectTo({
           url: '../act_detail/act_detail',
         })
 
+        app.globalData['target_id']=e.currentTarget.id;
+        console.log(app.globalData['target_id']); 
+         wx.redirectTo({
+             url: '../act_detail/act_detail',
+        })
     },
     
 

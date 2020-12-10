@@ -1,10 +1,12 @@
 <!--pages/act_detail/act_detail.wxml-->
 <view class="cu-bar bg-black search">
+  <view class="cu-avatar round" style="background-image:url({{UserInfo.userPhoto}});"></view>
 				<view class="content">
 					Kindred Spirit - 活动详情
 				</view>
 </view>
 
+<!--
 <view class="cu-card dynamic {{isCard?'no-card':''}}">
   <view class="cu-item shadow">
     <view class="cu-list menu-avatar">
@@ -30,11 +32,86 @@
     </view>
   </view>
   </view>
+  -->
 
   <van-cell-group>
   <van-field
-    value="{{hdsj}}"
-    label="活动时间"
+    label="活动名称"
+    input-align="right"
+    value="{{cur_acti.hdbt}}"
+    size="large"
+    disabled="{{disabled}}"
+    input-align="right"
+    border="{{ false }}"
+/>
+</van-cell-group>
+
+<van-cell-group>
+  <van-field
+    label="活动内容"
+    input-align="right"
+    value="{{cur_acti.hdnr}}"
+    size="large"
+    type="textarea"
+    disabled="{{disabled}}"
+    input-align="right"
+    border="{{ false }}"
+/>
+</van-cell-group>
+
+  <van-cell-group>
+  <van-field
+    label="活动日期"
+    input-align="right"
+    value="{{cur_acti.ksrq}}"
+    size="large"
+    disabled="{{disabled}}"
+    input-align="right"
+    border="{{ false }}"
+/>
+</van-cell-group>
+
+  <van-cell-group>
+  <van-field
+    label="开始时间"
+    input-align="right"
+    value="{{cur_acti.kssj}}"
+    size="large"
+    disabled="{{disabled}}"
+    input-align="right"
+    border="{{ false }}"
+/>
+</van-cell-group>
+
+<van-cell-group>
+  <van-field
+    label="活动时长"
+    input-align="right"
+    value="{{cur_acti.cxsc}}"
+    size="large"
+    disabled="{{disabled}}"
+    input-align="right"
+    border="{{ false }}"
+/>
+</van-cell-group>
+
+<van-cell-group>
+  <van-field
+    label="已参加人数"
+    input-align="right"
+    value="{{cur_acti.cyrs}}"
+    size="large"
+    disabled="{{disabled}}"
+    input-align="right"
+    border="{{ false }}"
+/>
+</van-cell-group>
+
+<!--
+<van-cell-group>
+  <van-field
+    value="{{jssj}}"
+    label="活动结束时间"
     size="large"
     left-icon="star"
     id="hdsj"
@@ -47,12 +124,12 @@
 
 <van-cell-group>
   <van-field
-    value="{{hddd}}"
+    value="{{dd}}"
     label="活动地点"
     size="large"
     bind:change="onChange"
     left-icon="star"
-    id="hddd"
+    id="dd"
     disabled="{{disabled}}"
     input-align="right"
     border="{{ false }}"
@@ -102,3 +179,7 @@
   />
 </van-cell-group>
 </view>
+<van-toast id="van-toast" />
+<view style="height: 3rem;"></view>
+-->
+

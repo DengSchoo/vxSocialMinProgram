@@ -8,7 +8,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        cur_acti:[],
+        UserInfo:{}
     },
 
     /**
@@ -32,6 +33,16 @@ Page({
      */
     onShow: function () {
        // this.getTabBar().init();
+       db.collection('acti').where({
+        _id:app.globalData['target_id']
+    }).get().then(res=>{
+        this.setData({
+            cur_acti:res.data[0]
+        })
+        console.log(this.data.cur_acti);
+        console.log(app.globalData['target_id']);
+    })
+ 
     },
 
     /**
@@ -45,9 +56,9 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-       // wx.reLaunch({
-        //    url: '../index/index',
-        //  })
+        wx.reLaunch({
+            url: '../activities/activities',
+          })
     },
 
     /**

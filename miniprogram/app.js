@@ -9,7 +9,8 @@ App({
       }
       this.globalData = {
         "permission":false,
-        target_act:-1 //表示 -1我的
+        target_act:-1, //表示 -1我的
+        target_id:null
       },
       this.act_type = [
         '演出',
@@ -31,9 +32,5 @@ App({
         
       
       this.userInfo = {}
-    }
-    
-    
-    
-    
+    }  
   })

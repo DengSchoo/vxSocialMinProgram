@@ -16,12 +16,12 @@ Page({
         length:0
     },
     quit(e){
-        console.log(e);
+         
         db.collection('join_in').where({
             _openid : this.data.UserInfo['_openid'],
             activity : e.currentTarget.id
         }).get({}).then(res => {
-            console.log(res)
+             
             db.collection('join_in').doc(res.data[0]._id).remove({
                 success: function(res) {
                     Toast.success('退出成功');
@@ -55,6 +55,22 @@ Page({
     onReady: function () {
         
     },
+    toDetail(e){
+        this.setData({
+            userinfo: app.userInfo
+        });
+         
+        wx.redirectTo({
+          url: '../act_detail/act_detail',
+        })
+
+        app.globalData['target_id']=e.currentTarget.id;
+         
+         wx.redirectTo({
+             url: '../act_detail/act_detail',
+        })
+    },
+
     
     /**
      * 生命周期函数--监听页面显示
@@ -91,7 +107,7 @@ Page({
                     
                 })
                 acti.reverse();
-                    //console.log(acti);
+                    // 
                     that.setData({
                         act : acti,
                         length : 1
