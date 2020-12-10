@@ -14,10 +14,15 @@ Page({
     },
 
     toDetail:function(e){
-        wx.redirectTo({
-          url: '../act_detail/act_detail',
-        })
+        this.setData({
+            userinfo: app.userInfo
+        }),
 
+        app.globalData['target_id']=e.currentTarget.id;
+        console.log(app.globalData['target_id']); 
+         wx.redirectTo({
+             url: '../act_detail/act_detail',
+        })
     },
     
 
@@ -38,7 +43,6 @@ Page({
     onReady: function () {
         let temp = this.data.acti;
         console.log(app.userInfo["_openid"])
-     
     },
     join(){
 
