@@ -9,22 +9,40 @@ Page({
      */
     data: {
         UserInfo:{},
-        activities:[]
+        act:[],
+        myacti:[],
+        join_list:[],
+        length:0
     },
     quit(e){
-
+        
     },
     join(e){
-
+        console.log(e);
+        db.collection('join_in').where({
+            _openid : this.data.UserInfo['_openid'],
+            activity : e.currentTarget.id
+        }).get({}).then(res => {
+            if (res.data.length != 0) {
+                console.log("aaa");
+                return;
+            }
+        })
+        db.collection('join_in').add({
+            data:{
+                activity:e.currentTarget.id
+            }
+        })
     },
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
-
+    onLoad: async function () {
         this.setData({
-            UserInfo:app.globalData
-        })
+            UserInfo:app.userInfo
+        });
+        this.getTabBar().init();
+        
     },
 
     /**
@@ -33,21 +51,64 @@ Page({
     onReady: function () {
         
     },
-
+    
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
+    onShow: async  function () {
+        //const that = this;
         this.getTabBar().init();
-        db.collection('acti').where({
-
-        }).get().then( res=>{
-              this.setData({
-                activities:res.data
-              })
-        })
+        
+        if (this.data.length != 0) {
+            this.setData({
+                act:app.globalData['temp']
+            })
+            
+            return;
+        }
+        const that = this;
+        const acti = [];
+        const resList = await Promise.all([
+            db.collection('join_in').where({
+                _openid : app.userInfo["_openid"],
+            }).get({}).then(res => {
+                
+                that.setData({
+                    join_list : res.data
+                });
+                
+                that.data.join_list.forEach( (value, index) =>{
+                    
+                    db.collection( 'acti' ).where({
+                        _id : value.activity
+                    }).get({}).then( res=>{             
+                        acti.push(res.data[0]);
+                    })
+                    
+                })
+                acti.reverse();
+                    //console.log(acti);
+                    that.setData({
+                        act : acti,
+                        length : 1
+                    })
+                app.globalData['temp'] = this.data.act;
+                return this.data.act;
+            }),
+            db.collection('acti').where({
+                _openid : app.userInfo["_openid"],
+            }).get().then( res=>{
+                res.data.reverse();
+                that.setData({
+                    myacti:res.data
+                })
+                
+                return this.data.myacti;              
+            })
+        ])
+        setTimeout(this.onShow, 500);
     },
-
+    
     /**
      * 生命周期函数--监听页面隐藏
      */

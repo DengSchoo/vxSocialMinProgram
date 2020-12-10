@@ -1,6 +1,6 @@
 <!--pages/myactivity/myactivity.wxml-->
 <view class="cu-bar bg-black search">
-				<view class="cu-avatar round" style="background-image:url({{UserInfo.userPhoto}});"></view>
+				<view class="cu-avatar round" style="background-image:url({{UserInfo.avatarUrl}});"></view>
 				<view class="content">
 					Kindred Spirit - 我的
 				</view>
@@ -9,21 +9,14 @@
 
 <van-tabs color="green" active="a">
   <van-tab title="我参与的" name="a">
-    <view wx:if="{{activities.length==0}}">
-      <van-empty image="search" description="暂无活动" />
-    </view>
-    向参与表查找
-  </van-tab>
 
-
-
-
-  <van-tab title="我创建的" name="b">
-    <view wx:if="{{activities.length==0}}">
-      <van-empty image="search" description="暂无活动" />
-    </view>
+    <view wx:if="{{act.length==0}}">
       
-    <view  class="cu-card case {{isCard?'no-card':''}}" wx:for="{{activities}}" wx:key="index">
+      <van-empty image="search" description="暂无活动" />
+      
+    </view>
+
+    <view  class="cu-card case {{isCard?'no-card':''}}" wx:for="{{ act }}" wx:key="index">
       <view style="margin:10px 12px 0 12px" class="cu-item shadow">
         <view class="image">
           <image id="{{item.id}}" bindtap="toDetail" src="{{item.act_photo}}" mode="widthFix" style="height:125px"></image>
@@ -49,12 +42,53 @@
               </view>
             </view>
           </view>
-          <view class="flex" style="flex;flex-direction:row-reverse" >
+          <view class="flex"  style="flex;flex-direction:row-reverse" >
             
-              <van-button bindtap="quit" size="small" icon="minus" disabled type="warn">退出</van-button>
-              <van-button bindtap="join"  size="small" icon="plus" type="primary">加入</van-button>
+              <van-button id="{{item.id}}" bindtap="quit" size="small" icon="minus"  type="warning">退出</van-button>
               
           </view>
+        </view>
+    </view>
+  </view>
+  </van-tab>
+
+
+  <van-tab title="我创建的" name="b">
+    <view wx:if="{{myacti.length==0}}">
+      <van-empty image="search" description="暂无活动" />
+    </view>
+      
+    <view  class="cu-card case {{isCard?'no-card':''}}" wx:for="{{myacti}}" wx:key="index">
+      <view style="margin:10px 12px 0 12px" class="cu-item shadow">
+        <view class="image">
+          <image id="{{item._id}}" bindtap="toDetail" src="{{item.act_photo}}" mode="widthFix" style="height:125px"></image>
+          <view class="cu-tag bg-blue">{{item.hdlx}}</view>
+          <view class="cu-bar bg-shadeBottom">
+            <text class="text-cut">{{item.hdms}}</text>
+          </view>
+        </view>
+
+        <view class="cu-list menu-avatar">
+          <view class="cu-item">
+            <view class="cu-avatar round lg" style="background-image:url({{item.avatarUrl}})"></view>
+            <view class="content flex-sub">
+              <view class="text-grey">{{item.nickName}}</view>
+              <view class="text-gray text-sm flex justify-between">
+                {{item.ksrq}}{{" " + item.kssj + "      "}} {{item.cxsc}}
+
+                <view class="text-blue text-lg">
+                  <text class="cuIcon-friend margin-lr-xs"></text> {{item.cyrs}}
+                  <!-- <text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
+                  <text class="cuIcon-messagefill margin-lr-xs"></text> 30 -->
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="flex"  style="flex;flex-direction:row-reverse" >
+              <van-button id="{{item._id}}" bindtap="quit" size="small" icon="minus"  type="warning">退出</van-button>
+              
+          </view>
+
         </view>
     </view>
   </view>

@@ -148,8 +148,14 @@ Page({
                   
               }
             }).then((res)=>{
+                db.collection('join_in').add({
+                    data:{
+                        activity: res._id,
+                    }
+                })
                 db.collection('acti').doc(res._id).get().then((res)=>{
                     app.userInfo = Object.assign(app.userInfo, res.data);
+                    
                 });
                 Toast.success('活动创建成功!');
                 wx.reLaunch({

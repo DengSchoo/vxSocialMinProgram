@@ -1,6 +1,8 @@
 // pages/myactivity/myactivity.js
 const app = getApp();
 const db = wx.cloud.database();
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+
 Page({
 
     /**
@@ -9,14 +11,21 @@ Page({
     data: {
         UserInfo:{},
         cur_act:"",
-        acti:[],
+        
         activities:[]
     },
 
     toDetail:function(e){
+<<<<<<< HEAD
         this.setData({
             userinfo: app.userInfo
         }),
+=======
+        console.log(e);
+        wx.redirectTo({
+          url: '../act_detail/act_detail',
+        })
+>>>>>>> 5eecad8259773437b87f3be847cf02879589e0b4
 
         app.globalData['target_id']=e.currentTarget.id;
         console.log(app.globalData['target_id']); 
@@ -41,15 +50,35 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
+<<<<<<< HEAD
         let temp = this.data.acti;
         console.log(app.userInfo["_openid"])
+=======
+        
+     
+>>>>>>> 5eecad8259773437b87f3be847cf02879589e0b4
     },
-    join(){
-
+    join(e){
+        console.log(e);
+        db.collection('join_in').where({
+            _openid : this.data.UserInfo['_openid'],
+            activity : e.currentTarget.id
+        }).get({}).then(res => {
+            if (res.data.length != 0) {
+                console.log("aaa");
+                Toast.fail('已经参加');
+                return;
+            }
+        })
+        db.collection('join_in').add({
+            data:{
+                activity:e.currentTarget.id
+            }
+        })
     },
 
     quit(){
-
+        
     },
     
 
@@ -60,7 +89,7 @@ Page({
         db.collection('acti').where({
             hdlx : app.globalData['target_act']
         }).get().then( res=>{
-              
+              res.data.reverse()
               this.setData({
                 activities:res.data
               })
