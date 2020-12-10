@@ -35,7 +35,7 @@
                 {{item.ksrq}}{{" " + item.kssj + "      "}} {{item.cxsc}}
 
                 <view class="text-blue text-lg">
-                  <text class="cuIcon-friend margin-lr-xs"></text> {{item.cxrs}}
+                  <text class="cuIcon-friend margin-lr-xs"></text> {{item.cyrs}}
                   <!-- <text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
                   <text class="cuIcon-messagefill margin-lr-xs"></text> 30 -->
                 </view>
@@ -44,14 +44,14 @@
           </view>
           <view class="flex"  style="flex;flex-direction:row-reverse" >
             
-              <van-button id="{{item.id}}" bindtap="quit" size="small" icon="minus"  type="warning">退出</van-button>
+              <van-button id="{{item._id}}" bindtap="quit" size="small" icon="minus"  type="warning">退出</van-button>
               
           </view>
         </view>
     </view>
   </view>
   </van-tab>
-
+ 
 
   <van-tab title="我创建的" name="b">
     <view wx:if="{{myacti.length==0}}">
@@ -98,6 +98,6 @@
   </van-tab>
 </van-tabs>
 
-
+<van-toast id="van-toast" />
 
 <view style="height: 4rem;"></view>

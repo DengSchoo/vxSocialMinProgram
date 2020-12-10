@@ -11,7 +11,6 @@ Page({
     data: {
         UserInfo:{},
         cur_act:"",
-        
         activities:[]
     },
 
@@ -30,7 +29,7 @@ Page({
     onLoad: function (options) {
 
         this.setData({
-            UserInfo:app.globalData,
+            UserInfo:app.userInfo,
             cur_act:app.globalData['target_act']
         })
     },
@@ -44,21 +43,26 @@ Page({
     },
     join(e){
         console.log(e);
+        console.log(this.data.UserInfo['_openid']);
         db.collection('join_in').where({
             _openid : this.data.UserInfo['_openid'],
             activity : e.currentTarget.id
         }).get({}).then(res => {
+            console.log(res.data)
             if (res.data.length != 0) {
-                console.log("aaa");
                 Toast.fail('已经参加');
                 return;
             }
-        })
-        db.collection('join_in').add({
-            data:{
-                activity:e.currentTarget.id
+            else{
+                db.collection('join_in').add({
+                    data:{
+                        activity:e.currentTarget.id
+                    }
+                })
+                Toast.success('加入成功');
             }
         })
+        
     },
 
     quit(){

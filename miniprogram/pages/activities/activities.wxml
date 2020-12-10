@@ -1,6 +1,6 @@
 
 <view class="cu-bar bg-black search">
-				<view class="cu-avatar round" style="background-image:url({{UserInfo.userPhoto}});"></view>
+				<view class="cu-avatar round" style="background-image:url({{UserInfo.avatarUrl}});"></view>
 				<view class="content">
 					Kindred Spirit - {{cur_act}}
 				</view>

@@ -1,7 +1,8 @@
 // pages/myactivity/myactivity.js
 const app = getApp();
-
 const db = wx.cloud.database();
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+
 Page({
 
     /**
@@ -15,25 +16,28 @@ Page({
         length:0
     },
     quit(e){
-        
-    },
-    join(e){
         console.log(e);
         db.collection('join_in').where({
             _openid : this.data.UserInfo['_openid'],
             activity : e.currentTarget.id
         }).get({}).then(res => {
-            if (res.data.length != 0) {
-                console.log("aaa");
-                return;
-            }
+            console.log(res)
+            db.collection('join_in').doc(res.data[0]._id).remove({
+                success: function(res) {
+                    Toast.success('退出成功');
+
+                    setTimeout(function(){
+                        wx.reLaunch({
+                            url: '../myactivity/myactivity',
+                          })
+                    }, 1000);
+                    
+                }
+              })  
         })
-        db.collection('join_in').add({
-            data:{
-                activity:e.currentTarget.id
-            }
-        })
+        
     },
+  
     /**
      * 生命周期函数--监听页面加载
      */
