@@ -1,18 +1,20 @@
 <!--pages/setting/setting.wxml-->
 <view class="cu-bar bg-black search">
-				<view class="cu-avatar round" ></view>
+				<view class="cu-avatar round" style="background-image:url({{userinfo.avatarUrl}});" ></view>
 				<view class="content">
 					{{userinfo.nickName}}
 				</view>
 </view>
-<view style="padding-top:5px">
+
+<view style="padding-top:5px;position:relative;margin:auto;">
   <van-image
     round
-  width="10rem"
-  height="10rem"
+    width="10rem"
+    height="10rem"
+    
   class="userImage"
-  src="{{userinfo.avatarUrl}}"
-/>
+  src="{{userinfo.avatarUrl}}"></van-image>
+  
 </view>
 
 <van-cell-group>

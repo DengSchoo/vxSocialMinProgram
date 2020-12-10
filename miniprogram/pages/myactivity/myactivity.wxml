@@ -1,6 +1,6 @@
 <!--pages/myactivity/myactivity.wxml-->
 <view class="cu-bar bg-black search">
-				<view class="cu-avatar round" style="background-image:url({{UserInfo.userPhoto}});"></view>
+				<view class="cu-avatar round" style="background-image:url({{UserInfo.avatarUrl}});"></view>
 				<view class="content">
 					Kindred Spirit - 我的
 				</view>
@@ -42,10 +42,10 @@
               </view>
             </view>
           </view>
-          <view class="flex" style="flex;flex-direction:row-reverse" >
+          <view class="flex"  style="flex;flex-direction:row-reverse" >
             
-              <van-button bindtap="quit" size="small" icon="minus" disabled type="warn">退出</van-button>
-              <van-button bindtap="join"  size="small" icon="plus" type="primary">加入</van-button>
+              <van-button id="{{item.id}}" bindtap="quit" size="small" icon="minus" disabled type="warn">退出</van-button>
+              <van-button id="{{item.id}}" bindtap="join"  size="small" icon="plus" type="primary">加入</van-button>
               
           </view>
         </view>
@@ -85,12 +85,11 @@
               </view>
             </view>
           </view>
-          <view class="flex" style="flex;flex-direction:row-reverse" >
-            
-              <van-button bindtap="quit" size="small" icon="minus" disabled type="warn">退出</van-button>
-              <van-button bindtap="join"  size="small" icon="plus" type="primary">加入</van-button>
-              
+          <view class="flex"  style="flex;flex-direction:row-reverse" >
+              <van-button id="{{item._id}}" bindtap="quit" size="small" icon="minus" disabled type="warn">退出</van-button>
+              <van-button id="{{item._id}}" bindtap="join"  size="small" icon="plus" type="primary">加入</van-button>
           </view>
+
         </view>
     </view>
   </view>

@@ -185,9 +185,10 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-        const userinfo=wx.getStorageSync("userinfo");
-        this.setData({userinfo
-        });
+        
+        // this.setData({
+        //     //userinfo:app.userInfo
+        // });
     },
 
     /**

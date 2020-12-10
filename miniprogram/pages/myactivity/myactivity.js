@@ -14,10 +14,24 @@ Page({
         join_list:[]
     },
     quit(e){
-
+        
     },
     join(e){
-
+        console.log(e);
+        db.collection('join_in').where({
+            _openid : this.data.UserInfo['_openid'],
+            activity : e.currentTarget.id
+        }).get({}).then(res => {
+            if (res.data.length != 0) {
+                console.log("aaa");
+                return;
+            }
+        })
+        db.collection('join_in').add({
+            data:{
+                activity:e.currentTarget.id
+            }
+        })
     },
     /**
      * 生命周期函数--监听页面加载
@@ -25,7 +39,7 @@ Page({
     onLoad: async function (options) {
 
         this.setData({
-            UserInfo:app.globalData
+            UserInfo:app.userInfo
         });
         this.getTabBar().init();
 
