@@ -1,6 +1,8 @@
 // pages/myactivity/myactivity.js
 const app = getApp();
 const db = wx.cloud.database();
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+
 Page({
 
     /**
@@ -9,7 +11,7 @@ Page({
     data: {
         UserInfo:{},
         cur_act:"",
-        acti:[],
+        
         activities:[]
     },
 
@@ -40,12 +42,27 @@ Page({
         
      
     },
-    join(){
-
+    join(e){
+        console.log(e);
+        db.collection('join_in').where({
+            _openid : this.data.UserInfo['_openid'],
+            activity : e.currentTarget.id
+        }).get({}).then(res => {
+            if (res.data.length != 0) {
+                console.log("aaa");
+                Toast.fail('已经参加');
+                return;
+            }
+        })
+        db.collection('join_in').add({
+            data:{
+                activity:e.currentTarget.id
+            }
+        })
     },
 
     quit(){
-
+        
     },
     
 
@@ -56,7 +73,7 @@ Page({
         db.collection('acti').where({
             hdlx : app.globalData['target_act']
         }).get().then( res=>{
-              
+              res.data.reverse()
               this.setData({
                 activities:res.data
               })

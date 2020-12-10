@@ -84,14 +84,14 @@ Page({
                     }).get({}).then( res=>{             
                         acti.push(res.data[0]);
                     })
-                    acti.reverse();
+                    
+                })
+                acti.reverse();
                     //console.log(acti);
                     that.setData({
                         act : acti,
                         length : 1
                     })
-                })
-                
                 app.globalData['temp'] = this.data.act;
                 return this.data.act;
             }),

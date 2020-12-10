@@ -2,6 +2,7 @@
   "usingComponents": {
     "van-panel": "@vant/weapp/panel/index",
     "van-card": "@vant/weapp/card/index",
-    "van-empty": "@vant/weapp/empty/index"
+    "van-empty": "@vant/weapp/empty/index",
+    "van-toast": "@vant/weapp/toast/index"
   }
 }
