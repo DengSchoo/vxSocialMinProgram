@@ -148,11 +148,12 @@
   <van-cell-group>
   <van-field
     value="{{ zwms }}"
+    input-align="right"
     label="自我描述"
     bind:change="onChange"
     type="textarea"
     id="zwms"
-    disabled="{{disabled}}"
+    disabled="{{zwmsdisable}}"
     autosize
     border="{{ false }}"
   />
@@ -161,7 +162,7 @@
 
 <view class="padding flex flex-direction">
   <button class="cu-btn bg-cyan lg" bindtap="modifyBtn">{{msg}}</button>
-  <button class="cu-btn bg-red margin-tb-sm lg" disabled="{{disabled==false?false:true}}" bindtap="cancelBtn">取消</button>
+  <button class="cu-btn bg-red margin-tb-sm lg" disabled="{{zwmsdisable}}" bindtap="cancelBtn">取消</button>
 </view>
 <van-toast id="van-toast" />
 <view style="height: 3rem;"></view>

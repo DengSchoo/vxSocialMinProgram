@@ -44,10 +44,13 @@ Page({
         grades: ['2015','2016','2017','2018','2019','2020'],
         permmsion:false,
         disabled:true,
+        zwmsdisable:true,
         msg:"修改信息",
+        flag:1,
         xhError:"",
         lxfsError:"",
         nlError:"",
+        num: 0,
         columns: [
             {
               values: Object.keys(majors),
@@ -64,17 +67,23 @@ Page({
         var id = app.userInfo["_id"]
         db.collection('users').where({_openid : openid}).get({}).then(res => {
                //如果查询成功的话    
-                console.log(res.data[0].num)
-                if (res.data[0].num == 0) {
-                  Toast.fail('修改次数已用完');
-                  return
+            console.log(res.data[0])
+            if (res.data[0].num == 0) {
+                Toast('您目前只能修改自我描述');
+                  this.setData({                      
+                      disabled: true,
+                      zwmsdisable: false
+                  })
+                  
               } else{
-                  console.log(res.data[0].num)
-                  this.setData({
-                      disabled:false,
-                      msg:"保存提交"
-                  });
-                  if (this.data.permmsion != false)
+                    this.setData({
+                        disabled:false,
+                        zwmsdisable: false,
+                        msg:"保存提交"
+                    });
+                    Toast('您只有一次修改机会(自我描述不在此限制范围)');
+                }
+                  if (this.data.permmsion != false)             
                       wx.cloud.callFunction({
                           name:'updateSetting',
                           data:{
@@ -88,6 +97,7 @@ Page({
                                   nl: this.data.nl,
                                   lxfs: this.data.lxfs,
                                   zwms: this.data.zwms,
+                                  num: this.data.flag
                               }
                           }
                       }).then((res)=>{
@@ -114,8 +124,9 @@ Page({
                                 nl:app.userInfo['nl'],
                                 lxfs:app.userInfo['lxfs'],
                                 zwms:app.userInfo['zwms'],
-                                num: 1
+                                num:app.userInfo['num']
                             })
+                            console.log(this.data['num'])
                             wx.reLaunch({
                                 url: '../setting/setting',
                             });
@@ -126,7 +137,7 @@ Page({
                 this.setData({
                     permmsion:true
                 });  
-                }
+                
 
     })
 },
@@ -139,7 +150,6 @@ Page({
                 njbottom: false,    
                 nj: event.detail.value,
             });
-            console.log(event.detail)
         }
         else if(event.currentTarget.id == 'xypopup'){
             const { value, index } = event.detail;
@@ -197,6 +207,7 @@ Page({
     cancelBtn(){
         this.setData({
             disabled:true,
+            zwmsdisable:true,
             permmsion:false,
             msg:"修改信息",
         })
@@ -271,8 +282,11 @@ Page({
             case 'zwms': this.setData({
                 zwms:event.detail
             });break;
-
         }
+        if(event.currentTarget.id != 'zwms')
+            this.setData({
+                flag: 0
+            })
         //console.log(event);
       },
     /**
