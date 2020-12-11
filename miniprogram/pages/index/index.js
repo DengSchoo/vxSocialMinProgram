@@ -146,7 +146,7 @@ Page({
   findActivity(e){
     app.globalData['target_act'] = e.currentTarget.id;
     
-    wx.reLaunch({
+    wx.navigateTo({
       url: '../activities/activities',
     })
   },

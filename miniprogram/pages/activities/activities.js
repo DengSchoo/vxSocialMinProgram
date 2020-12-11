@@ -18,16 +18,15 @@ Page({
         this.setData({
             userinfo: app.userInfo
         });
-        console.log(e);
-        wx.redirectTo({
-          url: '../act_detail/act_detail',
-        })
-
+        
         app.globalData['target_id']=e.currentTarget.id;
-        console.log(app.globalData['target_id']); 
-         wx.redirectTo({
-             url: '../act_detail/act_detail',
-        })
+        //console.log(app.globalData['target_id']); 
+        wx.navigateTo({
+            url: '../act_detail/act_detail',
+          })
+        //  wx.reLaunch({
+        //    url: '../act_detail/act_detail',
+        //  })
     },
     
 
@@ -50,13 +49,13 @@ Page({
      
     },
     join(e){
-        console.log(e);
-        console.log(this.data.UserInfo['_openid']);
+        
+        
         db.collection('join_in').where({
             _openid : this.data.UserInfo['_openid'],
             activity : e.currentTarget.id
         }).get({}).then(res => {
-            console.log(res.data)
+            
             if (res.data.length != 0) {
                 Toast.fail('已经参加');
                 return;
@@ -103,9 +102,10 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-        // wx.reLaunch({
-        //   url: '../index/index',
-        // })
+        
+        wx.reLaunch({
+            url: '../index/index',
+        })
     },
 
     /**
