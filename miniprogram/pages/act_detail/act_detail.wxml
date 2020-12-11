@@ -51,7 +51,7 @@
     label="活动内容"
     input-align="right"
     value="{{cur_acti.hdnr}}"
-    size="large"
+    autosize
     type="textarea"
     disabled="{{disabled}}"
     input-align="right"
