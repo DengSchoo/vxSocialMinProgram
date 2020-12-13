@@ -9,6 +9,7 @@ Page({
     active: 0,
     cardCur: 0,
     userinfo:{},
+    toggleDelay: false,
     swiperList: [{
       id: '学习',
       type: 'image',
@@ -248,6 +249,7 @@ Page({
         iconList : tempList
       })
     })
+    this.toggleDelay();
   },
   onChange(event) {
     // event.detail 的值为当前选中项的索引
@@ -275,9 +277,20 @@ Page({
         this.setData({
             userinfo
         })
-   
+    
   },
 
+  toggleDelay() {
+    var that = this;
+    that.setData({
+      toggleDelay: true
+    })
+    setTimeout(function() {
+      that.setData({
+        toggleDelay: false
+      })
+    }, 1800)
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
