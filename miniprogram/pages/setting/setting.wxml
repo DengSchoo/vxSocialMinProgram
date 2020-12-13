@@ -6,15 +6,18 @@
 				</view>
 </view>
 
-<view style="padding-top:5px;position:relative;margin:auto;">
-  <van-image
-    round
-    width="10rem"
-    height="10rem"
-    
-  class="userImage"
-  src="{{userinfo.avatarUrl}}"></van-image>
-  
+
+<view  class="bg-white padding radius text-center light">
+     
+    <view style="">
+        <van-image
+        round
+        width="175px"
+        height="175px"
+        fit="cover"
+        src="{{userinfo.avatarUrl}}"
+    />
+    </view>
 </view>
 
 <van-cell-group>

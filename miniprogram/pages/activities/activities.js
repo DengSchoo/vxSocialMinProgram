@@ -49,7 +49,14 @@ Page({
      
     },
     join(e){
-        
+        var openid = "";
+        var time = "";
+        this.data.activities.forEach((value,index)=> {
+            if (e.currentTarget.id == value._id) {
+                openid = value._openid;
+                
+            }
+        })
         
         db.collection('join_in').where({
             _openid : this.data.UserInfo['_openid'],
@@ -66,13 +73,7 @@ Page({
                         activity:e.currentTarget.id
                     }
                 }).then( res =>{ 
-                    var openid = "";
-                    this.data.activities.forEach((value,index)=> {
-                        if (e.currentTarget.id == value._id) {
-                            openid = value._openid;
-                            
-                        }
-                    })
+                    
 
                     wx.cloud.callFunction({
                         name:'updateJoin',
