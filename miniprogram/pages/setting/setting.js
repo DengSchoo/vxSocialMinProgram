@@ -211,9 +211,9 @@ Page({
             permmsion:false,
             msg:"修改信息",
         })
-        wx.reLaunch({
-            url: '../setting/setting',
-        });
+        wx.redirectTo({
+          url: '../setting/setting',
+        })
     },
     
 
