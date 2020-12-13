@@ -15,7 +15,7 @@
       <image id="{{item._id}}" bindtap="toDetail" src="{{item.act_photo}}" mode="widthFix" style="height:125px"></image>
       <view class="cu-tag bg-blue">{{item.hdlx}}</view>
       <view class="cu-bar bg-shadeBottom">
-        <text class="text-cut">{{item.hdms}}</text>
+        <text class="text-cut">{{item.hdbt}}</text>
       </view>
     </view>
 

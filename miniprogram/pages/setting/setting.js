@@ -67,7 +67,7 @@ Page({
         var id = app.userInfo["_id"]
         db.collection('users').where({_openid : openid}).get({}).then(res => {
                //如果查询成功的话    
-            console.log(res.data[0])
+            
             if (res.data[0].num == 0) {
                 Toast('您目前只能修改自我描述');
                   this.setData({                      
@@ -126,7 +126,7 @@ Page({
                                 zwms:app.userInfo['zwms'],
                                 num:app.userInfo['num']
                             })
-                            console.log(this.data['num'])
+                            
                             wx.reLaunch({
                                 url: '../setting/setting',
                             });

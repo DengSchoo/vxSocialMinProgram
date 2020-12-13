@@ -1,4 +1,5 @@
 const app = getApp();
+const db = wx.cloud.database();
 Page({
 
   /**
@@ -53,13 +54,13 @@ Page({
       id:'演出',
       icon: 'musicfill',
       color: 'red',
-      badge: 120,
+      badge: 0,
       name: '演出'
     }, {
       id:'出游',
       icon: 'colorlens',
       color: 'orange',
-      badge: 1,
+      badge: 0,
       name: '出游'
     }, {
       id:'电影',
@@ -71,7 +72,7 @@ Page({
       id:'跑步',
       icon: 'play_forward_fill',
       color: 'olive',
-      badge: 22,
+      badge: 0,
       name: '跑步'
     }, {
       id:'球类',
@@ -233,6 +234,20 @@ Page({
    */
   onLoad: function (options) {
     this.towerSwiper('swiperList');
+    var tempList = this.data.iconList;
+    db.collection('acti').where({}).get().then(res => {
+      res.data.forEach((value1, index) => {
+        this.data.iconList.forEach((value2, index) => {
+          if (value1.hdlx == value2.id) {
+            tempList[index].badge++;
+            //break;
+          }
+        })
+      })
+      this.setData({
+        iconList : tempList
+      })
+    })
   },
   onChange(event) {
     // event.detail 的值为当前选中项的索引
@@ -253,13 +268,14 @@ Page({
    */
   onShow: function () {
     this.getTabBar().init();
+    
     const userinfo = wx.getStorageSync("userinfo");
         var arr = Object.keys(userinfo);
         if(arr.length == 0) return;
         this.setData({
             userinfo
         })
-        
+   
   },
 
   /**

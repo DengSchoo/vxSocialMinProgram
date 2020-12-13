@@ -65,17 +65,59 @@ Page({
                     data:{
                         activity:e.currentTarget.id
                     }
-                })
-                Toast.success('加入成功');
-            }
-        })
-        
-    },
+                }).then( res =>{ 
+                    var openid = "";
+                    this.data.activities.forEach((value,index)=> {
+                        if (e.currentTarget.id == value._id) {
+                            openid = value._openid;
+                            
+                        }
+                    })
 
-    quit(){
+                    wx.cloud.callFunction({
+                        name:'updateJoin',
+                        data:{
+                            collection : 'acti',
+                            doc : e.currentTarget.id,
+                            openid : openid
+                        }
+                    })
+
+                })
+
+                
+                
+                    
+
+                // const _ = db.command
+                // var openid = "";
+                // this.data.activities.forEach((value,index)=> {
+                //     if (e.currentTarget.id == value._id) {
+                //         openid = value._openid;
+                //     }
+                // })
+                // console.log(openid);
+                // db.collection('acti').doc(e.currentTarget.id).update({
+                //     data: {
+                //         // 表示指示数据库将字段自增 1
+                //         _openid:openid,
+                //         cyrs: _.inc(1)
+                //     },
+                //     success: function(res) {
+                //         console.log(res.data)
+                //     }
+                // })
+                Toast.success('加入成功');
+                // setTimeout(function(){
+                //     wx.reLaunch({
+                //       url: '../activities/activities',
+                //     })
+                // }, 1000)
+            }
+            
+        })  
         
     },
-    
 
     /**
      * 生命周期函数--监听页面显示
@@ -95,7 +137,7 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
+        
     },
 
     /**
@@ -103,9 +145,7 @@ Page({
      */
     onUnload: function () {
         
-        wx.reLaunch({
-            url: '../index/index',
-        })
+        
     },
 
     /**
