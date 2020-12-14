@@ -53,11 +53,22 @@ Page({
         var time = "";
         this.data.activities.forEach((value,index)=> {
             if (e.currentTarget.id == value._id) {
-                openid = value._openid;
-                
+                openid = value._openid;           
             }
         })
-        
+        db.collection('acti').where({
+            _id : e.currentTarget.id
+        }).get({}).then(res => {
+            var myDate = new Date();
+            myDate.toLocaleString( );                   //获取日期与时间
+            var Hour=myDate.getHours()
+            var Min=myDate.getMinutes()
+            if((Hour > res.data[0].jssjHour)||(Hour == res.data[0].jssjHour && Min > res.data[0].jssjMin))
+            {
+                Toast.fail('活动已结束');
+                return;
+            }
+        })
         db.collection('join_in').where({
             _openid : this.data.UserInfo['_openid'],
             activity : e.currentTarget.id
@@ -74,7 +85,6 @@ Page({
                     }
                 }).then( res =>{ 
                     
-
                     wx.cloud.callFunction({
                         name:'updateJoin',
                         data:{
