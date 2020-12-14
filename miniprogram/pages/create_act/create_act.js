@@ -15,7 +15,7 @@ Page({
         cxsc:"",
         jssjHour:"",
         jssjMin:"",
-        lxfs:"",    
+          
         hdnr:"",
         lxbottom: false,
         ksrqbottom: false,
@@ -75,7 +75,7 @@ Page({
             Hour = parseInt(Time.substring(0,2))   
             Min = parseInt(Time.substring(3,5) )
             Time = Hour + "小时" + Min + "分钟"  
-            console.log(Hour, Min)
+            
             var Time1 =  this.data['kssj']
             Hour += parseInt(Time1.substring(0,2))
             Min += parseInt(Time1.substring(3,5))
@@ -115,6 +115,7 @@ Page({
             for(let key in this.data){
                 app.userInfo[key]=this.data[key];
             }
+
             app.userInfo['nickName']=app.globalData['nickName']; 
             app.userInfo['avatarUrl']=app.globalData['userPhoto'];
             var type = app.userInfo['hdlx']
@@ -126,7 +127,7 @@ Page({
             else if(type == '电影')
                 photo='https://images.pexels.com/photos/1117132/pexels-photo-1117132.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
             else if(type == '跑步')
-                photo='https://images.pexels.com/photos/7432/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+                photo='https://images.pexels.com/photos/39308/runners-silhouettes-athletes-fitness-39308.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
             else if(type == '球类')
                 photo='https://images.pexels.com/photos/1752757/pexels-photo-1752757.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
             else if(type == '游戏')
@@ -172,10 +173,10 @@ Page({
                         activity: res._id,
                     }
                 })
-                db.collection('acti').doc(res._id).get().then((res)=>{
-                    app.userInfo = Object.assign(app.userInfo, res.data);
+                // db.collection('acti').doc(res._id).get().then((res)=>{
+                //     app.userInfo = Object.assign(app.userInfo, res.data);
                     
-                });
+                // });
                 Toast.success('活动创建成功!');
                 wx.reLaunch({
                   url: '../myactivity/myactivity',

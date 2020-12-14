@@ -16,7 +16,7 @@ Page({
         length:0
     },
     quit(e){
-         console.log(e);
+         
          var openid = ""
         db.collection('join_in').where({
             _openid : this.data.UserInfo['_openid'],

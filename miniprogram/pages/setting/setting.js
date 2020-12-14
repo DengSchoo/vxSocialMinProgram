@@ -74,14 +74,21 @@ Page({
                       disabled: true,
                       zwmsdisable: false
                   })
+                  this.setData({
+                    disabled:false,
+                    zwmsdisable: false,
+                    msg:"保存提交"
+                });
                   
               } else{
+                     if(this.data['msg'] == "修改信息")
+                         Toast('您只有一次修改机会(自我描述不在此限制范围)');
                     this.setData({
                         disabled:false,
                         zwmsdisable: false,
                         msg:"保存提交"
                     });
-                    Toast('您只有一次修改机会(自我描述不在此限制范围)');
+                    
                 }
                   if (this.data.permmsion != false)             
                       wx.cloud.callFunction({
@@ -212,8 +219,8 @@ Page({
             msg:"修改信息",
         })
         wx.reLaunch({
-            url: '../setting/setting',
-        });
+          url: '../setting/setting',
+        })
     },
     
 
@@ -222,15 +229,7 @@ Page({
      */
     onLoad: function (options) {
         const userinfo=wx.getStorageSync("userinfo");
-        this.setData({userinfo,
-            xh:app.userInfo['xh'],
-            nj:app.userInfo['nj'],
-            xy:app.userInfo['xy'],
-            zy:app.userInfo['zy'],
-            nl:app.userInfo['nl'],
-            lxfs:app.userInfo['lxfs'],
-            zwms:app.userInfo['zwms'],
-        });
+        
     },
 
     /**
@@ -249,8 +248,17 @@ Page({
     onShow: function () {
         this.getTabBar().init();
         const userinfo=wx.getStorageSync("userinfo");
-        this.setData({userinfo});
+        // this.setData({userinfo});
         
+        this.setData({userinfo,
+            xh:app.userInfo['xh'],
+            nj:app.userInfo['nj'],
+            xy:app.userInfo['xy'],
+            zy:app.userInfo['zy'],
+            nl:app.userInfo['nl'],
+            lxfs:app.userInfo['lxfs'],
+            zwms:app.userInfo['zwms'],
+        });
         
     },
     onChange(event) {
