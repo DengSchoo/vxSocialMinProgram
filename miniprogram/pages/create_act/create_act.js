@@ -10,8 +10,11 @@ Page({
     data: {
         hdlx:"",
         hdbt:"",
+        kssj:"",
         ksrq: null,
         cxsc:"",
+        jssjHour:"",
+        jssjMin:"",
         lxfs:"",    
         hdnr:"",
         lxbottom: false,
@@ -24,7 +27,7 @@ Page({
         defautlast: '2:00',
         minH: 0,
         maxH: 8,
-        activityTypes:["演出","出游","电影","球类","游戏","美食","学习","竞赛","讲座","奶茶会","公益","游泳","购物","其它"],
+        activityTypes:["演出","出游","电影","跑步","球类","游戏","美食","学习","竞赛","讲座","奶茶会","公益","游泳","购物","其它"],
     },
    
     /**
@@ -69,12 +72,24 @@ Page({
         }
         else if(event.currentTarget.id == 'lasttime'){
             var Time = event.detail, Hour, Min
-            Hour = Time.substring(0,2)
-            Min = Time.substring(3,5) 
-            Time = Hour + "小时" + Min + "分钟"           
+            Hour = parseInt(Time.substring(0,2))   
+            Min = parseInt(Time.substring(3,5) )
+            Time = Hour + "小时" + Min + "分钟"  
+            console.log(Hour, Min)
+            var Time1 =  this.data['kssj']
+            Hour += parseInt(Time1.substring(0,2))
+            Min += parseInt(Time1.substring(3,5))
+            if(Min >= 60)
+                {
+                    Min -= 60
+                    Hour += 1
+                }
+            Time1 = Hour + ":" + Min
             this.setData({
                 cxscbottom: false,
-                cxsc:Time
+                cxsc:Time,
+                jssjHour:Hour,
+                jssjMin:Min
             });
         }
     },
@@ -105,11 +120,13 @@ Page({
             var type = app.userInfo['hdlx']
             var photo
             if (type == '演出') 
-                photo='http://article.fd.zol-img.com.cn/t_s640x2000/g4/M06/0A/08/Cg-4y1UH3GiILebHAAFXPMRDttIAAW4fgN4pf0AAVdU053.jpg'
+                photo='https://images.pexels.com/photos/713149/pexels-photo-713149.jpeg?cs=srgb&dl=pexels-monica-silvestre-713149.jpg&fm=jpg'
             else if(type == '出游')
                 photo='https://images.pexels.com/photos/5064930/pexels-photo-5064930.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
             else if(type == '电影')
                 photo='https://images.pexels.com/photos/1117132/pexels-photo-1117132.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+            else if(type == '跑步')
+                photo='https://images.pexels.com/photos/7432/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500'
             else if(type == '球类')
                 photo='https://images.pexels.com/photos/1752757/pexels-photo-1752757.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
             else if(type == '游戏')
@@ -141,6 +158,8 @@ Page({
                   hdbt: app.userInfo['hdbt'],
                   ksrq: app.userInfo['ksrq'],
                   kssj: app.userInfo['kssj'],
+                  jssjHour: app.userInfo['jssjHour'],
+                  jssjMin: app.userInfo['jssjMin'],
                   cxsc: app.userInfo['cxsc'],
                   hdnr: app.userInfo['hdnr'],
                   cyrs: 1,
