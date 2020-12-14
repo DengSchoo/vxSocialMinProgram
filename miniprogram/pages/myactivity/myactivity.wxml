@@ -22,7 +22,7 @@
           <image id="{{item._id}}" bindtap="toDetail" src="{{item.act_photo}}" mode="widthFix" style="height:125px"></image>
           <view class="cu-tag bg-blue">{{item.hdlx}}</view>
           <view class="cu-bar bg-shadeBottom">
-            <text class="text-cut">{{item.hdms}}</text>
+            <text class="text-cut">{{item.hdbt}}</text>
           </view>
         </view>
 
@@ -34,7 +34,7 @@
               <view class="text-gray text-sm flex justify-between">
                 {{item.ksrq}}{{" " + item.kssj + "      "}} {{item.cxsc}}
 
-                <view class="text-blue text-lg">
+                <view  class="text-blue text-lg">
                   <text class="cuIcon-friend margin-lr-xs"></text> {{item.cyrs}}
                   <!-- <text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
                   <text class="cuIcon-messagefill margin-lr-xs"></text> 30 -->
@@ -44,7 +44,7 @@
           </view>
           <view class="flex"  style="flex;flex-direction:row-reverse" >
             
-              <van-button id="{{item._id}}" bindtap="quit" size="small" icon="minus"  type="warning">退出</van-button>
+              <van-button id="{{item._id}}"   bindtap="quit" size="small" icon="minus"  type="warning">退出</van-button>
               
           </view>
         </view>
@@ -64,7 +64,7 @@
           <image id="{{item._id}}" bindtap="toDetail" src="{{item.act_photo}}" mode="widthFix" style="height:125px"></image>
           <view class="cu-tag bg-blue">{{item.hdlx}}</view>
           <view class="cu-bar bg-shadeBottom">
-            <text class="text-cut">{{item.hdms}}</text>
+            <text class="text-cut">{{item.hdbt}}</text>
           </view>
         </view>
 
@@ -85,7 +85,7 @@
             </view>
           </view>
           <view class="flex"  style="flex;flex-direction:row-reverse" >
-              <van-button id="{{item._id}}" bindtap="quit" size="small" icon="minus"  type="warning">退出</van-button>
+              <van-button id="{{item._id}}"  bindtap="quit" size="small" icon="minus"  type="warning">退出</van-button>
               
           </view>
 

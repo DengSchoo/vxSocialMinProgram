@@ -10,7 +10,7 @@ exports.main = async (event, context) => {
     return await db.collection(event.collection).doc(event.doc).update({
       data: {
         _openid : event.openid,
-        cyrs : _.inc(-1)
+        cyrs : _.inc(1)
       }
     })
   } catch(e) {

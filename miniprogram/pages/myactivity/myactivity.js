@@ -16,14 +16,35 @@ Page({
         length:0
     },
     quit(e){
-         
+         console.log(e);
+         var openid = ""
         db.collection('join_in').where({
             _openid : this.data.UserInfo['_openid'],
             activity : e.currentTarget.id
         }).get({}).then(res => {
-             
+            this.data.myacti.forEach((value,index)=> {
+                if (e.currentTarget.id == value._id) {
+                    openid = value._openid
+                    if (value._openid == app.userInfo['_openid']) {
+                        db.collection('acti').doc(e.currentTarget.id).remove({
+                        })
+                    }
+                }
+            })
+
+            wx.cloud.callFunction({
+                name:'descJoin',
+                data:{
+                    collection : 'acti',
+                    doc : e.currentTarget.id,
+                    openid : openid
+                }
+            })
+
             db.collection('join_in').doc(res.data[0]._id).remove({
+
                 success: function(res) {
+
                     Toast.success('退出成功');
 
                     setTimeout(function(){
@@ -33,7 +54,9 @@ Page({
                     }, 1000);
                     
                 }
-              })  
+              })
+            
+            
         })
         
     },
@@ -60,15 +83,12 @@ Page({
             userinfo: app.userInfo
         });
          
-        wx.redirectTo({
-          url: '../act_detail/act_detail',
-        })
-
+  
         app.globalData['target_id']=e.currentTarget.id;
          
-         wx.redirectTo({
-             url: '../act_detail/act_detail',
-        })
+         wx.navigateTo({
+           url: '../act_detail/act_detail',
+         })
     },
 
     
@@ -83,9 +103,9 @@ Page({
             this.setData({
                 act:app.globalData['temp']
             })
-            
             return;
         }
+
         const that = this;
         const acti = [];
         const resList = await Promise.all([
@@ -133,7 +153,9 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
+        this.setData({
+            length : 0
+        })
     },
 
     /**
