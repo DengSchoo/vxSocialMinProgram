@@ -15,7 +15,7 @@ Page({
         cxsc:"",
         jssjHour:"",
         jssjMin:"",
-        
+          
         hdnr:"",
         lxbottom: false,
         ksrqbottom: false,
@@ -75,7 +75,7 @@ Page({
             Hour = parseInt(Time.substring(0,2))   
             Min = parseInt(Time.substring(3,5) )
             Time = Hour + "小时" + Min + "分钟"  
-            console.log(Hour, Min)
+            
             var Time1 =  this.data['kssj']
             Hour += parseInt(Time1.substring(0,2))
             Min += parseInt(Time1.substring(3,5))

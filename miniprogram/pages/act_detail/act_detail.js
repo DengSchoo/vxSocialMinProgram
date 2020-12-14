@@ -39,8 +39,7 @@ Page({
         this.setData({
             cur_acti:res.data[0]
         })
-        console.log(this.data.cur_acti);
-        console.log(app.globalData['target_id']);
+        
     })
  
     },
