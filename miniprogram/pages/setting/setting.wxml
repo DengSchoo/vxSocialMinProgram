@@ -39,6 +39,7 @@
     id="njpopup"
     title="年级"
     columns="{{ grades }}"
+    bind:change="onChange"
     bind:confirm="onConfirm"
     bind:cancel="onCancel"
   />

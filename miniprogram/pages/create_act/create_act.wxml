@@ -37,7 +37,6 @@
     clearable
     input-align="right"
     label="活动标题"
-    icon="question-o"
 		maxlength = "15"
     placeholder="请输入活动描述,不超过15个字"
     bind:click-icon="onClickIcon"

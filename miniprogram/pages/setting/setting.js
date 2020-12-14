@@ -30,6 +30,9 @@ Page({
      * 页面的初始数据
      */
     data: {
+        oldnj:"",
+        oldxy:"",
+        oldzy:"",
         activeNames: ['1'],
         userinfo:{},  
         xh:app.userInfo['xh'],
@@ -65,17 +68,24 @@ Page({
     modifyBtn(e) {
         var openid = app.userInfo["_openid"]
         var id = app.userInfo["_id"]
+        
         db.collection('users').where({_openid : openid}).get({}).then(res => {
-               //如果查询成功的话    
-            
+               //如果查询成功的话  
+                this.setData({
+                    oldnj:res.data[0].nj,
+                    oldxy:res.data[0].xy,
+                    oldzy:res.data[0].zy
+                })
+               if(this.data['msg'] == "修改信息") 
+                    this.setData({
+                        flag:res.data[0].num
+                    })
+
             if (res.data[0].num == 0) {
-                Toast('您目前只能修改自我描述');
-                  this.setData({                      
-                      disabled: true,
-                      zwmsdisable: false
-                  })
+                if(this.data['msg'] == "修改信息")
+                    Toast('您目前只能修改自我描述');
                   this.setData({
-                    disabled:false,
+                    disabled:true,
                     zwmsdisable: false,
                     msg:"保存提交"
                 });
@@ -88,12 +98,18 @@ Page({
                         zwmsdisable: false,
                         msg:"保存提交"
                     });
+                    if(this.data['oldnj'] != this.data['nj']|| this.data['oldxy'] != this.data['xy'] || this.data['oldzy'] != this.data['zy'])
+                        this.setData({
+                            flag: 0
+                        })
                     
                 }
                   if (this.data.permmsion != false)             
-                      wx.cloud.callFunction({
-                          name:'updateSetting',
-                          data:{
+                  {   
+
+                        wx.cloud.callFunction({
+                        name:'updateSetting',
+                        data:{
                               collection : 'users',
                               doc : id,
                               data : {
@@ -108,7 +124,7 @@ Page({
                               }
                           }
                       }).then((res)=>{
-                    
+                      
                     db.collection('users').where({
                         _id : app.userInfo["_id"]
                     }).get().then((res)=>{
@@ -141,6 +157,7 @@ Page({
                            
                     });            
                 })
+            }
                 this.setData({
                     permmsion:true
                 });  
@@ -151,7 +168,7 @@ Page({
     onCancel() {          //隐藏选择器
         this.setData({njbottom: false,xybottom: false})  
     },
-    onConfirm(event) {    //点击选择器确认键    
+    onConfirm(event) {    //点击选择器确认键   
         if(event.currentTarget.id == 'njpopup'){
             this.setData({
                 njbottom: false,    
@@ -267,7 +284,6 @@ Page({
             const { picker, value, index } = event.detail;
             picker.setColumnValues(1, majors[value[0]]);          
         }
-
         switch(event.currentTarget.id){
             case "xh": this.setData({
                 xh:event.detail
@@ -291,10 +307,7 @@ Page({
                 zwms:event.detail
             });break;
         }
-        if(event.currentTarget.id != 'zwms')
-            this.setData({
-                flag: 0
-            })
+
         //console.log(event);
       },
     /**
