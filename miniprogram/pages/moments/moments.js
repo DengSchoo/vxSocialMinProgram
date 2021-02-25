@@ -14,8 +14,8 @@ Page({
         ]
     },
     creatMoments(e){
-        wx.redirectTo({
-          url: '../create_mom/create_mom',
+        wx.navigateTo({
+            url: '../create_mom/create_mom',
         })
     },
     /**
