@@ -1,4 +1,163 @@
-# 项目成功展示
+# 环境搭建及项目启动
+
+## 环境搭建
+
+### IDE下载&安装
+
+> 微信小程序开发工具下载（本项目选择的是老版本的Stable版本 读者下载最新版即可 ）： https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html
+>
+> ![image-20210331210251444](https://gitee.com/DengSchoo374/img/raw/master/images/image-20210331210251444.png)
+>
+> 安装过程比较简单，无需再赘述。
+
+> ps:请先注册微信开发者平台账号，以及开通云开发功能，后续需要的APP ID，以及预览查看实际效果
+
+> 扫码使用vx账号登录开发者工具
+
+登入之后的界面：
+
+![image-20210331211506218](https://gitee.com/DengSchoo374/img/raw/master/images/image-20210331211506218.png)
+
+> IDE具体使用参考官方手册文档，这里不再赘述：https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html
+
+
+
+### npm环境搭建
+
+`npm --v`或`npm --version`查看npm版本
+
+本项目使用需要==6.14.8==版本以上
+
+### nodejs环境
+
+`node -v`查看环境
+
+本项目需要==14.12.0==版本之上
+
+### clone本项目到本地
+
+`git clone https://github.com/DengSchoo/vxSocialMinProgram.git  `
+
+
+
+### 云数据库环境搭建（在项目导入后 再回到此部分来）
+
+- 云开发控制台如下（需要保证左上角当前环境统一）
+
+  ![image-20210331215853248](https://gitee.com/DengSchoo374/img/raw/master/images/image-20210331215853248.png)
+
+- 具体表字段可以参考代码与数据交互部分
+
+- 可能存在的问题
+
+  - 没有权限：请先开启每个用户对于数据库的权限（增删改）问题
+
+  - _openid问题：笔者踩过的坑还是你自己踩一遍才好
+
+  - 数据渲染问题：查数据库数据为异步操作，需要使用js阻塞或者查看vx开发文档看是否已经有解决方法
+
+    
+
+### vant-weapp前端框架的使用
+
+可以参考学习视频链接：https://www.bilibili.com/video/BV1m54y1C7Kz?from=search&seid=5661977342081741060
+
+### colorUI有手就行
+
+## 项目启动
+
+### 导入项目到本地
+
+- 导入主文件夹
+
+  ![image-20210331213147226](https://gitee.com/DengSchoo374/img/raw/master/images/image-20210331213147226.png)
+
+- 项目主目录：
+
+![image-20210331213229710](https://gitee.com/DengSchoo374/img/raw/master/images/image-20210331213229710.png)
+
+- 配置项目
+
+- ![image-20210331213637453](https://gitee.com/DengSchoo374/img/raw/master/images/image-20210331213637453.png)
+
+  -  AppID需要在开发者平台获取
+  - 因为使用到云数据库故需要开通云开发
+
+  ![image-20210331213752032](https://gitee.com/DengSchoo374/img/raw/master/images/image-20210331213752032.png)
+
+  - 如果成功达到上图效果 没有爆红即可建立该项目
+  - 第一次启动较慢 耐心等待
+
+- 创建项目后成功得到如图效果即成功导入
+
+  ![image-20210331214131155](https://gitee.com/DengSchoo374/img/raw/master/images/image-20210331214131155.png)
+
+  - 需要注意的是 需要在上交切换到适合的机型预览
+
+- 最后一步 查看控制台error 和 warning情况
+
+  ![image-20210331214346071](https://gitee.com/DengSchoo374/img/raw/master/images/image-20210331214346071.png)
+
+  > 此处报错可以忽略 (貌似开发者工具的问题 具体读者可以百度该错误代码\^_\^
+
+- vx接口版本问题
+
+  > vx开发组经常会改动（大多数弃用）接口，读者可以warning根据提示移步开发者文档查看
+
+## 最终登入成果
+
+![image-20210331221730531](https://gitee.com/DengSchoo374/img/raw/master/images/image-20210331221730531.png)
+
+- 数据保存在云开发环境中 故读者应该没有这些数据 不要惊慌
+- 看不懂本项目的文档结构的话 建议先入门微信小程序基础（基础+云开发）
+
+## 多人协作开发注意事项
+
+- 需要在开发者平台将协作开发者的vx号添加到开发者账号中
+
+- y因为涉及到云数据库和云函数，故需要同步为同一个云开发环境
+- 白嫖vx的数据库为对象数据库 调整表对应结构要通知到同组开发人员(不然debug 可能要.......)
+- 删库或者删数据也要同步一下避免麻烦
+
+## 参考的开源组件以及对应的开发文档
+
+- vant-weapp
+
+  https://vant-contrib.gitee.io/vant-weapp/#/intro
+
+- 微信官方开发文档
+
+  https://developers.weixin.qq.com/miniprogram/dev/framework/
+
+- colorUI（强推）
+
+  https://www.color-ui.com/
+
+## 完整开发文档
+
+>  详细开发文档 涉及小组成员信息等私密信息，如真需要可以提issue到本项目，留下联系方式，到时再私发去隐秘信息版的
+
+## 写在后面
+
+> ==本项目为竞赛作品，因为技术方向原因，不会再进一步维护了，感兴趣的读者可以fork一下，star一下（拒绝白嫖从我做起。==
+>
+> ==心得体会：学会整合轮子很重要，这样对上手框架都很快，阅读开发文档，做信息检索同样重要，但是框架迭代更新很快，唯一不变的是背后的原理，如果一个框架组件的文档写得不全的话还是弃坑吧，hhhhh==
+
+> ==项目竞赛演示视频、项目简介已经上传至本项目下的Docs目录==
+
+> 
+>
+> > 推广一下blog：https://www.cnblogs.com/DengSchoo
+>
+> > gitee（主要是做了图床 以及一些学习笔记）:https://gitee.com/DengSchoo374
+>
+> > 欢迎commit issue 说明文档V1.0 还不完善 后续根据issue更新叭
+>
+> ==祝好。peace & love==
+>
+> 
+
+# 一、项目成果展示
 
 ![image-20210225152431968](https://gitee.com/DengSchoo374/img/raw/master/images/image-20210225152431968.png)![image-20210225152436537](https://gitee.com/DengSchoo374/img/raw/master/images/image-20210225152436537.png)
 
