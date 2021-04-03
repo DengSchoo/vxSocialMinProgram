@@ -1,5 +1,7 @@
 # 环境搭建及项目启动
 
+> gitee图床 ，github被墙原因等，图片有可能加载不出来，可以挂梯子或者等网络状况好再查看
+
 ## 环境搭建
 
 ### IDE下载&安装
@@ -110,6 +112,174 @@
 
 - 数据保存在云开发环境中 故读者应该没有这些数据 不要惊慌
 - 看不懂本项目的文档结构的话 建议先入门微信小程序基础（基础+云开发）
+
+## vx云开发数据库与云存储使用
+
+### 云开发控制台
+
+云开发提供了一个控制台用于可视化管理云资源。控制台包含以下几大模块。
+
+- 概览：查看云资源的总体使用情况
+- 用户管理：查看小程序的用户访问记录
+- 数据库：管理数据库集合、记录、权限设置、索引设置
+- 存储管理：管理云文件、权限设置
+- 云函数：管理云函数、查看调用日志、监控记录
+- 统计分析：查看云资源详细使用统计
+
+若小程序由多名开发者共同维护，小程序管理员可以在控制台[权限设置](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/guide/authority.html)中配置相应开发者权限。
+
+在用户管理中会显示使用云能力的小程序的访问用户列表，默认以访问时间倒序排列，访问时间的触发点是在小程序端调用 `wx.cloud.init` 方法，且其中的 `traceUser` 参数传值为 `true`。例：
+
+```js\
+wx.cloud.init({
+  env: 'test-123',
+  traceUser: true,
+})
+```
+
+
+
+### 云数据库
+
+> API参考文档 :https://developers.weixin.qq.com/miniprogram/dev/wxcloud/guide/database.html
+
+云开发提供了一个 JSON 数据库，顾名思义，数据库中的每条记录都是一个 JSON 格式的对象。一个数据库可以有多个集合（相当于关系型数据中的表），集合可看做一个 JSON 数组，数组中的每个对象就是一条记录，记录的格式是 JSON 对象。
+
+关系型数据库和 JSON 数据库的概念对应关系如下表：
+
+| 关系型          | 文档型            |
+| :-------------- | :---------------- |
+| 数据库 database | 数据库 database   |
+| 表 table        | 集合 collection   |
+| 行 row          | 记录 record / doc |
+| 列 column       | 字段 field        |
+
+每条记录都有一个 `_id` 字段用以唯一标志一条记录、一个 `_openid` 字段用以标志记录的创建者，即小程序的用户。需要特别注意的是，在管理端（控制台和云函数）中创建的不会有 `_openid` 字段，因为这是属于管理员创建的记录。开发者可以自定义 `_id`，但不可自定义和修改 `_openid` 。`_openid` 是在文档创建时由系统根据小程序用户默认创建的，开发者可使用其来标识和定位文档。
+
+数据库 API 分为小程序端和服务端两部分，小程序端 API 拥有严格的调用权限控制，开发者可在小程序内直接调用 API 进行非敏感数据的操作。对于有更高安全要求的数据，可在云函数内通过服务端 API 进行操作。云函数的环境是与客户端完全隔离的，在云函数上可以私密且安全的操作数据库。
+
+数据库 API 包含增删改查的能力，使用 API 操作数据库只需三步：获取数据库引用、构造查询/更新条件、发出请求。以下是一个在小程序中查询数据库的发表于美国的图书记录的例子：
+
+简单使用：
+
+```js
+/ 1. 获取数据库引用
+const db = wx.cloud.database()
+// 2. 构造查询语句
+// collection 方法获取一个集合的引用
+// where 方法传入一个对象，数据库返回集合中字段等于指定值的 JSON 文档。API 也支持高级的查询条件（比如大于、小于、in 等），具体见文档查看支持列表
+// get 方法会触发网络请求，往数据库取数据
+db.collection('books').where({
+  publishInfo: {
+    country: 'United States'
+  }
+}).get({
+  success: function(res) {
+  // 输出 [{ "title": "The Catcher in the Rye", ... }]
+  console.log(res)
+ }
+})
+```
+
+#### 本项目共四张表
+
+- ==users==:保存用户数据信息
+
+  字段说明
+
+  - ==_id==：在数据库中的唯一标识
+  - ==openid==：微信用户id
+  - ==avatarUrl==：用户的头像信息 可以授权获取 不用上传云存储
+  - ==lxfs==：联系方式(命名姿势不太行
+  - ==nuckName==：微信用户昵称
+  - ==nj==：年级
+  - ==num==：错误次数
+  - ==xh==：学号
+  - ==xy==：学院
+  - ==zwms==：自我描述
+  - ==zy==：专业
+
+  ![image-20210403123030969](https://gitee.com/DengSchoo374/img/raw/master/images/image-20210403123030969.png)
+
+- ==acti==：保存描述活动信息
+
+  - ==_id==
+  - ==_openid==
+  - ==act_photo==:活动封面照片
+  - ==avatarUrl==：活动创建者头像
+  - ==cxsc==：持续时长
+  - ==cyrs==：参与人数
+  - ==hdbt==：活动标题
+  - ==hdlx==：活动类型
+  - ==jssjHour==：结束时间Hour
+  - ==jssjMin==：结束时间Hour
+  - ==ksrq==：开始日期
+  - ==kssj==：开始时间
+  - ==nickName==：创建者昵称
+
+  ![](https://gitee.com/DengSchoo374/img/raw/master/images/image-20210403124018170.png)
+
+- ==join_in==: 关系表，用于建立用户和参加对应活动的关系
+
+  - ==_id==
+  - ==_openid==
+  - ==activity==：activity的ID
+
+  ![image-20210403124106956](https://gitee.com/DengSchoo374/img/raw/master/images/image-20210403124106956.png)
+
+  > 因为是Json数据库，所以没有天然的关系交互，联合查询起来会有困难
+
+- ==moments==：保存每个用户发表的瞬间信息
+
+  - ==_id==
+  - ==_openid==
+  - ==avatarUrl==：用户头像
+  - ==content==：内容
+  - ==device==：发表瞬间设备
+  - ==imgList==：图片列表
+  - ==nickName==：昵称
+  - ==time==：发布时间
+
+  ![image-20210403124140259](https://gitee.com/DengSchoo374/img/raw/master/images/image-20210403124140259.png)
+
+### 云存储
+
+> 项目中主要使用云存储来存储用户发表的”瞬间“活动照片
+
+云开发提供了一块存储空间，提供了上传文件到云端、带权限管理的云端下载能力，开发者可以在小程序端和云函数端通过 API 使用云存储功能。
+
+在小程序端可以分别调用 `wx.cloud.uploadFile` 和 `wx.cloud.downloadFile` 完成上传和下载云文件操作。下面简单的几行代码，即可实现在小程序内让用户选择一张图片，然后上传到云端管理的功能：
+
+```js
+// 让用户选择一张图片
+wx.chooseImage({
+  success: chooseResult => {
+    // 将图片上传至云存储空间
+    wx.cloud.uploadFile({
+      // 指定上传到的云路径
+      cloudPath: 'my-photo.png',
+      // 指定要上传的文件的小程序临时文件路径
+      filePath: chooseResult.tempFilePaths[0],
+      // 成功回调
+      success: res => {
+        console.log('上传成功', res)
+      },
+    })
+  },
+})
+```
+
+上传完成后可在控制台中看到刚上传的图片。
+
+在本项目中文件名使用随机数和时间戳来特定标识fileName：
+
+![image-20210403121858858](https://gitee.com/DengSchoo374/img/raw/master/images/image-20210403121858858.png)
+
+### 云开发环境
+
+一个环境对应一整套独立的云开发资源，包括数据库、存储空间、云函数等资源。各个环境是相互独立的，用户开通云开发后即创建了一个环境，默认可拥有最多两个环境。在实际开发中，**建议每一个正式环境都搭配一个测试环境**，所有功能先在测试环境测试完毕后再上到正式环境。以初始可创建的两个环境为例，建议一个创建为 `test` 测试环境，一个创建为 `release` 正式环境。
+
+
 
 ## 多人协作开发注意事项
 
